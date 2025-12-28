@@ -59,7 +59,7 @@ public class TitleScreen : MonoBehaviour
 
         if (!PlayerPrefs.HasKey(PrefManager.CurrentLevel)) PrefManager.SetCurrentLevel(0);
         levelDropdown.onValueChanged.AddListener(ChangeLevelDropdown);
-        Level[] listOfLevels = Translator.inst.AllLevels();
+        Level[] listOfLevels = ThingsToCarry.inst.AllLevels();
         for (int i = 0; i < listOfLevels.Length; i++)
         {
             Level nextLevel = listOfLevels[i];
@@ -85,7 +85,7 @@ public class TitleScreen : MonoBehaviour
         void ChangeLevelDropdown(int n)
         {
             PrefManager.SetCurrentLevel(n);
-            Level newLevel = Translator.inst.AllLevels()[n];
+            Level newLevel = ThingsToCarry.inst.AllLevels()[n];
 
             if (newLevel.endless || newLevel.listOfWaves.Count == 1)
             {

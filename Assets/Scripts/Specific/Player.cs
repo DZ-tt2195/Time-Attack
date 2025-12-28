@@ -213,7 +213,7 @@ public class Player : Entity
         tookDamage++;
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 
-        Level currentLevel = Translator.inst.CurrentLevel();
+        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         if (currentLevel.endless)
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10 + PrefManager.CheatChallengeScore();

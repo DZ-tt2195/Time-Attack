@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
 
     void NewWave()
     {
-        Level currentLevel = Translator.inst.CurrentLevel();
+        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         StartCoroutine(Player.instance.Immunity(false));
 
         if (currentWave < currentLevel.listOfWaves.Count() || currentLevel.endless)
@@ -125,7 +125,7 @@ public class WaveManager : MonoBehaviour
 
     void CreateEnemy(Vector2 start, BaseEnemy prefab)
     {
-        BaseEnemy enemy = Instantiate(prefab != null ? prefab : Translator.inst.RandomEnemy());
+        BaseEnemy enemy = Instantiate(prefab != null ? prefab : ThingsToCarry.inst.RandomEnemy());
         enemy.EnemySetup();
         enemy.transform.position = start;
         allEnemies.Add(enemy);
