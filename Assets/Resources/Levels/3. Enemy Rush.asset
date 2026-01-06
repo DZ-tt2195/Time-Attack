@@ -44,18 +44,18 @@ MonoBehaviour:
       position: {x: 2, y: 1.5}
     tutorialKey: 30
   - enemies:
-    - toCreate: {fileID: 2914956959400858315, guid: 53433d4d17c344987a7fc802fe45ef12, type: 3}
-      position: {x: -4, y: 3.5}
-    - toCreate: {fileID: 2914956959400858315, guid: 53433d4d17c344987a7fc802fe45ef12, type: 3}
-      position: {x: 4, y: 3.5}
-    tutorialKey: 30
-  - enemies:
     - toCreate: {fileID: 7281539886758776230, guid: eb00d3b1344e24fbaadffdb9e8ca4242, type: 3}
       position: {x: -3, y: 3.5}
     - toCreate: {fileID: 7281539886758776230, guid: eb00d3b1344e24fbaadffdb9e8ca4242, type: 3}
       position: {x: 0, y: 3.5}
     - toCreate: {fileID: 7281539886758776230, guid: eb00d3b1344e24fbaadffdb9e8ca4242, type: 3}
       position: {x: 3, y: 3.5}
+    tutorialKey: 30
+  - enemies:
+    - toCreate: {fileID: 2914956959400858315, guid: 53433d4d17c344987a7fc802fe45ef12, type: 3}
+      position: {x: -4, y: 3.5}
+    - toCreate: {fileID: 2914956959400858315, guid: 53433d4d17c344987a7fc802fe45ef12, type: 3}
+      position: {x: 4, y: 3.5}
     tutorialKey: 30
   - enemies:
     - toCreate: {fileID: 4982336583283359399, guid: 3b6f983a413704a4fbc223a664868c48, type: 3}

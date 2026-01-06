@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: Dec 28, 2025
+Last_Update	Last Updated: Jan 05, 2026
 Translator_Credit	Original Language
 Language	Language
 Choose_Level	Choose Level
@@ -53,3 +53,5 @@ Upload_Translation	Upload Translation
 Download_English	Download English
 Update_4	Dec 28, 2025
 Update_4_Text	New translation features - you can download the English translation file and upload your own translation
+Update_5	Jan 05, 2026
+Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush

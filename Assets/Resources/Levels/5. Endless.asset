@@ -15,17 +15,15 @@ MonoBehaviour:
   listOfWaves:
   - enemies:
     - toCreate: {fileID: 0}
-      position: {x: 0, y: 3.5}
-    - toCreate: {fileID: 0}
-      position: {x: 0, y: 2}
-    - toCreate: {fileID: 0}
       position: {x: -2, y: 3.5}
     - toCreate: {fileID: 0}
-      position: {x: -2, y: 2}
+      position: {x: -1, y: 2}
+    - toCreate: {fileID: 0}
+      position: {x: 0, y: 3.5}
+    - toCreate: {fileID: 0}
+      position: {x: 1, y: 2}
     - toCreate: {fileID: 0}
       position: {x: 2, y: 3.5}
-    - toCreate: {fileID: 0}
-      position: {x: 2, y: 2}
     tutorialKey: 30
   levelName: 24
   endless: 1
