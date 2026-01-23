@@ -96,7 +96,7 @@ public class WaveManager : MonoBehaviour
             if (!currentLevel.endless)
             {
                 waveCounter.text = AutoTranslate.Wave((currentWave+1).ToString(), currentLevel.listOfWaves.Count.ToString());
-                tutorialText.text = AutoTranslate.DoEnum(currentLevel.listOfWaves[currentWave].tutorialKey);;
+                tutorialText.text = Translator.inst.Translate(currentLevel.listOfWaves[currentWave].tutorialKey);;
             }
             else
             {
@@ -114,7 +114,8 @@ public class WaveManager : MonoBehaviour
             (int missedBullets, int tookDamage) = Player.instance.PlayerStats();
 
             int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2 + PrefManager.CheatChallengeScore();
-            string endText = AutoTranslate.DoEnum(ToTranslate.Victory);
+            string endText = AutoTranslate.Victory();
+            
             if (PrefManager.GetStartWave() > 1)
                 endText += $" {AutoTranslate.Skipped_Ahead(PrefManager.GetStartWave().ToString())}";
             else if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))

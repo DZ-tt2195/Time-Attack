@@ -217,13 +217,13 @@ public class Player : Entity
         if (currentLevel.endless)
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10 + PrefManager.CheatChallengeScore();
-            WaveManager.instance.EndGame(AutoTranslate.DoEnum(ToTranslate.Lost), PlayerStats(), score);
+            WaveManager.instance.EndGame(AutoTranslate.Lost(), PlayerStats(), score);
             if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }
         else
         {
-            WaveManager.instance.EndGame(AutoTranslate.DoEnum(ToTranslate.Lost), PlayerStats(), -1);
+            WaveManager.instance.EndGame(AutoTranslate.Lost(), PlayerStats(), -1);
         }
     }
 

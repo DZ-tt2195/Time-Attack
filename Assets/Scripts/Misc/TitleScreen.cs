@@ -66,7 +66,7 @@ public class TitleScreen : MonoBehaviour
             if (nextLevel.levelName == ToTranslate.Blank && !Application.isEditor)
                 continue;
             
-            levelDropdown.AddOptions(new List<string>() { AutoTranslate.DoEnum(nextLevel.levelName) });
+            levelDropdown.AddOptions(new List<string>() { Translator.inst.Translate(nextLevel.levelName) });
             if (i == PrefManager.GetCurrentLevel())
             {
                 levelDropdown.value = i;
@@ -102,7 +102,7 @@ public class TitleScreen : MonoBehaviour
             if (PrefManager.GetScore(newLevel.levelName.ToString()) > 0)
                 bestRun.text = AutoTranslate.Best_Score($"{PrefManager.GetScore(newLevel.levelName.ToString())}");
             else
-                bestRun.text = AutoTranslate.DoEnum(ToTranslate.No_Score);
+                bestRun.text = AutoTranslate.No_Score();
         }
     }
 
