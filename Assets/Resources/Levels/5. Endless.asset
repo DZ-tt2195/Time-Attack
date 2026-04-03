@@ -24,6 +24,6 @@ MonoBehaviour:
       position: {x: 1, y: 2}
     - toCreate: {fileID: 0}
       position: {x: 2, y: 3.5}
-    tutorialKey: 30
-  levelName: 24
+    tutorialKey: Blank
+  levelName: Endless
   endless: 1

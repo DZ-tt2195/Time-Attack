@@ -11,7 +11,6 @@ Delete	Delete Scores
 Replay	Replay
 Quit	Quit
 Paused	Paused
-Restart	Restart
 No_Score	No score found.
 Best_Score	Best Score: $Num$
 Difficulty	Difficulty: $Num$%
@@ -26,8 +25,6 @@ Bullets	Bullets: $Num$ / $Max$
 Health	Health: $Num$ / $Max$
 Resupply	 +2 Bullets
 Health_Pack	 +1 Health
-Juggle_Balls	Juggle Balls (+20 Score)
-Infinite_Bullets	Infinite Bullets (-20 Score)
 Score	Score: $Num$
 Tutorial_1	Tutorial 1
 Tutorial_2	Tutorial 2

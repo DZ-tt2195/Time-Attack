@@ -29,10 +29,10 @@ public class Player : Entity
     [SerializeField] TMP_Text timerText;
     [SerializeField] Slider bulletSlider;
     [SerializeField] TMP_Text bulletCounter;
-
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Slider healthSlider;
     [SerializeField] TMP_Text healthCounter;
+    [SerializeField] TMP_Text pause;
 
     [Foldout("FPS", true)]
     int lastframe = 0;
@@ -64,6 +64,7 @@ public class Player : Entity
         if (health > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             paused = !paused;
+            pause.text = AutoTranslate.Paused();
             pauseScreen.SetActive(paused);
             Time.timeScale = (paused) ? 0f : 1f;
             if (paused)
@@ -87,16 +88,8 @@ public class Player : Entity
             healthSlider.value = health / (float)maxHealth;
             healthCounter.text = AutoTranslate.Health(health.ToString(), maxHealth.ToString());
 
-            if (PrefManager.GetJuggle() == 0)
-            {
-                bulletSlider.value = currentBullet / (float)maxBullet;
-                bulletCounter.text = AutoTranslate.Bullets(currentBullet.ToString(), maxBullet.ToString());
-            }
-            else
-            {
-                bulletSlider.value = (float)maxBullet / (float)maxBullet;
-                bulletCounter.text = AutoTranslate.Bullets("\u221E", "\u221E");
-            }
+            bulletSlider.value = currentBullet / (float)maxBullet;
+            bulletCounter.text = AutoTranslate.Bullets(currentBullet.ToString(), maxBullet.ToString());
 
             timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
             timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";
@@ -104,7 +97,7 @@ public class Player : Entity
             string GetFPS()
             {
                 framearray[lastframe] = Time.deltaTime;
-                lastframe = (lastframe + 1);
+                lastframe++;
                 if (lastframe == 60)
                 {
                     lastframe = 0;
@@ -123,8 +116,7 @@ public class Player : Entity
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && currentBullet >= 1)
         {
-            if (PrefManager.GetInfinity() == 0) 
-                currentBullet--;
+            currentBullet--;
             firedBullets++;
             CreateBullet(bulletPrefab, this.transform.position, bulletSpeed, Vector3.up);
         }
@@ -216,7 +208,7 @@ public class Player : Entity
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         if (currentLevel.endless)
         {
-            int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10 + PrefManager.CheatChallengeScore();
+            int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10;
             WaveManager.instance.EndGame(AutoTranslate.Lost(), PlayerStats(), score);
             if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);

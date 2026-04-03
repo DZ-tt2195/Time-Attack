@@ -4,23 +4,38 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
+using MyBox;
 
 public class TitleScreen : MonoBehaviour
 {
+    [Foldout("UI", true)]
     [SerializeField] Slider difficultySlider;
     [SerializeField] TMP_Text difficultyLabel;
     [SerializeField] Slider waveSlider;
     [SerializeField] TMP_Text waveLabel;
-
-    [SerializeField] Slider juggleSlider;
-    [SerializeField] Slider infiniteSlider;
-
     [SerializeField] TMP_Text bestRun;
     [SerializeField] TMP_Dropdown levelDropdown;
     [SerializeField] Button deleteScoreButton;
 
+    [Foldout("Texts", true)]
+    [SerializeField] TMP_Text designer;
+    [SerializeField] TMP_Text description;
+    [SerializeField] TMP_Text lastUpdate;
+    [SerializeField] TMP_Text controls;
+    [SerializeField] TMP_Text play;
+    [SerializeField] TMP_Text chooseLevel;
+    [SerializeField] TMP_Text deleteScores;
+
     void Awake()
     {
+        designer.text = AutoTranslate.Designer();
+        description.text = AutoTranslate.Description();
+        lastUpdate.text = AutoTranslate.Last_Update();
+        controls.text = AutoTranslate.Controls();
+        play.text = AutoTranslate.Play();
+        chooseLevel.text = AutoTranslate.Choose_Level();
+        deleteScores.text = AutoTranslate.Delete();
+
         if (!PlayerPrefs.HasKey(PrefManager.Difficulty)) PrefManager.SetDifficulty(1f);
         difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
         difficultySlider.value = PrefManager.GetDifficulty();
@@ -43,27 +58,13 @@ public class TitleScreen : MonoBehaviour
             PrefManager.SetStartWave((int)value);
         }
 
-        if (!PlayerPrefs.HasKey(PrefManager.Juggle)) PrefManager.SetJuggle(0);
-        juggleSlider.onValueChanged.AddListener(ChangeJuggleSlider);
-        juggleSlider.value = PrefManager.GetJuggle();
-        ChangeJuggleSlider(PrefManager.GetJuggle());
-
-        void ChangeJuggleSlider(float value) { PrefManager.SetJuggle((int)value); }
-
-        if (!PlayerPrefs.HasKey(PrefManager.Infinity)) PrefManager.SetInfinity(0);
-        infiniteSlider.onValueChanged.AddListener(ChangeInfiniteSlider);
-        infiniteSlider.value = PrefManager.GetInfinity();
-        ChangeInfiniteSlider(PrefManager.GetInfinity());
-
-        void ChangeInfiniteSlider(float value) {PrefManager.SetInfinity((int)value);}
-
         if (!PlayerPrefs.HasKey(PrefManager.CurrentLevel)) PrefManager.SetCurrentLevel(0);
         levelDropdown.onValueChanged.AddListener(ChangeLevelDropdown);
         Level[] listOfLevels = ThingsToCarry.inst.AllLevels();
         for (int i = 0; i < listOfLevels.Length; i++)
         {
             Level nextLevel = listOfLevels[i];
-            if (nextLevel.levelName == ToTranslate.Blank && !Application.isEditor)
+            if (nextLevel.levelName == AutoTranslate.Blank() && !Application.isEditor)
                 continue;
             
             levelDropdown.AddOptions(new List<string>() { Translator.inst.Translate(nextLevel.levelName) });

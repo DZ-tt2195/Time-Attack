@@ -18,7 +18,7 @@ MonoBehaviour:
       position: {x: 0, y: 2}
     - toCreate: {fileID: 1601267638787446188, guid: 378439694e5c9463c8219a2147fae4c2, type: 3}
       position: {x: 0, y: 3.5}
-    tutorialKey: 27
+    tutorialKey: Third_Tutorial
   - enemies:
     - toCreate: {fileID: 7516396602756695447, guid: 56791cf3361bd40f6a1e8d3039aaeadd, type: 3}
       position: {x: -2, y: 3.5}
@@ -26,6 +26,6 @@ MonoBehaviour:
       position: {x: 2, y: 3.5}
     - toCreate: {fileID: 7350995930825681136, guid: e88ebd426c103448986d9e32a0b40a44, type: 3}
       position: {x: 0, y: 2}
-    tutorialKey: 28
-  levelName: 21
+    tutorialKey: Fourth_Tutorial
+  levelName: Tutorial_2
   endless: 0

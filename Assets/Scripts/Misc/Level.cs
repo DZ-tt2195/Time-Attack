@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Level : ScriptableObject
 {
     public List<Wave<Collection>> listOfWaves = new();
-    public ToTranslate levelName;
+    public string levelName = nameof(AutoTranslate.Blank);
     public bool endless;
 }
 
@@ -13,7 +13,7 @@ public class Level : ScriptableObject
 public class Wave<Collection>
 {
     public List<Collection> enemies = new();
-    public ToTranslate tutorialKey;
+    public string tutorialKey = nameof(AutoTranslate.Blank);
 }
 
 [System.Serializable]

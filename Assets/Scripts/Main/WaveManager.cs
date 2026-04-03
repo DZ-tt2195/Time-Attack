@@ -16,7 +16,6 @@ public class WaveManager : MonoBehaviour
     [Foldout("Prefabs", true)]
     [SerializeField] Resupply resupplyPrefab;
     [SerializeField] HealthPack healthPack;
-    [SerializeField] JuggleBall jugglePrefab;
     Queue<Resupply> resupplyQueue = new();
 
     [Foldout("UI", true)]
@@ -26,8 +25,10 @@ public class WaveManager : MonoBehaviour
     public int currentWave { get; private set; }
     [SerializeField] Slider enemySlider;
     [SerializeField] TMP_Text enemyCounter;
-    [SerializeField] TMP_Text endingText;
     [SerializeField] TMP_Text tutorialText;
+    [SerializeField] TMP_Text replay;
+    [SerializeField] TMP_Text quit;
+    [SerializeField] TMP_Text endText;
 
     public static float minX { get; private set; }
     public static float maxX { get; private set; }
@@ -47,15 +48,12 @@ public class WaveManager : MonoBehaviour
         maxY = 4f;
         Debug.Log($"X: {minX} to {maxX}; Y: {minY} to {maxY}");
 
+        replay.text = AutoTranslate.Replay();
+        quit.text = AutoTranslate.Quit();
+
         InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
         currentWave = PrefManager.GetStartWave()-1;
         NewWave();
-
-        if (PrefManager.GetJuggle() == 1)
-        {
-            JuggleBall newBall = Instantiate(jugglePrefab);
-            newBall.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
-        }
     }
 
     #endregion
@@ -64,12 +62,9 @@ public class WaveManager : MonoBehaviour
 
     void SpawnResupply()
     {
-        if (PrefManager.GetInfinity() == 0)
-        {
             Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
             resupply.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
             resupply.gameObject.SetActive(true);
-        }
     }
 
     public void ReturnResupply(Resupply resupply)
@@ -113,7 +108,7 @@ public class WaveManager : MonoBehaviour
 
             (int missedBullets, int tookDamage) = Player.instance.PlayerStats();
 
-            int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2 + PrefManager.CheatChallengeScore();
+            int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2;
             string endText = AutoTranslate.Victory();
             
             if (PrefManager.GetStartWave() > 1)
@@ -159,14 +154,14 @@ public class WaveManager : MonoBehaviour
 
     public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
     {
-        if (!endingText.transform.parent.gameObject.activeSelf)
+        if (!endText.transform.parent.gameObject.activeSelf)
         {
-            endingText.transform.parent.gameObject.SetActive(true);
-            endingText.text = $"{text}\n\n" +
+            endText.transform.parent.gameObject.SetActive(true);
+            endText.text = $"{text}\n\n" +
                 $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +
                 $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
             if (score > 0)
-                endingText.text += $"\n{AutoTranslate.Score(score.ToString())}";
+                endText.text += $"\n{AutoTranslate.Score(score.ToString())}";
         }
     }
 
