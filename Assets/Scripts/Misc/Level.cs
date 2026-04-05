@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+public enum LevelType {Fixed, Endless, Shuffled}
 [CreateAssetMenu(fileName = "NewLevel", menuName = "ScriptableObjects/Level")]
 public class Level : ScriptableObject
 {
     public List<Wave<Collection>> listOfWaves = new();
     public string levelName = nameof(AutoTranslate.Blank);
-    public bool endless;
+    public LevelType levelType;
 }
 
 [System.Serializable]

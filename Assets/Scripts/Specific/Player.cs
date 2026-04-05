@@ -16,8 +16,8 @@ public class Player : Entity
     public static bool paused = false;
 
     [Foldout("Player info", true)]
-    int currentBullet;
-    [SerializeField] int maxBullet;
+    int currentEnergy;
+    [SerializeField] int maxEnergy;
     [SerializeField] float immuneTime;
     [SerializeField] GameObject blackOutObject;
     public float blackOutTime = 0f;
@@ -27,8 +27,8 @@ public class Player : Entity
 
     [Foldout("UI", true)]
     [SerializeField] TMP_Text timerText;
-    [SerializeField] Slider bulletSlider;
-    [SerializeField] TMP_Text bulletCounter;
+    [SerializeField] Slider energySlider;
+    [SerializeField] TMP_Text energyCounter;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Slider healthSlider;
     [SerializeField] TMP_Text healthCounter;
@@ -48,7 +48,7 @@ public class Player : Entity
         Time.timeScale = 1f;
 
         this.tag = "Player";
-        currentBullet = maxBullet;
+        currentEnergy = maxEnergy;
         immuneTime *= 2 - PrefManager.GetDifficulty();
 
         gameTimer = new Stopwatch();
@@ -78,7 +78,7 @@ public class Player : Entity
             if (health > 0)
             {
                 FollowMouse();
-                ShootBullet();
+                UseWeapon();
             }
 
             if (blackOutTime > 0f)
@@ -88,8 +88,8 @@ public class Player : Entity
             healthSlider.value = health / (float)maxHealth;
             healthCounter.text = AutoTranslate.Health(health.ToString(), maxHealth.ToString());
 
-            bulletSlider.value = currentBullet / (float)maxBullet;
-            bulletCounter.text = AutoTranslate.Bullets(currentBullet.ToString(), maxBullet.ToString());
+            energySlider.value = currentEnergy / (float)maxEnergy;
+            energyCounter.text = AutoTranslate.Energy(currentEnergy.ToString(), maxEnergy.ToString());
 
             timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
             timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";
@@ -111,17 +111,16 @@ public class Player : Entity
             }
         }
     }
-
-    void ShootBullet()
+    void UseWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && currentBullet >= 1)
+        
+        if (Input.GetKeyDown(KeyCode.Mouse0) && currentEnergy >= 1)
         {
-            currentBullet--;
+            currentEnergy--;
             firedBullets++;
-            CreateBullet(bulletPrefab, this.transform.position, bulletSpeed, Vector3.up);
+            CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up));
         }
     }
-
     void FollowMouse()
     {
         Vector3 mouseScreenPosition = Input.mousePosition;
@@ -132,7 +131,6 @@ public class Player : Entity
         targetPosition.y = Mathf.Clamp(targetPosition.y, WaveManager.minY, WaveManager.maxY);
         transform.position = Vector3.Lerp(transform.position, targetPosition, 10f * Time.deltaTime);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity entity))
@@ -143,10 +141,10 @@ public class Player : Entity
         {
             this.TakeDamage();
         }
-        else if (collision.CompareTag("Resupply") && currentBullet < maxBullet)
+        else if (collision.CompareTag("Resupply") && currentEnergy < maxEnergy)
         {
             WaveManager.instance.ReturnResupply(collision.GetComponent<Resupply>());
-            AddBullet(2);
+            AddEnergy(2);
         }
         else if (collision.CompareTag("HealthPack") && health < maxHealth)
         {
@@ -154,10 +152,9 @@ public class Player : Entity
             health++;
         }
     }
-
-    public void AddBullet(int addition)
+    public void AddEnergy(int addition)
     {
-        currentBullet = Mathf.Min(currentBullet + addition, maxBullet);
+        currentEnergy = Mathf.Min(currentEnergy + addition, maxEnergy);
     }
 
     #endregion
@@ -169,7 +166,6 @@ public class Player : Entity
         tookDamage++;
         StartCoroutine(Immunity(true));
     }
-
     public IEnumerator Immunity(bool animation)
     {
         immune = true;
@@ -198,7 +194,6 @@ public class Player : Entity
         MyExtensions.SetAlpha(this.spriteRenderer, 1);
         immune = false;        
     }
-
     protected override void DeathEffect()
     {
         immune = true;
@@ -206,7 +201,7 @@ public class Player : Entity
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
-        if (currentLevel.endless)
+        if (currentLevel.levelType == LevelType.Endless)
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10;
             WaveManager.instance.EndGame(AutoTranslate.Lost(), PlayerStats(), score);
@@ -218,7 +213,6 @@ public class Player : Entity
             WaveManager.instance.EndGame(AutoTranslate.Lost(), PlayerStats(), -1);
         }
     }
-
     public (int, int) PlayerStats()
     {
         gameTimer.Stop();

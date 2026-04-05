@@ -19,9 +19,9 @@ public class ElectricWave : Bullet
         vanishTime *= PrefManager.GetDifficulty();
     }
 
-    public override void AssignInfo(float speed, Vector3 direction, Entity owner)
+    public override void AssignInfo(AttackInfo info, Entity owner)
     {
-        base.AssignInfo(speed, direction, owner);
+        base.AssignInfo(info, owner);
         this.transform.localScale = Vector3.zero;
         this.transform.eulerAngles = new(0, 0, Random.Range(-360f, 360f));
 

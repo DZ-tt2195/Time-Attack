@@ -88,7 +88,7 @@ public class TitleScreen : MonoBehaviour
             PrefManager.SetCurrentLevel(n);
             Level newLevel = ThingsToCarry.inst.AllLevels()[n];
 
-            if (newLevel.endless || newLevel.listOfWaves.Count == 1)
+            if (newLevel.levelType == LevelType.Endless || newLevel.listOfWaves.Count == 1)
             {
                 waveSlider.value = 1;
                 waveSlider.gameObject.SetActive(false);

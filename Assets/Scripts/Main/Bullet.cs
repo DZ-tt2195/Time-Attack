@@ -21,11 +21,12 @@ public class Bullet : MonoBehaviour
             owner.ReturnBullet(this, landed);
     }
 
-    public virtual void AssignInfo(float speed, Vector3 direction, Entity owner)
+    public virtual void AssignInfo(AttackInfo info, Entity owner)
     {
+        this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
-        this.bulletSpeed = speed;
-        this.direction = direction;
+        this.bulletSpeed = info.bulletSpeed;
+        this.direction = info.direction;
         this.owner = owner;
         Movement();
         this.gameObject.SetActive(true);

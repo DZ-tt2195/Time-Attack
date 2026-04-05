@@ -23,7 +23,7 @@ public static string Victory () => Translator.inst.Translate("Victory", new() {}
 public static string Lost () => Translator.inst.Translate("Lost", new() {});
 public static string Skipped_Ahead (string Num) => Translator.inst.Translate("Skipped_Ahead", new() {("Num", Num)});
 public static string Enemies (string Num,string Max) => Translator.inst.Translate("Enemies", new() {("Num", Num),("Max", Max)});
-public static string Bullets (string Num,string Max) => Translator.inst.Translate("Bullets", new() {("Num", Num),("Max", Max)});
+public static string Energy (string Num,string Max) => Translator.inst.Translate("Energy", new() {("Num", Num),("Max", Max)});
 public static string Health (string Num,string Max) => Translator.inst.Translate("Health", new() {("Num", Num),("Max", Max)});
 public static string Resupply () => Translator.inst.Translate("Resupply", new() {});
 public static string Health_Pack () => Translator.inst.Translate("Health_Pack", new() {});
@@ -54,4 +54,6 @@ public static string Update_4 () => Translator.inst.Translate("Update_4", new() 
 public static string Update_4_Text () => Translator.inst.Translate("Update_4_Text", new() {});
 public static string Update_5 () => Translator.inst.Translate("Update_5", new() {});
 public static string Update_5_Text () => Translator.inst.Translate("Update_5_Text", new() {});
+public static string Update_6 () => Translator.inst.Translate("Update_6", new() {});
+public static string Update_6_Text () => Translator.inst.Translate("Update_6_Text", new() {});
 }

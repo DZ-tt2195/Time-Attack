@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 687250254}
   - component: {fileID: 687250255}
   m_Layer: 5
-  m_Name: Bullet Slider
+  m_Name: Energy Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 1380154252}
   - component: {fileID: 1380154251}
   m_Layer: 5
-  m_Name: Bullet Counter
+  m_Name: Energy Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bullets: 1 / 5'
+  m_text: 'Energy: 1 / 5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -2837,13 +2837,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 6
   bulletSpeed: 7
-  maxBullet: 6
+  maxEnergy: 6
   immuneTime: 2.5
   blackOutObject: {fileID: 1850310567}
   blackOutTime: 0
   timerText: {fileID: 200080893}
-  bulletSlider: {fileID: 687250255}
-  bulletCounter: {fileID: 1380154251}
+  energySlider: {fileID: 687250255}
+  energyCounter: {fileID: 1380154251}
   pauseScreen: {fileID: 1118295514}
   healthSlider: {fileID: 739478177}
   healthCounter: {fileID: 1354370450}

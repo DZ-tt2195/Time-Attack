@@ -22,9 +22,7 @@ public class Sun : BaseEnemy
         for (int i = -1; i<=1; i+=2)
         {
             for (int j = -1; j<=1; j++)
-            {
-                CreateBullet(bulletPrefab, this.transform.position, bulletSpeed, new(i, j));
-            }
+                CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(i, j)));
         }
     }
 }

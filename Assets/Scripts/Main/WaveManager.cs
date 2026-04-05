@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
 
     public static WaveManager instance;
     List<BaseEnemy> allEnemies = new();
+    List<Wave<Collection>> waveList = new();
 
     [Foldout("Prefabs", true)]
     [SerializeField] Resupply resupplyPrefab;
@@ -53,6 +54,11 @@ public class WaveManager : MonoBehaviour
 
         InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
         currentWave = PrefManager.GetStartWave()-1;
+
+        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+        waveList = currentLevel.listOfWaves;
+        if (currentLevel.levelType == LevelType.Shuffled)
+            waveList = waveList.Shuffle();
         NewWave();
     }
 
@@ -62,36 +68,34 @@ public class WaveManager : MonoBehaviour
 
     void SpawnResupply()
     {
-            Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
-            resupply.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
-            resupply.gameObject.SetActive(true);
+        Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
+        resupply.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
+        resupply.gameObject.SetActive(true);
     }
-
     public void ReturnResupply(Resupply resupply)
     {
         resupplyQueue.Enqueue(resupply);
         resupply.gameObject.SetActive(false);
     }
-
     void NewWave()
     {
-        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         StartCoroutine(Player.instance.Immunity(false));
+        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
 
-        if (currentWave < currentLevel.listOfWaves.Count() || currentLevel.endless)
+        if (currentWave < waveList.Count() || currentLevel.levelType == LevelType.Endless)
         {
             HealthPack pack = Instantiate(healthPack);
             pack.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
 
-            foreach (Collection collection in currentLevel.listOfWaves[Mathf.Min(currentLevel.listOfWaves.Count-1, currentWave)].enemies)
+            foreach (Collection collection in waveList[Mathf.Min(waveList.Count-1, currentWave)].enemies)
                 CreateEnemy(collection.position, collection.toCreate);
 
-            waveSlider.value = (currentWave + 1) / (float)currentLevel.listOfWaves.Count;
+            waveSlider.value = (currentWave + 1) / (float)waveList.Count;
 
-            if (!currentLevel.endless)
+            if (currentLevel.levelType != LevelType.Endless)
             {
-                waveCounter.text = AutoTranslate.Wave((currentWave+1).ToString(), currentLevel.listOfWaves.Count.ToString());
-                tutorialText.text = Translator.inst.Translate(currentLevel.listOfWaves[currentWave].tutorialKey);;
+                waveCounter.text = AutoTranslate.Wave((currentWave+1).ToString(), waveList.Count.ToString());
+                tutorialText.text = Translator.inst.Translate(waveList[currentWave].tutorialKey);;
             }
             else
             {
@@ -107,7 +111,6 @@ public class WaveManager : MonoBehaviour
             foreach (JuggleBall ball in allBalls) Destroy(ball.gameObject);
 
             (int missedBullets, int tookDamage) = Player.instance.PlayerStats();
-
             int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2;
             string endText = AutoTranslate.Victory();
             
@@ -118,7 +121,6 @@ public class WaveManager : MonoBehaviour
             EndGame(endText, new(missedBullets, tookDamage), score);
         }
     }
-
     void CreateEnemy(Vector2 start, BaseEnemy prefab)
     {
         BaseEnemy enemy = Instantiate(prefab != null ? prefab : ThingsToCarry.inst.RandomEnemy());
@@ -126,7 +128,6 @@ public class WaveManager : MonoBehaviour
         enemy.transform.position = start;
         allEnemies.Add(enemy);
     }
-
     private void Update()
     {
         allEnemies.RemoveAll(enemy => enemy == null);
@@ -151,7 +152,6 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
-
     public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
     {
         if (!endText.transform.parent.gameObject.activeSelf)

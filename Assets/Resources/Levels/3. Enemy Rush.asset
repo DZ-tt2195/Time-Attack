@@ -160,4 +160,4 @@ MonoBehaviour:
       position: {x: 2, y: 3.5}
     tutorialKey: Blank
   levelName: Enemy_Rush
-  endless: 0
+  levelType: 2

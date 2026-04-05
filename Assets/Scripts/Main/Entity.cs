@@ -49,11 +49,10 @@ public class Entity : MonoBehaviour
     {
     }
 
-    protected Bullet CreateBullet(Bullet prefab, Vector3 start, float bulletSpeed, Vector3 direction)
+    protected Bullet CreateBullet(Bullet prefab, AttackInfo info)
     {
         Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(prefab);
-        newBullet.transform.position = start;
-        newBullet.AssignInfo(bulletSpeed, direction, this);
+        newBullet.AssignInfo(info, this);
         return newBullet;
     }
 
@@ -63,5 +62,18 @@ public class Entity : MonoBehaviour
         bullet.gameObject.SetActive(false);
         if (landed)
             landedBullets++;
+    }
+}
+public class AttackInfo
+{
+    public Vector2 spawnPosition{get; private set;}
+    public float bulletSpeed{get; private set;}
+    public Vector2 direction{get; private set;}
+
+    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction)
+    {
+        this.spawnPosition = spawnposition;
+        this.bulletSpeed = bulletSpeed;
+        this.direction = direction;
     }
 }
