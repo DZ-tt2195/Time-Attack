@@ -60,8 +60,8 @@ public class TitleScreen : MonoBehaviour
 
         if (!PlayerPrefs.HasKey(PrefManager.CurrentLevel)) PrefManager.SetCurrentLevel(0);
         levelDropdown.onValueChanged.AddListener(ChangeLevelDropdown);
-        Level[] listOfLevels = ThingsToCarry.inst.AllLevels();
-        for (int i = 0; i < listOfLevels.Length; i++)
+        List<Level> listOfLevels = ThingsToCarry.inst.AllLevels();
+        for (int i = 0; i < listOfLevels.Count; i++)
         {
             Level nextLevel = listOfLevels[i];
             if (nextLevel.levelName == AutoTranslate.Blank() && !Application.isEditor)
