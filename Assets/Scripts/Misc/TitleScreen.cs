@@ -16,6 +16,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text bestRun;
     [SerializeField] TMP_Dropdown levelDropdown;
     [SerializeField] Button deleteScoreButton;
+    [SerializeField] Slider volumeSlider;
 
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;
@@ -25,6 +26,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text play;
     [SerializeField] TMP_Text chooseLevel;
     [SerializeField] TMP_Text deleteScores;
+    [SerializeField] TMP_Text volume;
 
     void Awake()
     {
@@ -105,6 +107,15 @@ public class TitleScreen : MonoBehaviour
             else
                 bestRun.text = AutoTranslate.No_Score();
         }
-    }
+    
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.onValueChanged.AddListener(SetLevel);
+        SetLevel(PlayerPrefs.GetFloat("Volume"));
 
+        void SetLevel(float value)
+        {
+            AudioManager.instance.mixer.SetFloat("Volume", (Mathf.Log10(volumeSlider.value) * 20));
+            PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        }
+    }
 }
