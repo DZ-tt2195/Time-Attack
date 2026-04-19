@@ -304,11 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8901a6668d7b443f1b70edecbfea36db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Waller
-  health: 4
+  currentHealth: 4
   bulletSpeed: 1.75
+  lookAtPlayer: 0
   moveSpeed: 0
   attackRate: 1.25
-  lookAtPlayer: 0
 --- !u!1 &7610205217623488726
 GameObject:
   m_ObjectHideFlags: 0

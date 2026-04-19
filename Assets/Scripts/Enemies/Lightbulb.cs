@@ -14,12 +14,12 @@ public class Lightbulb : BaseEnemy
     protected override void DamageEffect()
     {
         base.DamageEffect();
-        Player.instance.blackOutTime += this.blackOutTime;
+        WaveManager.instance.blackOutTime += this.blackOutTime;
     }
 
     protected override void DeathEffect()
     {
         base.DeathEffect();
-        Player.instance.blackOutTime += this.blackOutTime;
+        WaveManager.instance.blackOutTime += this.blackOutTime;
     }
 }

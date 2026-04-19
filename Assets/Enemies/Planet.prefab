@@ -777,11 +777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525e807c6e7e24cdeb0f6b16b83ab0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Planet
-  health: 4
+  currentHealth: 4
   bulletSpeed: 0
+  lookAtPlayer: 0
   moveSpeed: 1
   attackRate: 0
-  lookAtPlayer: 0
   toSpin:
   - obj: {fileID: 7335682293739162065}
     rot: 0

@@ -24,7 +24,7 @@ public class Staff : BaseEnemy
         for (int i = 0; i < numBullets; i++)
             CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet())));
 
-        if (health > 0 && !starPrefab.gameObject.activeSelf)
+        if (currentHealth > 0 && !starPrefab.gameObject.activeSelf)
         {
             starPrefab.transform.position = this.transform.position;
             starPrefab.tag = this.tag;

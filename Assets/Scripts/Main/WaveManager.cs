@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using System.Diagnostics;
-
+public enum GameState {Setup, Playing, Paused, Over}
 public class WaveManager : MonoBehaviour
 {
 
 #region Setup
 
     public static WaveManager instance;
+    public static GameState state = GameState.Setup;
     List<BaseEnemy> allEnemies = new();
     List<Wave<Collection>> waveList = new();
     public int currentWave { get; private set; }
@@ -39,6 +40,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] TMP_Text healthCounter;
     [SerializeField] TMP_Text pause;
+    [SerializeField] GameObject blackOutObject;
+    [ReadOnly] public float blackOutTime = 0f;
 
     [Foldout("FPS", true)]
     int lastframe = 0;
@@ -67,16 +70,24 @@ public class WaveManager : MonoBehaviour
         quit.text = AutoTranslate.Quit();
         pauseScreen.SetActive(false);
 
-        InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
-        Player.state = GameState.Playing;
+        state = GameState.Setup;
         gameTimer = new Stopwatch();
-        gameTimer.Start();
 
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         waveList = currentLevel.listOfWaves;
         if (currentLevel.levelType == LevelType.Shuffled)
             waveList = waveList.Shuffle();
+
+        Player player = ThingsToCarry.inst.RandomPlayer();
+        Instantiate(player, new Vector3(0, -3), new Quaternion());
+        BeginGame();
+    }
+    public void BeginGame()
+    {
+        state = GameState.Playing;
+        gameTimer.Start();
         NewWave();
+        InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
     }
 
     #endregion
@@ -143,13 +154,34 @@ public class WaveManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pause.text = AutoTranslate.Paused();
+            if (state == GameState.Playing)
+            {
+                state = GameState.Paused;
+                gameTimer.Stop();
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;                
+            }
+            else if (state == GameState.Paused)
+            {
+                state = GameState.Playing;
+                gameTimer.Start();
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+
+        if (state != GameState.Playing) return;
+
         allEnemies.RemoveAll(enemy => enemy == null);
         int currentEnemies = 0;
         if (allEnemies.Count > 0)
         {
             foreach (BaseEnemy enemy in allEnemies)
             {
-                if (enemy.health != 0)
+                if (enemy.currentHealth != 0)
                     currentEnemies++;
             }
 
@@ -165,24 +197,6 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            pause.text = AutoTranslate.Paused();
-            if (Player.state == GameState.Playing)
-            {
-                Player.state = GameState.Paused;
-                gameTimer.Stop();
-                pauseScreen.SetActive(true);
-                Time.timeScale = 0f;                
-            }
-            else if (Player.state == GameState.Paused)
-            {
-                Player.state = GameState.Playing;
-                gameTimer.Start();
-                pauseScreen.SetActive(false);
-                Time.timeScale = 1f;
-            }
-        }
         (int health, int maxHealth, int energy, int maxEnergy) playerStats = Player.instance.HealthEnergy();
         healthSlider.value = playerStats.health / (float)playerStats.maxHealth;
         healthCounter.text = AutoTranslate.Health(playerStats.health.ToString(), playerStats.maxHealth.ToString());
@@ -208,13 +222,19 @@ public class WaveManager : MonoBehaviour
             }
             return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
         }
+
+        if (blackOutTime > 0f)
+            blackOutTime -= Time.deltaTime;
+        blackOutObject.SetActive(blackOutTime > 0f);
+        blackOutObject.transform.position = Player.instance.transform.position;
     }
     public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
     {
         if (!pauseScreen.activeSelf)
         {
-            Player.state = GameState.Over;
+            state = GameState.Over;
             pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
 
             endText.text = $"{text}\n\n" +
                 $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +

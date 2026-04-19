@@ -30,7 +30,7 @@ public class Phoenix : BaseEnemy
                 yield return null;
             }
 
-            health = maxHealth;
+            currentHealth = maxHealth;
             immune = false;
 
             textBox.gameObject.SetActive(false);

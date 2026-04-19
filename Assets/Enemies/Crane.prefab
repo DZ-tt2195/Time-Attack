@@ -416,11 +416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325a5d3d1bc7d47e5a669eedd7fe3446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemy
-  health: 4
+  currentHealth: 4
   bulletSpeed: 0
+  lookAtPlayer: 0
   moveSpeed: 0
   attackRate: 0
-  lookAtPlayer: 0
 --- !u!50 &3084981597421438330
 Rigidbody2D:
   serializedVersion: 5

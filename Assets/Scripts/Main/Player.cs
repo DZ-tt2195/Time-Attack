@@ -6,23 +6,18 @@ using System.Collections;
 using System.Diagnostics;
 using System;
 using System.Linq;
-public enum GameState {Setup, Playing, Paused, Over}
 public class Player : Entity
 {
 
 #region Setup
 
     public static Player instance;
-    public static GameState state = GameState.Setup;
 
     [Foldout("Player info", true)]
     protected int currentEnergy;
     [SerializeField] int maxEnergy;
     float immuneTime = 2.5f;
-    GameObject blackOutObject;
-    [ReadOnly] public float blackOutTime = 0f;
-    protected int firedBullets;
-    int tookDamage;
+    [SerializeField] int energyCost;
 
     protected override void Awake()
     {
@@ -31,7 +26,6 @@ public class Player : Entity
 
         this.tag = "Player";
         currentEnergy = maxEnergy;
-        blackOutObject = this.transform.Find("Blackout").gameObject;
         immuneTime *= 2 - PrefManager.GetDifficulty();
     }
 
@@ -41,18 +35,17 @@ public class Player : Entity
 
     void Update()
     {
-        if (state == GameState.Playing)
+        if (WaveManager.state == GameState.Playing)
         {
-            if (health > 0)
+            if (currentHealth > 0)
             {
                 FollowMouse();
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
+                {
+                    currentEnergy-=energyCost;
                     FireWeapon();
+                }
             }
-
-            if (blackOutTime > 0f)
-                blackOutTime -= Time.deltaTime;
-            blackOutObject.SetActive(blackOutTime > 0f);
         }
     }
     void FollowMouse()
@@ -80,10 +73,10 @@ public class Player : Entity
             WaveManager.instance.ReturnResupply(collision.GetComponent<Resupply>());
             AddEnergy(2);
         }
-        else if (collision.CompareTag("HealthPack") && health < maxHealth)
+        else if (collision.CompareTag("HealthPack") && currentHealth < maxHealth)
         {
             Destroy(collision.gameObject);
-            health++;
+            currentHealth++;
         }
     }
     public void AddEnergy(int addition)
@@ -97,7 +90,6 @@ public class Player : Entity
 
     protected override void DamageEffect()
     {
-        tookDamage++;
         StartCoroutine(Immunity(true));
     }
     public IEnumerator Immunity(bool animation)
@@ -153,7 +145,7 @@ public class Player : Entity
     }
     public (int health, int maxHealth, int energy, int maxEnergy) HealthEnergy()
     {
-        return (this.health, this.maxHealth, this.currentEnergy, this.maxEnergy);
+        return (this.currentHealth, this.maxHealth, this.currentEnergy, this.maxEnergy);
     }
 
     #endregion
@@ -162,12 +154,10 @@ public class Player : Entity
     
     protected virtual bool CanUseWeapon()
     {
-        return currentEnergy >= 1;
+        return currentEnergy >= energyCost;
     }
     protected virtual void FireWeapon()
     { 
-        currentEnergy--;
-        firedBullets++;
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up));
     }
 

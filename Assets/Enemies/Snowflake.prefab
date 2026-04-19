@@ -487,8 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff7bdaba7eed4d78a3cee3c70905e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordsMan
-  health: 3
+  currentHealth: 3
   bulletSpeed: 3
+  lookAtPlayer: 1
   moveSpeed: 0
   attackRate: 3
-  lookAtPlayer: 1

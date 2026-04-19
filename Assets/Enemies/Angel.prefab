@@ -370,11 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5ba875c72144f25abad8ca5b11285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  currentHealth: 2
   bulletSpeed: 2
+  lookAtPlayer: 1
   moveSpeed: 0
   attackRate: 2
-  lookAtPlayer: 1
   wallOff: 5.25
   wallOn: 1.75
 --- !u!61 &7595905048437823666

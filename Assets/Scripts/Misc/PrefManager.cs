@@ -2,7 +2,6 @@ using UnityEngine;
 
 public static class PrefManager
 {
-    //playerprefs
     public const string Difficulty = nameof(Difficulty);
     public static float GetDifficulty() => PlayerPrefs.GetFloat(Difficulty);
     public static void SetDifficulty(float value) => PlayerPrefs.SetFloat(Difficulty, value);
@@ -13,6 +12,10 @@ public static class PrefManager
     public const string CurrentLevel = nameof(CurrentLevel);
     public static int GetCurrentLevel() => PlayerPrefs.GetInt(CurrentLevel);
     public static void SetCurrentLevel(int value) => PlayerPrefs.SetInt(CurrentLevel, value);
+
+    public const string CurrentPlayer = nameof(CurrentPlayer);
+    public static int GetCurrentPlayer() => PlayerPrefs.GetInt(CurrentPlayer);
+    public static void SetCurrentPlayer(int value) => PlayerPrefs.SetInt(CurrentPlayer, value);
 
 }
 

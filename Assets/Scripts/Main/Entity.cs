@@ -7,13 +7,13 @@ using MyBox;
 public class Entity : MonoBehaviour
 {
     [Foldout("Entity info", true)]
-    public int health;
+    public int currentHealth;
     protected int maxHealth { get; private set; }
     protected SpriteRenderer spriteRenderer;
-
+    protected int firedBullets;
     public bool immune {get; protected set; }
     [SerializeField] protected float bulletSpeed;
-
+    protected int tookDamage;
     protected Bullet bulletPrefab { get; private set; }
     protected Queue<Bullet> bulletQueue = new();
     protected int landedBullets { get; private set; }
@@ -26,7 +26,7 @@ public class Entity : MonoBehaviour
             bulletPrefab = this.transform.Find("Bullet").GetComponent<Bullet>();
             bulletPrefab.gameObject.SetActive(false);
         } catch { }
-        maxHealth = health;
+        maxHealth = currentHealth;
     }
 
     public void TakeDamage()
@@ -34,8 +34,9 @@ public class Entity : MonoBehaviour
         if (immune)
             return;
 
-        health--;
-        if (health == 0)
+        tookDamage++;
+        currentHealth--;
+        if (currentHealth == 0)
             DeathEffect();
         else
             DamageEffect();
@@ -51,6 +52,7 @@ public class Entity : MonoBehaviour
 
     protected Bullet CreateBullet(Bullet prefab, AttackInfo info)
     {
+        firedBullets++;
         Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(prefab);
         newBullet.AssignInfo(info, this);
         return newBullet;
