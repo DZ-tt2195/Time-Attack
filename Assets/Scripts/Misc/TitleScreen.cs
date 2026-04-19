@@ -11,13 +11,10 @@ public class TitleScreen : MonoBehaviour
     [Foldout("UI", true)]
     [SerializeField] Slider difficultySlider;
     [SerializeField] TMP_Text difficultyLabel;
-    [SerializeField] Slider waveSlider;
-    [SerializeField] TMP_Text waveLabel;
     [SerializeField] TMP_Text bestRun;
     [SerializeField] TMP_Dropdown levelDropdown;
     [SerializeField] Button deleteScoreButton;
     [SerializeField] Slider volumeSlider;
-
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;
     [SerializeField] TMP_Text description;
@@ -49,17 +46,6 @@ public class TitleScreen : MonoBehaviour
             PrefManager.SetDifficulty(value);
         }
 
-        if (!PlayerPrefs.HasKey(PrefManager.StartWave)) PrefManager.SetStartWave(1);
-        waveSlider.onValueChanged.AddListener(UpdateWaveText);
-        waveSlider.value = PrefManager.GetStartWave();
-        UpdateWaveText(PrefManager.GetStartWave());
-
-        void UpdateWaveText(float value)
-        {
-            waveLabel.text = AutoTranslate.Start_on_Wave(((int)(value)).ToString());
-            PrefManager.SetStartWave((int)value);
-        }
-
         if (!PlayerPrefs.HasKey(PrefManager.CurrentLevel)) PrefManager.SetCurrentLevel(0);
         levelDropdown.onValueChanged.AddListener(ChangeLevelDropdown);
         List<Level> listOfLevels = ThingsToCarry.inst.AllLevels();
@@ -89,18 +75,6 @@ public class TitleScreen : MonoBehaviour
         {
             PrefManager.SetCurrentLevel(n);
             Level newLevel = ThingsToCarry.inst.AllLevels()[n];
-
-            if (newLevel.levelType == LevelType.Endless || newLevel.listOfWaves.Count == 1)
-            {
-                waveSlider.value = 1;
-                waveSlider.gameObject.SetActive(false);
-            }
-            else
-            {
-                waveSlider.maxValue = newLevel.listOfWaves.Count;
-                waveSlider.value = 1;
-                waveSlider.gameObject.SetActive(true);
-            }
 
             if (PrefManager.GetScore(newLevel.levelName.ToString()) > 0)
                 bestRun.text = AutoTranslate.Best_Score($"{PrefManager.GetScore(newLevel.levelName.ToString())}");

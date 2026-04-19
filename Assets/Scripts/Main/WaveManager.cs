@@ -4,6 +4,7 @@ using MyBox;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using System.Diagnostics;
 
 public class WaveManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class WaveManager : MonoBehaviour
     public static WaveManager instance;
     List<BaseEnemy> allEnemies = new();
     List<Wave<Collection>> waveList = new();
+    public int currentWave { get; private set; }
+    Stopwatch gameTimer;
 
     [Foldout("Prefabs", true)]
     [SerializeField] Resupply resupplyPrefab;
@@ -23,13 +26,24 @@ public class WaveManager : MonoBehaviour
     public Camera mainCamera;
     [SerializeField] Slider waveSlider;
     [SerializeField] TMP_Text waveCounter;
-    public int currentWave { get; private set; }
     [SerializeField] Slider enemySlider;
     [SerializeField] TMP_Text enemyCounter;
     [SerializeField] TMP_Text tutorialText;
     [SerializeField] TMP_Text replay;
     [SerializeField] TMP_Text quit;
     [SerializeField] TMP_Text endText;
+    [SerializeField] TMP_Text timerText;
+    [SerializeField] Slider energySlider;
+    [SerializeField] TMP_Text energyCounter;
+    [SerializeField] GameObject pauseScreen;
+    [SerializeField] Slider healthSlider;
+    [SerializeField] TMP_Text healthCounter;
+    [SerializeField] TMP_Text pause;
+
+    [Foldout("FPS", true)]
+    int lastframe = 0;
+    int lastupdate = 60;
+    float[] framearray = new float[60];
 
     public static float minX { get; private set; }
     public static float maxX { get; private set; }
@@ -39,6 +53,7 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Time.timeScale = 1f;
 
         float cameraHeight = 2f * mainCamera.orthographicSize;
         float cameraWidth = cameraHeight * mainCamera.aspect;
@@ -47,13 +62,15 @@ public class WaveManager : MonoBehaviour
         maxX = mainCamera.transform.position.x + cameraWidth / 2f;
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
-        Debug.Log($"X: {minX} to {maxX}; Y: {minY} to {maxY}");
 
         replay.text = AutoTranslate.Replay();
         quit.text = AutoTranslate.Quit();
+        pauseScreen.SetActive(false);
 
         InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
-        currentWave = PrefManager.GetStartWave()-1;
+        Player.state = GameState.Playing;
+        gameTimer = new Stopwatch();
+        gameTimer.Start();
 
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         waveList = currentLevel.listOfWaves;
@@ -107,16 +124,12 @@ public class WaveManager : MonoBehaviour
         {
             Bullet[] allBullets = FindObjectsByType<Bullet>(FindObjectsSortMode.None);
             foreach (Bullet bullet in allBullets) Destroy(bullet.gameObject);
-            JuggleBall[] allBalls = FindObjectsByType<JuggleBall>(FindObjectsSortMode.None);
-            foreach (JuggleBall ball in allBalls) Destroy(ball.gameObject);
 
-            (int missedBullets, int tookDamage) = Player.instance.PlayerStats();
+            (int missedBullets, int tookDamage) = Player.instance.EndStats();
             int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2;
             string endText = AutoTranslate.Victory();
             
-            if (PrefManager.GetStartWave() > 1)
-                endText += $" {AutoTranslate.Skipped_Ahead(PrefManager.GetStartWave().ToString())}";
-            else if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
+            if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);
             EndGame(endText, new(missedBullets, tookDamage), score);
         }
@@ -151,12 +164,58 @@ public class WaveManager : MonoBehaviour
                 NewWave();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pause.text = AutoTranslate.Paused();
+            if (Player.state == GameState.Playing)
+            {
+                Player.state = GameState.Paused;
+                gameTimer.Stop();
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;                
+            }
+            else if (Player.state == GameState.Paused)
+            {
+                Player.state = GameState.Playing;
+                gameTimer.Start();
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+        (int health, int maxHealth, int energy, int maxEnergy) playerStats = Player.instance.HealthEnergy();
+        healthSlider.value = playerStats.health / (float)playerStats.maxHealth;
+        healthCounter.text = AutoTranslate.Health(playerStats.health.ToString(), playerStats.maxHealth.ToString());
+
+        energySlider.value = playerStats.energy / (float)playerStats.maxEnergy;
+        energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());
+
+        timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
+        timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";
+
+        string GetFPS()
+        {
+            framearray[lastframe] = Time.deltaTime;
+            lastframe++;
+            if (lastframe == 60)
+            {
+                lastframe = 0;
+                float total = 0;
+                for (int i = 0; i < framearray.Length; i++)
+                    total += framearray[i];
+                lastupdate = (int)(framearray.Length / total);
+                return lastupdate.ToString();
+            }
+            return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
+        }
     }
     public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
     {
-        if (!endText.transform.parent.gameObject.activeSelf)
+        if (!pauseScreen.activeSelf)
         {
-            endText.transform.parent.gameObject.SetActive(true);
+            Player.state = GameState.Over;
+            pauseScreen.SetActive(true);
+
             endText.text = $"{text}\n\n" +
                 $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +
                 $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";

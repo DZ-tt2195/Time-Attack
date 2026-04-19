@@ -5,9 +5,9 @@ public class BaseEnemy : Entity
 {
     [Foldout("Enemy info", true)]
     protected GameObject crossedOut { get; private set; }
+    [SerializeField] bool lookAtPlayer = true;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRate;
-    [SerializeField] bool lookAtPlayer = true;
     protected Vector3 moveDirection;
     public void EnemySetup()
     {
