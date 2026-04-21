@@ -40,6 +40,7 @@ public class Player : Entity
             if (currentHealth > 0)
             {
                 FollowMouse();
+                EveryFrame();
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
                 {
                     currentEnergy-=energyCost;
@@ -159,6 +160,10 @@ public class Player : Entity
     protected virtual void FireWeapon()
     { 
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up));
+    }
+    protected virtual void EveryFrame()
+    {
+        
     }
 
 #endregion

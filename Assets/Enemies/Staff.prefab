@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed574fc8486748789cb334bfc115f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2212896351684885597}
   currentHealth: 3
   bulletSpeed: 2
   lookAtPlayer: 1

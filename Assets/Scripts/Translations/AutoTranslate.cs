@@ -11,6 +11,7 @@ public static string Volume () => Translator.inst.Translate("Volume", new() {});
 public static string Translator_Credit () => Translator.inst.Translate("Translator_Credit", new() {});
 public static string Language () => Translator.inst.Translate("Language", new() {});
 public static string Choose_Level () => Translator.inst.Translate("Choose_Level", new() {});
+public static string Choose_Weapon () => Translator.inst.Translate("Choose_Weapon", new() {});
 public static string Controls () => Translator.inst.Translate("Controls", new() {});
 public static string Play () => Translator.inst.Translate("Play", new() {});
 public static string Delete () => Translator.inst.Translate("Delete", new() {});

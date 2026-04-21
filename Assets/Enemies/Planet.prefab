@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525e807c6e7e24cdeb0f6b16b83ab0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Planet
+  spriteRenderer: {fileID: 2212896351684885597}
   currentHealth: 4
   bulletSpeed: 0
   lookAtPlayer: 0

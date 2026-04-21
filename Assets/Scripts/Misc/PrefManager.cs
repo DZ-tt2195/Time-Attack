@@ -13,9 +13,9 @@ public static class PrefManager
     public static int GetCurrentLevel() => PlayerPrefs.GetInt(CurrentLevel);
     public static void SetCurrentLevel(int value) => PlayerPrefs.SetInt(CurrentLevel, value);
 
-    public const string CurrentPlayer = nameof(CurrentPlayer);
-    public static int GetCurrentPlayer() => PlayerPrefs.GetInt(CurrentPlayer);
-    public static void SetCurrentPlayer(int value) => PlayerPrefs.SetInt(CurrentPlayer, value);
+    public const string CurrentWeapon = nameof(CurrentWeapon);
+    public static int GetCurrentWeapon() => PlayerPrefs.GetInt(CurrentWeapon);
+    public static void SetCurrentWeapon(int value) => PlayerPrefs.SetInt(CurrentWeapon, value);
 
 }
 

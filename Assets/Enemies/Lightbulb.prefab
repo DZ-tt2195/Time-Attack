@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca5d14dacadf42ecaa4b281c65e9912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lightbulb
+  spriteRenderer: {fileID: 5882722530765502989}
   currentHealth: 3
   bulletSpeed: 1.5
   lookAtPlayer: 1

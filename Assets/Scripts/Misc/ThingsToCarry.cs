@@ -18,17 +18,16 @@ public class ThingsToCarry : MonoBehaviour
         return enemiesToSpawn[UnityEngine.Random.Range(0, enemiesToSpawn.Count)];
     }
 
-    public List<Level> AllLevels()
-    {
-        return listOfLevels;
-    }
+    public List<Level> AllLevels() => listOfLevels;
 
-    public Player RandomPlayer()
+    public List<Player> AllWeapons() => listOfPlayers;
+
+    public Player RandomWeapon()
     {
-        if (PrefManager.GetCurrentPlayer() == -1)
+        if (PrefManager.GetCurrentWeapon() == -1)
             return listOfPlayers[UnityEngine.Random.Range(0, listOfPlayers.Count)];
         else
-            return listOfPlayers[PrefManager.GetCurrentPlayer()];
+            return listOfPlayers[PrefManager.GetCurrentWeapon()];
     }
 
     public Level CurrentLevel()

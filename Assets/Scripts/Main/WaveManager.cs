@@ -78,7 +78,7 @@ public class WaveManager : MonoBehaviour
         if (currentLevel.levelType == LevelType.Shuffled)
             waveList = waveList.Shuffle();
 
-        Player player = ThingsToCarry.inst.RandomPlayer();
+        Player player = ThingsToCarry.inst.RandomWeapon();
         Instantiate(player, new Vector3(0, -3), new Quaternion());
         BeginGame();
     }
@@ -197,6 +197,30 @@ public class WaveManager : MonoBehaviour
             }
         }
 
+        UpdateTexts();
+        if (blackOutTime > 0f)
+            blackOutTime -= Time.deltaTime;
+        blackOutObject.SetActive(blackOutTime > 0f);
+        blackOutObject.transform.position = Player.instance.transform.position;
+    }
+    public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
+    {
+        if (!pauseScreen.activeSelf)
+        {
+            state = GameState.Over;
+            pauseScreen.SetActive(true);
+            UpdateTexts();
+            Time.timeScale = 0f;
+
+            endText.text = $"{text}\n\n" +
+                $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +
+                $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
+            if (score > 0)
+                endText.text += $"\n{AutoTranslate.Score(score.ToString())}";
+        }
+    }
+    void UpdateTexts()
+    {
         (int health, int maxHealth, int energy, int maxEnergy) playerStats = Player.instance.HealthEnergy();
         healthSlider.value = playerStats.health / (float)playerStats.maxHealth;
         healthCounter.text = AutoTranslate.Health(playerStats.health.ToString(), playerStats.maxHealth.ToString());
@@ -221,29 +245,8 @@ public class WaveManager : MonoBehaviour
                 return lastupdate.ToString();
             }
             return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
-        }
-
-        if (blackOutTime > 0f)
-            blackOutTime -= Time.deltaTime;
-        blackOutObject.SetActive(blackOutTime > 0f);
-        blackOutObject.transform.position = Player.instance.transform.position;
+        }        
     }
-    public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
-    {
-        if (!pauseScreen.activeSelf)
-        {
-            state = GameState.Over;
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0f;
-
-            endText.text = $"{text}\n\n" +
-                $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +
-                $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
-            if (score > 0)
-                endText.text += $"\n{AutoTranslate.Score(score.ToString())}";
-        }
-    }
-
     #endregion
 
 }

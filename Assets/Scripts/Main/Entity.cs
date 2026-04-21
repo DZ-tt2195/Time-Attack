@@ -7,9 +7,9 @@ using MyBox;
 public class Entity : MonoBehaviour
 {
     [Foldout("Entity info", true)]
+    public SpriteRenderer spriteRenderer;
     public int currentHealth;
     protected int maxHealth { get; private set; }
-    protected SpriteRenderer spriteRenderer;
     protected int firedBullets;
     public bool immune {get; protected set; }
     [SerializeField] protected float bulletSpeed;
@@ -20,7 +20,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-        spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
         try
         {
             bulletPrefab = this.transform.Find("Bullet").GetComponent<Bullet>();

@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325a5d3d1bc7d47e5a669eedd7fe3446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemy
+  spriteRenderer: {fileID: 2212896351684885597}
   currentHealth: 4
   bulletSpeed: 0
   lookAtPlayer: 0
