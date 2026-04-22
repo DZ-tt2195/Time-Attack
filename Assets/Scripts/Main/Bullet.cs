@@ -4,9 +4,10 @@ public class Bullet : MonoBehaviour
 {
     protected Vector3 direction;
     public Entity owner { get; private set; }
-    protected float bulletSpeed;
+    [SerializeField] int damage = 1;
+    float bulletSpeed;
     public SpriteRenderer spriteRenderer { get; private set; }
-    protected bool disappearOnWall = true;
+    [SerializeField] bool disappearOnWall = true;
 
     protected virtual void Awake()
     {
@@ -46,16 +47,20 @@ public class Bullet : MonoBehaviour
         this.transform.localEulerAngles = new(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity target) && !target.immune && !target.CompareTag(this.tag))
         {
-            target.TakeDamage();
-            TryAndReturn(true);
+            HitEntity(target);
         }
         else if (disappearOnWall && collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
             TryAndReturn(false);
         }
+    }
+    protected virtual void HitEntity(Entity target)
+    {
+        target.TakeDamage(damage);
+        TryAndReturn(true);        
     }
 }

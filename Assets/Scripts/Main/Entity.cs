@@ -28,14 +28,14 @@ public class Entity : MonoBehaviour
         maxHealth = currentHealth;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int amount)
     {
         if (immune)
             return;
 
-        tookDamage++;
-        currentHealth--;
-        if (currentHealth == 0)
+        tookDamage+=amount;
+        currentHealth-=amount;
+        if (currentHealth <= 0)
             DeathEffect();
         else
             DamageEffect();

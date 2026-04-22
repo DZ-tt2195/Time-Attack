@@ -9,7 +9,7 @@ TagManager:
   - Wall
   - Resupply
   - HealthPack
-  - HurtOnTouch
+  - HurtPlayer
   layers:
   - Default
   - TransparentFX

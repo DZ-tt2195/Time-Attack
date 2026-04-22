@@ -6,20 +6,9 @@ public class Star : Bullet
     {
         this.gameObject.SetActive(false);
     }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void HitEntity(Entity target)
     {
-        if (collision.TryGetComponent(out Player target))
-        {
-            this.owner.TakeDamage();
-            TryAndReturn(true);
-        }
-        else if (collision.CompareTag("Wall"))
-        {
-            if (collision.TryGetComponent(out Bullet bullet) && !bullet.owner.CompareTag(this.owner.tag))
-                TryAndReturn(false);
-            else if (!collision.transform.parent.CompareTag(owner.tag))
-                TryAndReturn(false);
-        }
+        this.owner.TakeDamage(1);
+        TryAndReturn(true);
     }
 }

@@ -63,11 +63,11 @@ public class Player : Entity
     {
         if (collision.TryGetComponent(out Entity entity))
         {
-            this.TakeDamage();
+            this.TakeDamage(1);
         }
-        else if (collision.CompareTag("Wall") || collision.CompareTag("HurtOnTouch"))
+        else if (collision.CompareTag("Wall") || collision.CompareTag("HurtPlayer"))
         {
-            this.TakeDamage();
+            this.TakeDamage(1);
         }
         else if (collision.CompareTag("Resupply") && currentEnergy < maxEnergy)
         {

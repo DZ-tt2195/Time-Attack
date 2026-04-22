@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4100551772260201253}
   m_Layer: 0
   m_Name: Moon (5)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1845884288675033792}
   m_Layer: 0
   m_Name: Moon (3)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 5929165948067677420}
   m_Layer: 0
   m_Name: Moon (1)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 1329864333104984589}
   m_Layer: 0
   m_Name: Moon (6)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 8020510163946521288}
   m_Layer: 0
   m_Name: Moon (4)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 9066513548455252224}
   m_Layer: 0
   m_Name: Moon (2)
-  m_TagString: HurtOnTouch
+  m_TagString: HurtPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
