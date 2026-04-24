@@ -6,12 +6,15 @@ public class ThingsToCarry : MonoBehaviour
     [SerializeField] List<Level> listOfLevels;
     [SerializeField] List<BaseEnemy> enemiesToSpawn;
     [SerializeField] List<Player> listOfPlayers;
+    [SerializeField] Resupply resupplyPrefab;
     public static ThingsToCarry inst;
 
     void Awake()
     {
         inst = this;
     }
+
+    public Resupply GetResupply => resupplyPrefab;
 
     public BaseEnemy RandomEnemy()
     {

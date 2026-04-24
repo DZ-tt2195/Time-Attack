@@ -3611,7 +3611,7 @@ GameObject:
   - component: {fileID: 1905123459}
   - component: {fileID: 1905123458}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Wave Manger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3629,26 +3629,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c4de3f535884f01b1a00e5939875ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resupplyPrefab: {fileID: 1165366318425929126, guid: 7b38fb4ee236042a5b17132716ecc10e, type: 3}
   healthPack: {fileID: 5792273380931313864, guid: 951fed9f478324e428dce2dddf395535, type: 3}
   mainCamera: {fileID: 519420031}
   waveSlider: {fileID: 651330698}
   waveCounter: {fileID: 1771467385}
   enemySlider: {fileID: 1307565742}
   enemyCounter: {fileID: 1542841541}
+  timerText: {fileID: 200080893}
+  energySlider: {fileID: 687250255}
+  energyCounter: {fileID: 1380154251}
+  healthSlider: {fileID: 739478177}
+  healthCounter: {fileID: 1354370450}
+  blackOutObject: {fileID: 1850310567}
+  blackOutTime: 0
+  pauseScreen: {fileID: 1118295514}
   tutorialText: {fileID: 1448484873}
   replay: {fileID: 515825120}
   quit: {fileID: 1469589233}
   endText: {fileID: 987706539}
-  timerText: {fileID: 200080893}
-  energySlider: {fileID: 687250255}
-  energyCounter: {fileID: 1380154251}
-  pauseScreen: {fileID: 1118295514}
-  healthSlider: {fileID: 739478177}
-  healthCounter: {fileID: 1354370450}
   pause: {fileID: 987706539}
-  blackOutObject: {fileID: 1850310567}
-  blackOutTime: 0
 --- !u!4 &1905123459
 Transform:
   m_ObjectHideFlags: 0

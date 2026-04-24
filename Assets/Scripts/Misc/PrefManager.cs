@@ -17,5 +17,9 @@ public static class PrefManager
     public static int GetCurrentWeapon() => PlayerPrefs.GetInt(CurrentWeapon);
     public static void SetCurrentWeapon(int value) => PlayerPrefs.SetInt(CurrentWeapon, value);
 
+    public const string CurrentRule = nameof(CurrentRule);
+    public static int GetCurrentRule() => PlayerPrefs.GetInt(CurrentRule);
+    public static void SetCurrentRule(int value) => PlayerPrefs.SetInt(CurrentRule, value);
+
 }
 

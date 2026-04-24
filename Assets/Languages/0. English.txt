@@ -10,6 +10,7 @@ Translator_Credit	Original Language
 Language	Language
 Choose_Level	Choose Level
 Choose_Weapon	Choose Weapon
+Choose_Rule	Choose Rule
 Controls	Click to shoot, space to pause
 Play	Play
 Delete	Delete Scores
@@ -27,7 +28,7 @@ Lost	You Lost.
 Enemies	Enemies: $Num$ / $Max$
 Energy	Energy: $Num$ / $Max$
 Health	Health: $Num$ / $Max$
-Resupply	 +2 Energy
+Resupply	 +$Num$ Energy
 Health_Pack	 +1 Health
 Score	Score: $Num$
 Tutorial_1	Tutorial 1
@@ -53,4 +54,4 @@ Update_4_Text	New translation features - you can download the English translatio
 Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
 Update_6	Apr 21, 2026
-Update_6_Text	You have a random weapon every time you play \nWaves in Enemy Rush are now shuffled
+Update_6_Text	Each game there's a random weapon and rule for gaining energy \nWaves in Enemy Rush are now shuffled

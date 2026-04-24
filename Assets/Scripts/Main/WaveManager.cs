@@ -12,16 +12,13 @@ public class WaveManager : MonoBehaviour
 #region Setup
 
     public static WaveManager instance;
+    [Foldout("Gameplay", true)]
     public static GameState state = GameState.Setup;
     List<BaseEnemy> allEnemies = new();
     List<Wave<Collection>> waveList = new();
     public int currentWave { get; private set; }
     Stopwatch gameTimer;
-
-    [Foldout("Prefabs", true)]
-    [SerializeField] Resupply resupplyPrefab;
     [SerializeField] HealthPack healthPack;
-    Queue<Resupply> resupplyQueue = new();
 
     [Foldout("UI", true)]
     public Camera mainCamera;
@@ -29,19 +26,21 @@ public class WaveManager : MonoBehaviour
     [SerializeField] TMP_Text waveCounter;
     [SerializeField] Slider enemySlider;
     [SerializeField] TMP_Text enemyCounter;
+    [SerializeField] TMP_Text timerText;
+    [SerializeField] Slider energySlider;
+    [SerializeField] TMP_Text energyCounter;
+    [SerializeField] Slider healthSlider;
+    [SerializeField] TMP_Text healthCounter;
+    [SerializeField] GameObject blackOutObject;
+    [ReadOnly] public float blackOutTime = 0f;
+    [SerializeField] GameObject pauseScreen;
+
+    [Foldout("Text", true)]
     [SerializeField] TMP_Text tutorialText;
     [SerializeField] TMP_Text replay;
     [SerializeField] TMP_Text quit;
     [SerializeField] TMP_Text endText;
-    [SerializeField] TMP_Text timerText;
-    [SerializeField] Slider energySlider;
-    [SerializeField] TMP_Text energyCounter;
-    [SerializeField] GameObject pauseScreen;
-    [SerializeField] Slider healthSlider;
-    [SerializeField] TMP_Text healthCounter;
     [SerializeField] TMP_Text pause;
-    [SerializeField] GameObject blackOutObject;
-    [ReadOnly] public float blackOutTime = 0f;
 
     [Foldout("FPS", true)]
     int lastframe = 0;
@@ -87,24 +86,12 @@ public class WaveManager : MonoBehaviour
         state = GameState.Playing;
         gameTimer.Start();
         NewWave();
-        InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);
     }
 
     #endregion
 
 #region Gameplay
 
-    void SpawnResupply()
-    {
-        Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
-        resupply.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
-        resupply.gameObject.SetActive(true);
-    }
-    public void ReturnResupply(Resupply resupply)
-    {
-        resupplyQueue.Enqueue(resupply);
-        resupply.gameObject.SetActive(false);
-    }
     void NewWave()
     {
         StartCoroutine(Player.instance.Immunity(false));
@@ -181,7 +168,7 @@ public class WaveManager : MonoBehaviour
         {
             foreach (BaseEnemy enemy in allEnemies)
             {
-                if (enemy.currentHealth != 0)
+                if (enemy.currentHealth > 0)
                     currentEnemies++;
             }
 
@@ -198,8 +185,7 @@ public class WaveManager : MonoBehaviour
         }
 
         UpdateTexts();
-        if (blackOutTime > 0f)
-            blackOutTime -= Time.deltaTime;
+        if (blackOutTime > 0f) blackOutTime -= Time.deltaTime;
         blackOutObject.SetActive(blackOutTime > 0f);
         blackOutObject.transform.position = Player.instance.transform.position;
     }

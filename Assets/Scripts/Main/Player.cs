@@ -71,8 +71,9 @@ public class Player : Entity
         }
         else if (collision.CompareTag("Resupply") && currentEnergy < maxEnergy)
         {
-            WaveManager.instance.ReturnResupply(collision.GetComponent<Resupply>());
-            AddEnergy(2);
+            Resupply resupply = collision.GetComponent<Resupply>();
+            AddEnergy(resupply.energy);
+            EnergyManager.inst.ReturnResupply(resupply);
         }
         else if (collision.CompareTag("HealthPack") && currentHealth < maxHealth)
         {
