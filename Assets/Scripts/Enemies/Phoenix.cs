@@ -32,6 +32,7 @@ public class Phoenix : BaseEnemy
 
             currentHealth = maxHealth;
             immune = false;
+            healthText.text = currentHealth.ToString();
 
             textBox.gameObject.SetActive(false);
             crossedOut.SetActive(false);

@@ -19,6 +19,8 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text currentWeaponText;
     [SerializeField] Button changeRule;
     [SerializeField] TMP_Text currentRuleText;
+    [SerializeField] Button soundCreditsButton;
+    [SerializeField] GameObject soundCreditsScreen;
     [Foldout("Customize screen", true)]
     [SerializeField] Transform chooseScreen;
     [SerializeField] Transform weaponScreen;
@@ -40,6 +42,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text chooseRule;
     [SerializeField] TMP_Text deleteScores;
     [SerializeField] TMP_Text volume;
+    [SerializeField] TMP_Text soundCredits;
 
     void Awake()
     {
@@ -52,12 +55,14 @@ public class TitleScreen : MonoBehaviour
         deleteScores.text = AutoTranslate.Delete();
         chooseWeapon.text = AutoTranslate.Choose_Weapon();
         chooseRule.text = AutoTranslate.Choose_Rule();
+        soundCredits.text = AutoTranslate.Sound_Credits();
 
         LevelInfo();
         WeaponInfo();
         VolumeInfo();
         DifficultyInfo();
         RuleInfo();
+        SoundInfo();
     }
     void LevelInfo()
     {
@@ -107,8 +112,8 @@ public class TitleScreen : MonoBehaviour
         void OpenWeapons()
         {
             chooseScreen.gameObject.SetActive(true);
-            weaponScreen.transform.parent.gameObject.SetActive(true);
-            rulesScreen.transform.parent.gameObject.SetActive(false);
+            weaponScreen.gameObject.SetActive(true);
+            rulesScreen.gameObject.SetActive(false);
         }
         
         for (int i = 0; i<allWeapons.Count; i++)
@@ -116,12 +121,7 @@ public class TitleScreen : MonoBehaviour
             int n = i;
             WeaponDisplay nextDisplay = Instantiate(weaponDisplayPrefab, storeWeapons);
             nextDisplay.AssignWeapon(allWeapons[n]);
-            nextDisplay.button.onClick.AddListener(() => PickedMe(n));
-
-            void PickedMe(int n)
-            {
-                SetWeapon(n);
-            }
+            nextDisplay.button.onClick.AddListener(() => SetWeapon(n));
         }
         SetWeapon(PrefManager.GetCurrentWeapon());
 
@@ -146,8 +146,8 @@ public class TitleScreen : MonoBehaviour
         void OpenRules()
         {
             chooseScreen.gameObject.SetActive(true);
-            weaponScreen.transform.parent.gameObject.SetActive(false);
-            rulesScreen.transform.parent.gameObject.SetActive(true);
+            weaponScreen.gameObject.SetActive(false);
+            rulesScreen.gameObject.SetActive(true);
         }
         
         for (int i = 0; i<allRules.Count; i++)
@@ -155,12 +155,7 @@ public class TitleScreen : MonoBehaviour
             int n = i;
             RulesDisplay nextDisplay = Instantiate(rulesDisplayPrefab, storeRules);
             nextDisplay.AssignRule(allRules[n]);
-            nextDisplay.button.onClick.AddListener(() => PickedMe(n));
-
-            void PickedMe(int n)
-            {
-                SetRule(n);
-            }
+            nextDisplay.button.onClick.AddListener(() => SetRule(n));
         }
         SetRule(PrefManager.GetCurrentRule());
 
@@ -169,9 +164,9 @@ public class TitleScreen : MonoBehaviour
             chooseScreen.gameObject.SetActive(false);
             PrefManager.SetCurrentRule(n);
             if (n == -1)
-                currentWeaponText.text = AutoTranslate.Random();
+                currentRuleText.text = AutoTranslate.Random();
             else
-                currentWeaponText.text = Translator.inst.Translate(allRules[n].name);
+                currentRuleText.text = Translator.inst.Translate(allRules[n].name);
         }        
     }
     void VolumeInfo()
@@ -198,5 +193,17 @@ public class TitleScreen : MonoBehaviour
             difficultyLabel.text = AutoTranslate.Difficulty($"{value*100:F0}");
             PrefManager.SetDifficulty(value);
         }
+    }
+    void SoundInfo()
+    {
+        soundCreditsScreen.SetActive(false);
+        soundCreditsButton.onClick.AddListener(CreditsToggle);
+        void CreditsToggle()
+        {
+            if (soundCreditsScreen.activeSelf)
+                soundCreditsScreen.SetActive(false);
+            else
+                soundCreditsScreen.SetActive(true);
+        }    
     }
 }

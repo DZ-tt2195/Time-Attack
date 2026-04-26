@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip damageSound; public void Damage(float volume) => PlaySound(damageSound, volume);
     [SerializeField] AudioClip healSound; public void Heal(float volume) => PlaySound(healSound, volume);
     [SerializeField] AudioClip missSound; public void Miss(float volume) => PlaySound(missSound, volume);
+    [SerializeField] AudioClip shootSound; public void Shoot(float volume) => PlaySound(shootSound, volume);
 
     private void Awake()
     {

@@ -6,6 +6,7 @@ public class UFO : BaseEnemy
     [SerializeField] float avoid;
     protected override void DamageEffect()
     {
+        base.DamageEffect();
         Vector2 randomPosition = Vector2.zero;
         while (true)
         {

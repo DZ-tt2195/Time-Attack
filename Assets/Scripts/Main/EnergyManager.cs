@@ -17,12 +17,11 @@ public class EnergyManager : MonoBehaviour
     }
     public virtual void BeginGame()
     {
-        InvokeRepeating(nameof(SpawnResupply), 1f, 2.25f);        
     }
     protected Resupply SpawnResupply()
     {
         Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
-        resupply.Setup(new(Random.Range(WaveManager.minX + 0.5f,WaveManager. maxX - 0.5f), WaveManager.maxY), 2, new(0, -1.75f));
+        resupply.Setup(new(Random.Range(WaveManager.minX + 1f, WaveManager. maxX - 1f), WaveManager.maxY), 2, new(0, -1.75f));
         return resupply;
     }
     public virtual void ReturnResupply(Resupply resupply)

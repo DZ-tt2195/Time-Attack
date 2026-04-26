@@ -8,6 +8,7 @@ public class Mortar : BaseEnemy
     [SerializeField] float waitTime;
     [SerializeField] float randomize;
     [SerializeField] List<SpriteRenderer> listOfRadiuses = new();
+    [SerializeField] AudioClip attack;
 
     protected override void Awake()
     {
@@ -25,31 +26,36 @@ public class Mortar : BaseEnemy
         {
             next.transform.position = new(playerPosition.x + RandomOffSet(), playerPosition.y + RandomOffSet());
             next.gameObject.SetActive(true);
-            StartCoroutine(Activation(next));
         }
-
-        float RandomOffSet()
-        {
-            return Random.Range(-randomize, randomize);
-        }
-
-        IEnumerator Activation(SpriteRenderer next)
+        StartCoroutine(AttackAll());
+        IEnumerator AttackAll()
         {
             float elapsedTime = 0f;
             while (elapsedTime < waitTime)
             {
                 elapsedTime += Time.deltaTime;
-                MyExtensions.SetAlpha(next, elapsedTime / waitTime);
+                foreach (SpriteRenderer next in listOfRadiuses)
+                {
+                    MyExtensions.SetAlpha(next, elapsedTime / waitTime);
+                }
                 yield return null;
             }
-
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(next.transform.position, 0.8f);
-            foreach (Collider2D nextCollider in colliders)
+            AudioManager.instance.PlaySound(attack, 0.2f);
+            foreach (SpriteRenderer next in listOfRadiuses)
             {
-                if (nextCollider.gameObject == Player.instance.gameObject)
-                    Player.instance.TakeDamage(1);
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(next.transform.position, 0.8f);
+                foreach (Collider2D nextCollider in colliders)
+                {
+                    if (nextCollider.gameObject == Player.instance.gameObject)
+                        Player.instance.TakeDamage(1);
+                }
+                next.gameObject.SetActive(false);
             }
-            next.gameObject.SetActive(false);
+        }
+
+        float RandomOffSet()
+        {
+            return Random.Range(-randomize, randomize);
         }
     }
 }

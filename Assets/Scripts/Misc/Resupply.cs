@@ -18,8 +18,8 @@ public class Resupply : MonoBehaviour
     private void Update()
     {
         this.transform.Translate(movement * Time.deltaTime);
-        if (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
-            this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f)
+        if (this.transform.position.x < WaveManager.minX || this.transform.position.x > WaveManager.maxX ||
+            this.transform.position.y < WaveManager.minY || this.transform.position.y > WaveManager.maxY)
             EnergyManager.inst.ReturnResupply(this);
     }
 }

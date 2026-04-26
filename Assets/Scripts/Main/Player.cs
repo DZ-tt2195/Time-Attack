@@ -43,7 +43,8 @@ public class Player : Entity
                 EveryFrame();
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
                 {
-                    currentEnergy-=energyCost;
+                    ChangeEnergy(-1*energyCost);
+                    AudioManager.instance.Shoot(0.3f);
                     FireWeapon();
                 }
             }
@@ -72,18 +73,21 @@ public class Player : Entity
         else if (collision.CompareTag("Resupply") && currentEnergy < maxEnergy)
         {
             Resupply resupply = collision.GetComponent<Resupply>();
-            AddEnergy(resupply.energy);
+            ChangeEnergy(resupply.energy);
             EnergyManager.inst.ReturnResupply(resupply);
         }
         else if (collision.CompareTag("HealthPack") && currentHealth < maxHealth)
         {
             Destroy(collision.gameObject);
             currentHealth++;
+            AudioManager.instance.Heal(0.3f);
         }
     }
-    public void AddEnergy(int addition)
+    public void ChangeEnergy(int change)
     {
-        currentEnergy = Mathf.Min(currentEnergy + addition, maxEnergy);
+        currentEnergy = Mathf.Clamp(currentEnergy + change, 0, maxEnergy);
+        if (change > 0)
+            AudioManager.instance.Heal(0.3f);
     }
 
     #endregion
@@ -164,8 +168,8 @@ public class Player : Entity
     }
     protected virtual void EveryFrame()
     {
-        
     }
 
 #endregion
+
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4474752197269696618}
-  - component: {fileID: 984153409216329649}
+  - component: {fileID: 9137618444036871}
   m_Layer: 0
   m_Name: Default
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 699838539328033865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &984153409216329649
+--- !u!114 &9137618444036871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4931484155883255118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc82dec40cb44475824a92bbe98e24c, type: 3}
+  m_Script: {fileID: 11500000, guid: dcb608d93f6ec45c78f3104e02cb1788, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnergyManager
+  m_EditorClassIdentifier: Assembly-CSharp::Default
+  interval: 2.5
 --- !u!1 &5342660118779704284
 GameObject:
   m_ObjectHideFlags: 0

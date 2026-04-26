@@ -451,7 +451,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- make more weapons and rules
 
-    - Sound effects'
+    - Sound effects
+
+
+    get 3 flags for
+    energy'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -620,7 +624,7 @@ MonoBehaviour:
   - {fileID: 6172040360035817630, guid: 4fb547154c725480d917bda7d629c02a, type: 3}
   - {fileID: 3948842187154192434, guid: 738a7b8d56c6547a8b470d17f103c093, type: 3}
   listOfRules:
-  - {fileID: 984153409216329649, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
+  - {fileID: 9137618444036871, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,8 +639,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mixer: {fileID: 24100000, guid: 6339f169c292e402dbb565e5a7ad1793, type: 2}
   damageSound: {fileID: 0}
-  healSound: {fileID: 0}
+  healSound: {fileID: 8300000, guid: 16be2fda298c445bf814c0c51a59ee67, type: 3}
   missSound: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!82 &1547519740
 AudioSource:
   m_ObjectHideFlags: 0

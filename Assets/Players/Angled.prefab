@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  disappearOnWall: 1
 --- !u!61 &3945694343711900173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -394,5 +396,5 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8742010818526069795}
   currentHealth: 6
   bulletSpeed: 7
-  maxEnergy: 8
-  energyCost: 2
+  maxEnergy: 4
+  energyCost: 1

@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: Apr 21, 2026
+Last_Update	Last Updated: Apr 26, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -28,6 +28,7 @@ Lost	You Lost.
 Enemies	Enemies: $Num$ / $Max$
 Energy	Energy: $Num$ / $Max$
 Health	Health: $Num$ / $Max$
+FPS	FPS: $Num$
 Resupply	 +$Num$ Energy
 Health_Pack	 +1 Health
 Score	Score: $Num$
@@ -40,7 +41,7 @@ First_Tutorial	Click to shoot at enemies. Pick up more energy if you run out.
 Second_Tutorial	Enemies will continue to shoot at you even when defeated. Defeat all enemies to clear the wave.
 Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its shield.
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
-FPS	FPS: $Num$
+Sound_Credits	Sound Credits
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -53,5 +54,5 @@ Update_4	Dec 28, 2025
 Update_4_Text	New translation features - you can download the English translation file and upload your own translation
 Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
-Update_6	Apr 21, 2026
-Update_6_Text	Each game there's a random weapon and rule for gaining energy \nWaves in Enemy Rush are now shuffled
+Update_6	Apr 26, 2026
+Update_6_Text	Each game there's a random weapon and rule for gaining energy \nWaves in Enemy Rush are now shuffled \nCan see enemy health

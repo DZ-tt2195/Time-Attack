@@ -1,6 +1,6 @@
 using MyBox;
 using UnityEngine;
-
+using TMPro;
 public class BaseEnemy : Entity
 {
     [Foldout("Enemy info", true)]
@@ -8,12 +8,15 @@ public class BaseEnemy : Entity
     [SerializeField] bool lookAtPlayer = true;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRate;
+    protected TMP_Text healthText;
     protected Vector3 moveDirection;
     public void EnemySetup()
     {
         this.tag = "Enemy";
         crossedOut = transform.Find("X").gameObject;
         crossedOut.SetActive(false);
+        healthText = transform.Find("Health Text").GetComponent<TMP_Text>();
+        healthText.text = currentHealth.ToString();
 
         attackRate *= 2-PrefManager.GetDifficulty();
         bulletSpeed *= PrefManager.GetDifficulty();
@@ -50,11 +53,17 @@ public class BaseEnemy : Entity
         return (Player.instance.transform.position - this.transform.position).normalized;
     }
 
+    protected override void DamageEffect()
+    {
+        healthText.text = currentHealth.ToString();
+    }
+
     protected override void DeathEffect()
     {
         immune = true;
         crossedOut.SetActive(true);
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
+        healthText.text = "";
     }
 
     public void OnDestroy()

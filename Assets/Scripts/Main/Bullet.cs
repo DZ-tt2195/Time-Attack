@@ -17,9 +17,15 @@ public class Bullet : MonoBehaviour
     protected virtual void TryAndReturn(bool landed)
     {
         if (owner == null)
+        {
             Destroy(this.gameObject);
+        }
         else
+        {
             owner.ReturnBullet(this, landed);
+            if (owner == Player.instance && !landed)
+                AudioManager.instance.Miss(0.3f);
+        }
     }
 
     public virtual void AssignInfo(AttackInfo info, Entity owner)

@@ -399,4 +399,4 @@ MonoBehaviour:
   maxEnergy: 4
   energyCost: 1
   spinSpeed: 10
-  distance: 2
+  distance: 2.5
