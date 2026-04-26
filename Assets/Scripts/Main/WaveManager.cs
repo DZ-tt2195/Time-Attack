@@ -19,8 +19,10 @@ public class WaveManager : MonoBehaviour
     public int currentWave { get; private set; }
     Stopwatch gameTimer;
     [SerializeField] HealthPack healthPack;
+    [SerializeField] GameObject blackOutObject;
+    [ReadOnly] public float blackOutTime = 0f;
 
-    [Foldout("UI", true)]
+    [Foldout("Game UI", true)]
     public Camera mainCamera;
     [SerializeField] Slider waveSlider;
     [SerializeField] TMP_Text waveCounter;
@@ -31,22 +33,21 @@ public class WaveManager : MonoBehaviour
     [SerializeField] TMP_Text energyCounter;
     [SerializeField] Slider healthSlider;
     [SerializeField] TMP_Text healthCounter;
-    [SerializeField] GameObject blackOutObject;
-    [ReadOnly] public float blackOutTime = 0f;
-    [SerializeField] GameObject pauseScreen;
-
-    [Foldout("Text", true)]
     [SerializeField] TMP_Text tutorialText;
-    [SerializeField] TMP_Text replay;
-    [SerializeField] TMP_Text quit;
+
+    [Foldout("Pause screen", true)]
+    [SerializeField] GameObject pauseScreen;
+    [SerializeField] WeaponDisplay weaponInfo;
+    [SerializeField] RulesDisplay rulesInfo;
+    [SerializeField] Button playButton;
+    [SerializeField] Button replayButton;
+    [SerializeField] Button quitButton;
     [SerializeField] TMP_Text endText;
-    [SerializeField] TMP_Text pause;
 
     [Foldout("FPS", true)]
     int lastframe = 0;
     int lastupdate = 60;
     float[] framearray = new float[60];
-
     public static float minX { get; private set; }
     public static float maxX { get; private set; }
     public static float minY { get; private set; }
@@ -65,9 +66,9 @@ public class WaveManager : MonoBehaviour
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
 
-        replay.text = AutoTranslate.Replay();
-        quit.text = AutoTranslate.Quit();
-        pauseScreen.SetActive(false);
+        replayButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Replay();
+        quitButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Quit();
+        endText.text = AutoTranslate.Blank();
 
         state = GameState.Setup;
         gameTimer = new Stopwatch();
@@ -79,15 +80,27 @@ public class WaveManager : MonoBehaviour
 
         Player player = ThingsToCarry.inst.RandomWeapon();
         Instantiate(player, new Vector3(0, -3), new Quaternion());
-        BeginGame();
-    }
-    public void BeginGame()
-    {
-        state = GameState.Playing;
-        gameTimer.Start();
-        NewWave();
-    }
+        weaponInfo.AssignWeapon(player);
 
+        EnergyManager energy = ThingsToCarry.inst.RandomRule();
+        Instantiate(energy);
+        rulesInfo.AssignRule(energy);
+
+        playButton.onClick.AddListener(BeginGame);
+        void BeginGame()
+        {
+            playButton.gameObject.SetActive(false);
+            replayButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+            pauseScreen.SetActive(false);
+
+            state = GameState.Playing;
+            EnergyManager.inst.BeginGame();
+            gameTimer.Start();
+            NewWave();
+        }
+        playButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Play();
+    }
     #endregion
 
 #region Gameplay
@@ -143,7 +156,7 @@ public class WaveManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            pause.text = AutoTranslate.Paused();
+            endText.text = AutoTranslate.Paused();
             if (state == GameState.Playing)
             {
                 state = GameState.Paused;

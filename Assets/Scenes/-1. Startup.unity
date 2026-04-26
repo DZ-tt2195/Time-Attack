@@ -259,10 +259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -449,10 +449,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'See weapon info when starting/pausing the game
+  m_text: '- make more weapons and rules
 
-    Randomized ways of
-    gaining energy, which also needs to be shown on screen'
+    - Sound effects'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -620,7 +619,8 @@ MonoBehaviour:
   - {fileID: 194609776221839941, guid: 56fa8ca2afcb84d9689c393bd3505340, type: 3}
   - {fileID: 6172040360035817630, guid: 4fb547154c725480d917bda7d629c02a, type: 3}
   - {fileID: 3948842187154192434, guid: 738a7b8d56c6547a8b470d17f103c093, type: 3}
-  resupplyPrefab: {fileID: 1165366318425929126, guid: 7b38fb4ee236042a5b17132716ecc10e, type: 3}
+  listOfRules:
+  - {fileID: 984153409216329649, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +734,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1988149158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988149160}
+  - component: {fileID: 1988149159}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1988149159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988149158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8274233408f4a8d937840f436f4180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnOff
+  forceOn: []
+  forceOff:
+  - {fileID: 542637178}
+--- !u!4 &1988149160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988149158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -742,3 +789,4 @@ SceneRoots:
   - {fileID: 1547519737}
   - {fileID: 542637182}
   - {fileID: 587041783}
+  - {fileID: 1988149160}

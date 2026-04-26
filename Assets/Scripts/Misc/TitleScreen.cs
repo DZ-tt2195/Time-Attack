@@ -17,10 +17,18 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     [SerializeField] Button changeWeapon;
     [SerializeField] TMP_Text currentWeaponText;
+    [SerializeField] Button changeRule;
+    [SerializeField] TMP_Text currentRuleText;
+    [Foldout("Customize screen", true)]
+    [SerializeField] Transform chooseScreen;
     [SerializeField] Transform weaponScreen;
     [SerializeField] Transform storeWeapons;
-    [SerializeField] WeaponDisplay displayPrefab;
+    [SerializeField] WeaponDisplay weaponDisplayPrefab;
     [SerializeField] Button randomWeapon;
+    [SerializeField] Transform rulesScreen;
+    [SerializeField] Transform storeRules;
+    [SerializeField] RulesDisplay rulesDisplayPrefab;
+    [SerializeField] Button randomRule;
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;
     [SerializeField] TMP_Text description;
@@ -29,6 +37,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text play;
     [SerializeField] TMP_Text chooseLevel;
     [SerializeField] TMP_Text chooseWeapon;
+    [SerializeField] TMP_Text chooseRule;
     [SerializeField] TMP_Text deleteScores;
     [SerializeField] TMP_Text volume;
 
@@ -42,11 +51,13 @@ public class TitleScreen : MonoBehaviour
         chooseLevel.text = AutoTranslate.Choose_Level();
         deleteScores.text = AutoTranslate.Delete();
         chooseWeapon.text = AutoTranslate.Choose_Weapon();
+        chooseRule.text = AutoTranslate.Choose_Rule();
 
         LevelInfo();
         WeaponInfo();
         VolumeInfo();
         DifficultyInfo();
+        RuleInfo();
     }
     void LevelInfo()
     {
@@ -89,14 +100,21 @@ public class TitleScreen : MonoBehaviour
     {
         List<Player> allWeapons = ThingsToCarry.inst.AllWeapons();
         if (!PlayerPrefs.HasKey(PrefManager.CurrentWeapon)) PrefManager.SetCurrentWeapon(-1);
-        changeWeapon.onClick.AddListener(() => weaponScreen.gameObject.SetActive(true));
+        changeWeapon.onClick.AddListener(OpenWeapons);
         randomWeapon.onClick.AddListener(() => SetWeapon(-1));
         randomWeapon.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Random();
+
+        void OpenWeapons()
+        {
+            chooseScreen.gameObject.SetActive(true);
+            weaponScreen.transform.parent.gameObject.SetActive(true);
+            rulesScreen.transform.parent.gameObject.SetActive(false);
+        }
         
         for (int i = 0; i<allWeapons.Count; i++)
         {
             int n = i;
-            WeaponDisplay nextDisplay = Instantiate(displayPrefab, storeWeapons);
+            WeaponDisplay nextDisplay = Instantiate(weaponDisplayPrefab, storeWeapons);
             nextDisplay.AssignWeapon(allWeapons[n]);
             nextDisplay.button.onClick.AddListener(() => PickedMe(n));
 
@@ -109,12 +127,51 @@ public class TitleScreen : MonoBehaviour
 
         void SetWeapon(int n)
         {
-            weaponScreen.gameObject.SetActive(false);
+            chooseScreen.gameObject.SetActive(false);
             PrefManager.SetCurrentWeapon(n);
             if (n == -1)
                 currentWeaponText.text = AutoTranslate.Random();
             else
                 currentWeaponText.text = Translator.inst.Translate(allWeapons[n].name);
+        }        
+    }
+    void RuleInfo()
+    {
+        List<EnergyManager> allRules = ThingsToCarry.inst.AllRules();
+        if (!PlayerPrefs.HasKey(PrefManager.CurrentRule)) PrefManager.SetCurrentRule(-1);
+        changeRule.onClick.AddListener(OpenRules);
+        randomRule.onClick.AddListener(() => SetRule(-1));
+        randomRule.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Random();
+
+        void OpenRules()
+        {
+            chooseScreen.gameObject.SetActive(true);
+            weaponScreen.transform.parent.gameObject.SetActive(false);
+            rulesScreen.transform.parent.gameObject.SetActive(true);
+        }
+        
+        for (int i = 0; i<allRules.Count; i++)
+        {
+            int n = i;
+            RulesDisplay nextDisplay = Instantiate(rulesDisplayPrefab, storeRules);
+            nextDisplay.AssignRule(allRules[n]);
+            nextDisplay.button.onClick.AddListener(() => PickedMe(n));
+
+            void PickedMe(int n)
+            {
+                SetRule(n);
+            }
+        }
+        SetRule(PrefManager.GetCurrentRule());
+
+        void SetRule(int n)
+        {
+            chooseScreen.gameObject.SetActive(false);
+            PrefManager.SetCurrentRule(n);
+            if (n == -1)
+                currentWeaponText.text = AutoTranslate.Random();
+            else
+                currentWeaponText.text = Translator.inst.Translate(allRules[n].name);
         }        
     }
     void VolumeInfo()
