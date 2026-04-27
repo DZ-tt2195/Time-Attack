@@ -625,6 +625,7 @@ MonoBehaviour:
   - {fileID: 3948842187154192434, guid: 738a7b8d56c6547a8b470d17f103c093, type: 3}
   listOfRules:
   - {fileID: 9137618444036871, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
+  - {fileID: 8580080446884869884, guid: cfc4c98a30b7e42f9995bb3df8706daa, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0

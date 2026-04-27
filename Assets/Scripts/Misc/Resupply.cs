@@ -4,14 +4,12 @@ using UnityEngine;
 public class Resupply : MonoBehaviour
 {
     [SerializeField] TMP_Text textBox;
-    public int energy {get; private set;}
     Vector2 movement;
     
-    public void Setup(Vector3 spawn, int energy, Vector2 movement)
+    public void Setup(Vector3 spawn, string text, Vector2 movement)
     {
         this.transform.position = spawn;
-        this.energy = energy;
-        this.textBox.text = AutoTranslate.Resupply(this.energy.ToString());
+        this.textBox.text = text;
         this.movement = movement;
         this.gameObject.SetActive(true);        
     }

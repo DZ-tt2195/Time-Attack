@@ -70,11 +70,10 @@ public class Player : Entity
         {
             this.TakeDamage(1);
         }
-        else if (collision.CompareTag("Resupply") && currentEnergy < maxEnergy)
+        else if (collision.CompareTag("Resupply"))
         {
             Resupply resupply = collision.GetComponent<Resupply>();
-            ChangeEnergy(resupply.energy);
-            EnergyManager.inst.ReturnResupply(resupply);
+            EnergyManager.inst.HitResupply(resupply, currentEnergy < maxEnergy);
         }
         else if (collision.CompareTag("HealthPack") && currentHealth < maxHealth)
         {
