@@ -136,8 +136,6 @@ public class Player : Entity
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10;
             WaveManager.instance.EndGame(AutoTranslate.Lost(), EndStats(), score);
-            if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
-                PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }
         else
         {

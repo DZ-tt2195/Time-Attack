@@ -43,7 +43,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Button replayButton;
     [SerializeField] Button quitButton;
     [SerializeField] TMP_Text endText;
-
+    [Foldout("Audio", true)]
+    [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip loseSound;
     [Foldout("FPS", true)]
     int lastframe = 0;
     int lastupdate = 60;
@@ -133,16 +135,9 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            Bullet[] allBullets = FindObjectsByType<Bullet>(FindObjectsSortMode.None);
-            foreach (Bullet bullet in allBullets) Destroy(bullet.gameObject);
-
             (int missedBullets, int tookDamage) = Player.instance.EndStats();
             int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2;
-            string endText = AutoTranslate.Victory();
-            
-            if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
-                PrefManager.SetScore(currentLevel.levelName.ToString(), score);
-            EndGame(endText, new(missedBullets, tookDamage), score);
+            EndGame(AutoTranslate.Victory(), new(missedBullets, tookDamage), score);
         }
     }
     void CreateEnemy(Vector2 start, BaseEnemy prefab)
@@ -211,11 +206,19 @@ public class WaveManager : MonoBehaviour
             UpdateTexts();
             Time.timeScale = 0f;
 
-            endText.text = $"{text}\n\n" +
-                $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" +
-                $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
+            endText.text = $"{text}\n\n" + $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" + $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
             if (score > 0)
+            {
                 endText.text += $"\n{AutoTranslate.Score(score.ToString())}";
+                AudioManager.instance.PlaySound(winSound, 0.3f);
+            }
+            else
+            {
+                AudioManager.instance.PlaySound(loseSound, 0.3f);                
+            }
+            Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+            if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
+                PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }
     }
     void UpdateTexts()

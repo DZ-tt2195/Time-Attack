@@ -61,6 +61,7 @@ public class Bullet : MonoBehaviour
         }
         else if (disappearOnWall && collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
+            if (this.CompareTag("Player")) AudioManager.instance.Miss(0.1f);
             TryAndReturn(false);
         }
     }

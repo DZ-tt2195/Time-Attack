@@ -4155,6 +4155,8 @@ MonoBehaviour:
   replayButton: {fileID: 1791670247}
   quitButton: {fileID: 127989008}
   endText: {fileID: 987706539}
+  winSound: {fileID: 8300000, guid: 10ecb72f7cb594c378637e18bb61f52c, type: 3}
+  loseSound: {fileID: 8300000, guid: 950bd83ce61ec4bc29065cc30832f5e4, type: 3}
 --- !u!4 &1905123459
 Transform:
   m_ObjectHideFlags: 0

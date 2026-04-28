@@ -8,6 +8,7 @@ public class Resupply : MonoBehaviour
     
     public void Setup(Vector3 spawn, string text, Vector2 movement)
     {
+        this.tag = "Resupply";
         this.transform.position = spawn;
         this.textBox.text = text;
         this.movement = movement;

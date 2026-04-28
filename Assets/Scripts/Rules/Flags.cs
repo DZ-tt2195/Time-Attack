@@ -17,11 +17,13 @@ public class Flags : EnergyManager
             ReturnResupply(flagsInOrder[i]);
             flagsInOrder.RemoveAt(i);
         }
+        List<int> locations = new List<int>() {-6, -3, 0, 3, 6};
         for (int i = 0; i<5; i++)
         {
-            Resupply nextFlag = MakeResupply(new(Random.Range(WaveManager.minX+1f, WaveManager.maxX-1f), Random.Range(WaveManager.minY+1f, 0)),
-            $"{i+1}", Vector3.zero);
+            int randomSpot = Random.Range(0, locations.Count);
+            Resupply nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}", Vector3.zero);
             flagsInOrder.Add(nextFlag);
+            locations.RemoveAt(randomSpot);
         }
     }
     public override void HitResupply(Resupply resupply, bool needEnergy)
