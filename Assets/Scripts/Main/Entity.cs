@@ -27,30 +27,36 @@ public class Entity : MonoBehaviour
         } catch { }
         maxHealth = currentHealth;
     }
-
-    public void TakeDamage(int amount)
+    public void ChangeHealth(int change)
     {
-        if (immune)
-            return;
-
-        tookDamage+=amount;
-        currentHealth-=amount;
-        AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
-
-        if (currentHealth <= 0)
-            DeathEffect();
+        currentHealth = Mathf.Clamp(currentHealth + change, 0, maxHealth);
+        if (change > 0)
+        {
+            if (change > 0)
+                AudioManager.instance.Heal(0.3f);
+            HealEffect(change); 
+        }
         else
-            DamageEffect();
-    }
+        {
+            if (immune) return;
+            tookDamage-=change;
+            AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
 
+            if (currentHealth <= 0)
+                DeathEffect();
+            else
+                DamageEffect(change);
+        }   
+    }
     protected virtual void DeathEffect()
     {
     }
-
-    protected virtual void DamageEffect()
+    protected virtual void DamageEffect(int amount)
     {
     }
-
+    protected virtual void HealEffect(int amount)
+    {
+    }
     protected Bullet CreateBullet(Bullet prefab, AttackInfo info)
     {
         firedBullets++;
@@ -58,7 +64,6 @@ public class Entity : MonoBehaviour
         newBullet.AssignInfo(info, this);
         return newBullet;
     }
-
     public void ReturnBullet(Bullet bullet, bool landed)
     {
         bulletQueue.Enqueue(bullet);

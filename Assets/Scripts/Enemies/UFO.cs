@@ -4,9 +4,9 @@ using UnityEngine;
 public class UFO : BaseEnemy
 {
     [SerializeField] float avoid;
-    protected override void DamageEffect()
+    protected override void DamageEffect(int change)
     {
-        base.DamageEffect();
+        base.DamageEffect(change);
         Vector2 randomPosition = Vector2.zero;
         while (true)
         {

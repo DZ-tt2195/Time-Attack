@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 public class Phoenix : BaseEnemy
 {
@@ -11,7 +12,7 @@ public class Phoenix : BaseEnemy
     {
         base.Awake();
         respawnTime *= 2 - PrefManager.GetDifficulty();
-        textBox.gameObject.SetActive(false);
+        textBox.text = "";
     }
 
     protected override void DeathEffect()
@@ -30,13 +31,8 @@ public class Phoenix : BaseEnemy
                 yield return null;
             }
 
-            currentHealth = maxHealth;
-            immune = false;
-            healthText.text = currentHealth.ToString();
-
-            textBox.gameObject.SetActive(false);
-            crossedOut.SetActive(false);
-            MyExtensions.SetAlpha(this.spriteRenderer, 1f);
+            ChangeHealth(maxHealth);
+            textBox.text = "";
         }
     }
 }

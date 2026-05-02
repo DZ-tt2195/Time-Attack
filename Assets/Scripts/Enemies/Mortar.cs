@@ -47,7 +47,7 @@ public class Mortar : BaseEnemy
                 foreach (Collider2D nextCollider in colliders)
                 {
                     if (nextCollider.gameObject == Player.instance.gameObject)
-                        Player.instance.TakeDamage(1);
+                        Player.instance.ChangeHealth(-1);
                 }
                 next.gameObject.SetActive(false);
             }

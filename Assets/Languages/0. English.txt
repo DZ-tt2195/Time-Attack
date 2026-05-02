@@ -1,6 +1,6 @@
-Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
+Description	Bullet hell game where enemies keep shooting until you finish the entire wave, and shooting makes you lose health.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: Apr 28, 2026
+Last_Update	Last Updated: May 02, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -26,18 +26,16 @@ Wave	Wave: $Num$ / $Max$
 Victory	You Won!
 Lost	You Lost.
 Enemies	Enemies: $Num$ / $Max$
-Energy	Energy: $Num$ / $Max$
 Health	Health: $Num$ / $Max$
 FPS	FPS: $Num$
-Resupply	 +$Num$ Energy
-Health_Pack	 +1 Health
+Health_Pack	 +$Num$ Health
 Score	Score: $Num$
 Tutorial_1	Tutorial 1
 Tutorial_2	Tutorial 2
 Enemy_Rush	Enemy Rush
 Random	Random
 Endless	Endless
-First_Tutorial	Click to shoot at enemies. Pick up more energy if you run out.
+First_Tutorial	Click to shoot at enemies, although this makes you lose health. Pick up more health if necessary.
 Second_Tutorial	Enemies will continue to shoot at you even when defeated. Defeat all enemies to clear the wave.
 Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its shield.
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
@@ -49,9 +47,9 @@ Compass_Text	Shoots 2 bullets at a diagonal angle
 Crown	Crown
 Crown_Text	Bullets orbit around this
 Basics	Basics
-Basics_Text	Collect 2 energy from orbs that drop from above
+Basics_Text	Collect 2 health from orbs that drop from above.
 Flags	Flags
-Flags_Text	Touch each flag in order to gain 5 energy
+Flags_Text	Touch each flag in order to gain 5 health.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -64,5 +62,5 @@ Update_4	Dec 28, 2025
 Update_4_Text	New translation features - you can download the English translation file and upload your own translation
 Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
-Update_6	Apr 28, 2026
-Update_6_Text	Each game there's a random weapon and rule for gaining energy \nWaves in Enemy Rush are now shuffled \nCan see enemy health
+Update_6	May 02, 2026
+Update_6_Text	Each game there's a random weapon and rule for gaining health \nShooting makes you lose 1 health \nWaves in Enemy Rush are now shuffled \nCan see enemy health

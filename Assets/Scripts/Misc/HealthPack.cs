@@ -1,17 +1,24 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
     [SerializeField] TMP_Text textBox;
-    void Awake()
+    Vector2 movement;
+    
+    public void Setup(Vector3 spawn, string text, Vector2 movement)
     {
-        textBox.text = AutoTranslate.Health_Pack();
+        this.tag = "Resupply";
+        this.transform.position = spawn;
+        this.textBox.text = text;
+        this.movement = movement;
+        this.gameObject.SetActive(true);        
     }
     private void Update()
     {
-        this.transform.Translate(new Vector2(0, -1f) * Time.deltaTime);
-        if (this.transform.position.y < WaveManager.minY)
-            Destroy(this.gameObject);
+        this.transform.Translate(movement * Time.deltaTime);
+        if (this.transform.position.x < WaveManager.minX || this.transform.position.x > WaveManager.maxX ||
+            this.transform.position.y < WaveManager.minY || this.transform.position.y > WaveManager.maxY)
+            RulesManager.inst.ReturnResupply(this);
     }
 }

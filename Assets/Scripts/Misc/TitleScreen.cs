@@ -137,7 +137,7 @@ public class TitleScreen : MonoBehaviour
     }
     void RuleInfo()
     {
-        List<EnergyManager> allRules = ThingsToCarry.inst.AllRules();
+        List<RulesManager> allRules = ThingsToCarry.inst.AllRules();
         if (!PlayerPrefs.HasKey(PrefManager.CurrentRule)) PrefManager.SetCurrentRule(-1);
         changeRule.onClick.AddListener(OpenRules);
         randomRule.onClick.AddListener(() => SetRule(-1));

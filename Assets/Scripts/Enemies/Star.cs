@@ -8,7 +8,7 @@ public class Star : Bullet
     }
     protected override void HitEntity(Entity target)
     {
-        this.owner.TakeDamage(1);
+        this.owner.ChangeHealth(-1);
         TryAndReturn(true);
     }
 }

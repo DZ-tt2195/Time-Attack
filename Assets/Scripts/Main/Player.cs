@@ -14,10 +14,7 @@ public class Player : Entity
     public static Player instance;
 
     [Foldout("Player info", true)]
-    protected int currentEnergy;
-    [SerializeField] int maxEnergy;
     float immuneTime = 2.5f;
-    [SerializeField] int energyCost;
 
     protected override void Awake()
     {
@@ -25,7 +22,6 @@ public class Player : Entity
         instance = this;
 
         this.tag = "Player";
-        currentEnergy = maxEnergy;
         immuneTime *= 2 - PrefManager.GetDifficulty();
     }
 
@@ -43,7 +39,8 @@ public class Player : Entity
                 EveryFrame();
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
                 {
-                    ChangeEnergy(-1*energyCost);
+                    ChangeHealth(-1);
+                    tookDamage++;
                     AudioManager.instance.Shoot(0.3f);
                     FireWeapon();
                 }
@@ -64,36 +61,19 @@ public class Player : Entity
     {
         if (collision.TryGetComponent(out Entity entity))
         {
-            this.TakeDamage(1);
+            this.ChangeHealth(-1);
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("HurtPlayer"))
         {
-            this.TakeDamage(1);
+            this.ChangeHealth(-1);
         }
         else if (collision.CompareTag("Resupply"))
         {
-            Resupply resupply = collision.GetComponent<Resupply>();
-            EnergyManager.inst.HitResupply(resupply, currentEnergy < maxEnergy);
-        }
-        else if (collision.CompareTag("HealthPack") && currentHealth < maxHealth)
-        {
-            Destroy(collision.gameObject);
-            currentHealth++;
-            AudioManager.instance.Heal(0.3f);
+            HealthPack resupply = collision.GetComponent<HealthPack>();
+            RulesManager.inst.HitResupply(resupply, currentHealth < maxHealth);
         }
     }
-    public void ChangeEnergy(int change)
-    {
-        currentEnergy = Mathf.Clamp(currentEnergy + change, 0, maxEnergy);
-        if (change > 0)
-            AudioManager.instance.Heal(0.3f);
-    }
-
-    #endregion
-
-#region Ending
-
-    protected override void DamageEffect()
+    protected override void DamageEffect(int amount)
     {
         StartCoroutine(Immunity(true));
     }
@@ -142,13 +122,18 @@ public class Player : Entity
             WaveManager.instance.EndGame(AutoTranslate.Lost(), EndStats(), -1);
         }
     }
+
+    #endregion
+
+#region Ending
+
     public (int, int) EndStats()
     {
         return (firedBullets - landedBullets, tookDamage);
     }
-    public (int health, int maxHealth, int energy, int maxEnergy) HealthEnergy()
+    public (int health, int maxHealth) HealthInfo()
     {
-        return (this.currentHealth, this.maxHealth, this.currentEnergy, this.maxEnergy);
+        return (this.currentHealth, this.maxHealth);
     }
 
     #endregion
@@ -157,7 +142,7 @@ public class Player : Entity
     
     protected virtual bool CanUseWeapon()
     {
-        return currentEnergy >= energyCost;
+        return currentHealth > 1;
     }
     protected virtual void FireWeapon()
     { 

@@ -394,7 +394,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Angled
   spriteRenderer: {fileID: 8742010818526069795}
-  currentHealth: 6
+  currentHealth: 5
   bulletSpeed: 7
-  maxEnergy: 4
-  energyCost: 1

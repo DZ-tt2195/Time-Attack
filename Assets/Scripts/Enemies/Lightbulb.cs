@@ -11,9 +11,9 @@ public class Lightbulb : BaseEnemy
         blackOutTime *= PrefManager.GetDifficulty();
     }
 
-    protected override void DamageEffect()
+    protected override void DamageEffect(int change)
     {
-        base.DamageEffect();
+        base.DamageEffect(change);
         WaveManager.instance.blackOutTime += this.blackOutTime;
     }
 

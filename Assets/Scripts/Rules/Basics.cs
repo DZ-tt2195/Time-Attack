@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Basics : EnergyManager
+public class Basics : RulesManager
 {
     [SerializeField] float interval;
     public override void BeginGame()
@@ -10,6 +10,6 @@ public class Basics : EnergyManager
     void SpawnResupply()
     {
         MakeResupply(new(Random.Range(WaveManager.minX + 1f, WaveManager.maxX - 1f), WaveManager.maxY), 
-        AutoTranslate.Resupply(energy.ToString()), new(0, -1.75f));
+        AutoTranslate.Health_Pack(health.ToString()), new(0, -1.75f));
     }
 }

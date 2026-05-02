@@ -6,7 +6,7 @@ public class ThingsToCarry : MonoBehaviour
     [SerializeField] List<Level> listOfLevels;
     [SerializeField] List<BaseEnemy> enemiesToSpawn;
     [SerializeField] List<Player> listOfPlayers;
-    [SerializeField] List<EnergyManager> listOfRules;
+    [SerializeField] List<RulesManager> listOfRules;
     public static ThingsToCarry inst;
 
     void Awake()
@@ -35,9 +35,9 @@ public class ThingsToCarry : MonoBehaviour
             return listOfPlayers[PrefManager.GetCurrentWeapon()];
     }
 
-    public List<EnergyManager> AllRules() => listOfRules;
+    public List<RulesManager> AllRules() => listOfRules;
     
-    public EnergyManager RandomRule()
+    public RulesManager RandomRule()
     {
         if (PrefManager.GetCurrentRule() == -1)
             return listOfRules[UnityEngine.Random.Range(0, listOfRules.Count)];

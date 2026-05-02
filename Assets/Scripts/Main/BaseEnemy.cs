@@ -53,7 +53,7 @@ public class BaseEnemy : Entity
         return (Player.instance.transform.position - this.transform.position).normalized;
     }
 
-    protected override void DamageEffect()
+    protected override void DamageEffect(int change)
     {
         healthText.text = currentHealth.ToString();
     }
@@ -64,6 +64,13 @@ public class BaseEnemy : Entity
         crossedOut.SetActive(true);
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
         healthText.text = "";
+    }
+    protected override void HealEffect(int amount)
+    {
+        base.HealEffect(amount);
+        crossedOut.SetActive(false);
+        healthText.text = currentHealth.ToString();
+        MyExtensions.SetAlpha(this.spriteRenderer, 1f);
     }
 
     public void OnDestroy()

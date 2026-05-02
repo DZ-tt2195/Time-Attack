@@ -18,7 +18,6 @@ public class WaveManager : MonoBehaviour
     List<Wave<Collection>> waveList = new();
     public int currentWave { get; private set; }
     Stopwatch gameTimer;
-    [SerializeField] HealthPack healthPack;
     [SerializeField] GameObject blackOutObject;
     [ReadOnly] public float blackOutTime = 0f;
 
@@ -29,8 +28,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Slider enemySlider;
     [SerializeField] TMP_Text enemyCounter;
     [SerializeField] TMP_Text timerText;
-    [SerializeField] Slider energySlider;
-    [SerializeField] TMP_Text energyCounter;
     [SerializeField] Slider healthSlider;
     [SerializeField] TMP_Text healthCounter;
     [SerializeField] TMP_Text tutorialText;
@@ -84,7 +81,7 @@ public class WaveManager : MonoBehaviour
         Instantiate(player, new Vector3(0, -3), new Quaternion());
         weaponInfo.AssignWeapon(player);
 
-        EnergyManager energy = ThingsToCarry.inst.RandomRule();
+        RulesManager energy = ThingsToCarry.inst.RandomRule();
         Instantiate(energy);
         rulesInfo.AssignRule(energy);
 
@@ -97,10 +94,11 @@ public class WaveManager : MonoBehaviour
             pauseScreen.SetActive(false);
 
             state = GameState.Playing;
-            EnergyManager.inst.BeginGame();
+            RulesManager.inst.BeginGame();
             gameTimer.Start();
             NewWave();
         }
+        UpdateTexts();
         playButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Play();
     }
     #endregion
@@ -114,8 +112,7 @@ public class WaveManager : MonoBehaviour
 
         if (currentWave < waveList.Count() || currentLevel.levelType == LevelType.Endless)
         {
-            HealthPack pack = Instantiate(healthPack);
-            pack.transform.position = new(Random.Range(minX + 0.5f, maxX - 0.5f), maxY);
+            RulesManager.inst.EveryWave();
 
             foreach (Collection collection in waveList[Mathf.Min(waveList.Count-1, currentWave)].enemies)
                 CreateEnemy(collection.position, collection.toCreate);
@@ -223,12 +220,9 @@ public class WaveManager : MonoBehaviour
     }
     void UpdateTexts()
     {
-        (int health, int maxHealth, int energy, int maxEnergy) playerStats = Player.instance.HealthEnergy();
+        (int health, int maxHealth) playerStats = Player.instance.HealthInfo();
         healthSlider.value = playerStats.health / (float)playerStats.maxHealth;
         healthCounter.text = AutoTranslate.Health(playerStats.health.ToString(), playerStats.maxHealth.ToString());
-
-        energySlider.value = playerStats.energy / (float)playerStats.maxEnergy;
-        energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());
 
         timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
         timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";

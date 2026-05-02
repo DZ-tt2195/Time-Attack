@@ -44,7 +44,13 @@ public class Bullet : MonoBehaviour
         Movement();
         if (disappearOnWall && (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
             this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f))
-            TryAndReturn(false);
+        {
+            Exited();
+        }
+    }
+    protected virtual void Exited()
+    {
+        TryAndReturn(false);        
     }
 
     protected virtual void Movement()
@@ -67,7 +73,7 @@ public class Bullet : MonoBehaviour
     }
     protected virtual void HitEntity(Entity target)
     {
-        target.TakeDamage(damage);
+        target.ChangeHealth(-damage);
         TryAndReturn(true);        
     }
 }

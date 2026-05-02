@@ -1,4 +1,5 @@
 using UnityEngine;
+using MyBox;
 
 public class Ghost : BaseEnemy
 {
@@ -14,10 +15,11 @@ public class Ghost : BaseEnemy
         MyExtensions.SetAlpha(spriteRenderer, 1f);
     }
 
-    protected override void DamageEffect()
+    protected override void DamageEffect(int change)
     {
-        base.DamageEffect();
+        base.DamageEffect(change);
         MyExtensions.SetAlpha(spriteRenderer, 1f);
+        healthText.SetAlpha(1f);
     }
 
     protected override void Update()
@@ -29,6 +31,10 @@ public class Ghost : BaseEnemy
             moveDirection = Vector3.left;
 
         if (currentHealth > 0)
-            MyExtensions.SetAlpha(spriteRenderer, Mathf.Max(0, spriteRenderer.color.a - ((4.75f-attackRate) * Time.deltaTime)));
+        {
+            float alpha = Mathf.Max(0, spriteRenderer.color.a - ((4.75f-attackRate) * Time.deltaTime));
+            MyExtensions.SetAlpha(spriteRenderer, alpha);
+            healthText.SetAlpha(alpha);
+        }
     }
 }

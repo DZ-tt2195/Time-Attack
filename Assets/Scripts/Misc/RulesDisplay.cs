@@ -6,10 +6,10 @@ public class RulesDisplay : MonoBehaviour
 {
     [SerializeField] TMP_Text nameText;
     [SerializeField] TMP_Text descriptionText;
-    [ReadOnly] public EnergyManager thisRule;
+    [ReadOnly] public RulesManager thisRule;
     public Button button;
 
-    public void AssignRule(EnergyManager rule)
+    public void AssignRule(RulesManager rule)
     {
         thisRule = rule;
         nameText.text = Translator.inst.Translate($"{rule.name}");

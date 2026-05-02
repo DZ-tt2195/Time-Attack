@@ -1,32 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flags : EnergyManager
+public class Flags : RulesManager
 {
     int currentFlag;
-    List<Resupply> flagsInOrder = new();
+    [SerializeField] float interval;
+    List<HealthPack> flagsInOrder = new();
     public override void BeginGame()
     {
-        CreateFlags();
+        RemoveFlags();
     }
-    void CreateFlags()
+    void RemoveFlags()
     {
-        currentFlag = 0;
         for (int i = flagsInOrder.Count-1; i>=0; i--)
         {
             ReturnResupply(flagsInOrder[i]);
             flagsInOrder.RemoveAt(i);
         }
+        Invoke(nameof(NewFlags), interval);
+    }
+    void NewFlags()
+    {
+        currentFlag = 0;
         List<int> locations = new List<int>() {-6, -3, 0, 3, 6};
         for (int i = 0; i<5; i++)
         {
             int randomSpot = Random.Range(0, locations.Count);
-            Resupply nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}", Vector3.zero);
+            HealthPack nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}", Vector3.zero);
             flagsInOrder.Add(nextFlag);
             locations.RemoveAt(randomSpot);
-        }
+        }        
     }
-    public override void HitResupply(Resupply resupply, bool needEnergy)
+    public override void HitResupply(HealthPack resupply, bool needEnergy)
     {
         if (resupply == flagsInOrder[currentFlag])
         {
@@ -34,13 +39,13 @@ public class Flags : EnergyManager
             currentFlag++;
             if (currentFlag == flagsInOrder.Count)
             {
-                CreateFlags();
-                Player.instance.ChangeEnergy(energy);
+                RemoveFlags();
+                Player.instance.ChangeHealth(health);
             }
         }
         else
         {
-            CreateFlags();
+            RemoveFlags();
         }
     }
 }

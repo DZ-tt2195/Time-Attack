@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb608d93f6ec45c78f3104e02cb1788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Default
-  energy: 2
-  interval: 2.5
+  health: 2
+  interval: 2
 --- !u!1 &5342660118779704284
 GameObject:
   m_ObjectHideFlags: 0
