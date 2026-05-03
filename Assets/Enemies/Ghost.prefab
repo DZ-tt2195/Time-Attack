@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   disappearOnWall: 1
 --- !u!212 &8161126547595240409
 SpriteRenderer:
@@ -414,7 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
-  currentHealth: 3
+  damage: 1
+  currentHealth: 6
   bulletSpeed: 2.5
   lookAtPlayer: 1
   moveSpeed: 3

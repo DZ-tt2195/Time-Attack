@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 1
   disappearOnWall: 1
 --- !u!60 &4706845447874661585
 PolygonCollider2D:
@@ -491,7 +490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordsMan
   spriteRenderer: {fileID: 2212896351684885597}
-  currentHealth: 3
+  damage: 1
+  currentHealth: 6
   bulletSpeed: 3
   lookAtPlayer: 1
   moveSpeed: 0

@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 {
     [Foldout("Entity info", true)]
     public SpriteRenderer spriteRenderer;
+    [SerializeField] protected int damage = 1;
     public int currentHealth;
     protected int maxHealth { get; private set; }
     protected int firedBullets;
@@ -77,11 +78,13 @@ public class AttackInfo
     public Vector2 spawnPosition{get; private set;}
     public float bulletSpeed{get; private set;}
     public Vector2 direction{get; private set;}
+    public int damage {get; private set;}
 
-    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction)
+    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, int damage)
     {
         this.spawnPosition = spawnposition;
         this.bulletSpeed = bulletSpeed;
         this.direction = direction;
+        this.damage = damage;
     }
 }

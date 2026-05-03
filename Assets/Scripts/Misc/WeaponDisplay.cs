@@ -6,6 +6,7 @@ public class WeaponDisplay : MonoBehaviour
 {
     [SerializeField] Image weaponSprite;
     [SerializeField] TMP_Text descriptionText;
+    [SerializeField] TMP_Text damageText;
     [ReadOnly] public Player thisPlayer;
     public Button button;
 
@@ -15,5 +16,6 @@ public class WeaponDisplay : MonoBehaviour
         weaponSprite.sprite = player.spriteRenderer.sprite;
         weaponSprite.color = player.spriteRenderer.color;
         descriptionText.text = Translator.inst.Translate($"{player.name}_Text");
+        damageText.text = $"[{player.DamageString}]";
     }
 }

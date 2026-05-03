@@ -361,7 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 1
   disappearOnWall: 1
 --- !u!1 &5792137662472203459
 GameObject:
@@ -668,7 +667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Knight
   spriteRenderer: {fileID: 2212896351684885597}
-  currentHealth: 3
+  damage: 1
+  currentHealth: 6
   bulletSpeed: 2.5
   lookAtPlayer: 0
   moveSpeed: 0

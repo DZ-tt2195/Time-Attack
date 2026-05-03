@@ -24,6 +24,7 @@ public class Player : Entity
         this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
     }
+    public virtual string DamageString => damage.ToString();
 
     #endregion
 
@@ -39,8 +40,7 @@ public class Player : Entity
                 EveryFrame();
                 if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
                 {
-                    ChangeHealth(-1);
-                    tookDamage++;
+                    currentHealth--;
                     AudioManager.instance.Shoot(0.3f);
                     FireWeapon();
                 }
@@ -146,7 +146,7 @@ public class Player : Entity
     }
     protected virtual void FireWeapon()
     { 
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up));
+        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up, damage));
     }
     protected virtual void EveryFrame()
     {

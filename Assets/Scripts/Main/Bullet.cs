@@ -4,10 +4,10 @@ public class Bullet : MonoBehaviour
 {
     protected Vector3 direction;
     public Entity owner { get; private set; }
-    [SerializeField] int damage = 1;
     float bulletSpeed;
     public SpriteRenderer spriteRenderer { get; private set; }
     [SerializeField] bool disappearOnWall = true;
+    int damage;
 
     protected virtual void Awake()
     {
@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
         this.bulletSpeed = info.bulletSpeed;
         this.direction = info.direction;
         this.owner = owner;
+        this.damage = info.damage;
         Movement();
         this.gameObject.SetActive(true);
     }

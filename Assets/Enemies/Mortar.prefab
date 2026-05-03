@@ -1151,7 +1151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
-  currentHealth: 3
+  damage: 1
+  currentHealth: 6
   bulletSpeed: 0
   lookAtPlayer: 1
   moveSpeed: 0

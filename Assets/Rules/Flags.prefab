@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flags
   health: 5
-  interval: 2.5
+  interval: 2
 --- !u!1 &7032304843996207594
 GameObject:
   m_ObjectHideFlags: 0

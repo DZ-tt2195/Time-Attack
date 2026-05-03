@@ -22,13 +22,13 @@ public class Staff : BaseEnemy
         target.Normalize();
 
         for (int i = 0; i < numBullets; i++)
-            CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet())));
+            CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), damage));
 
         if (currentHealth > 0 && !starPrefab.gameObject.activeSelf)
         {
             starPrefab.transform.position = this.transform.position;
             starPrefab.tag = this.tag;
-            starPrefab.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet())), this);
+            starPrefab.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), damage), this);
         }
 
         float RandomOffSet()

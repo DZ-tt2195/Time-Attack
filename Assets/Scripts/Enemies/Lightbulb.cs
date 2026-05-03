@@ -14,7 +14,7 @@ public class Lightbulb : BaseEnemy
     protected override void DamageEffect(int change)
     {
         base.DamageEffect(change);
-        WaveManager.instance.blackOutTime += this.blackOutTime;
+        WaveManager.instance.blackOutTime += this.blackOutTime*change;
     }
 
     protected override void DeathEffect()

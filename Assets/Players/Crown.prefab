@@ -133,8 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  disappearOnWall: 0
+  disappearOnWall: 1
 --- !u!61 &3945694343711900173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -394,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Orbit
   spriteRenderer: {fileID: 8742010818526069795}
+  damage: 3
   currentHealth: 5
   bulletSpeed: 0
   spinSpeed: 10

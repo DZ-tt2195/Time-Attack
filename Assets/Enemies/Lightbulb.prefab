@@ -306,12 +306,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lightbulb
   spriteRenderer: {fileID: 5882722530765502989}
-  currentHealth: 3
+  damage: 1
+  currentHealth: 6
   bulletSpeed: 1.5
   lookAtPlayer: 1
   moveSpeed: 0
   attackRate: 1.5
-  blackOutTime: 1.25
+  blackOutTime: 1
 --- !u!1 &7992026019196895915
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,5 +663,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 1
   disappearOnWall: 1

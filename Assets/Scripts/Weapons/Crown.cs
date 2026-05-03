@@ -42,7 +42,7 @@ public class Crown : Player
     }
     protected override void FireWeapon()
     {
-        Bullet bullet = CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.zero));
+        Bullet bullet = CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.zero, damage));
         toSpin.Add(new OrbInfo(bullet));
     }
 }

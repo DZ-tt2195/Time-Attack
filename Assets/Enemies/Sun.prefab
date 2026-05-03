@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 1
   disappearOnWall: 1
 --- !u!61 &7858207403626864879
 BoxCollider2D:
@@ -414,7 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
-  currentHealth: 2
+  damage: 1
+  currentHealth: 4
   bulletSpeed: 0.75
   lookAtPlayer: 0
   moveSpeed: 1.75
