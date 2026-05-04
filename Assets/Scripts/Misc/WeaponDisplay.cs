@@ -16,6 +16,6 @@ public class WeaponDisplay : MonoBehaviour
         weaponSprite.sprite = player.spriteRenderer.sprite;
         weaponSprite.color = player.spriteRenderer.color;
         descriptionText.text = Translator.inst.Translate($"{player.name}_Text");
-        damageText.text = $"[{player.DamageString}]";
+        damageText.text = $"[{player.DamageString()}]";
     }
 }

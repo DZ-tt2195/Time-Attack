@@ -449,9 +449,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- make more weapons and rules
+  m_text: '1 more weapon
 
-    - sound effects for flags'
+    3 more rules'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -619,6 +619,7 @@ MonoBehaviour:
   - {fileID: 194609776221839941, guid: 56fa8ca2afcb84d9689c393bd3505340, type: 3}
   - {fileID: 6172040360035817630, guid: 4fb547154c725480d917bda7d629c02a, type: 3}
   - {fileID: 3948842187154192434, guid: 738a7b8d56c6547a8b470d17f103c093, type: 3}
+  - {fileID: 7624439563927106827, guid: f1bfd08e369da4e74a078dc4e07a7cd8, type: 3}
   listOfRules:
   - {fileID: 9137618444036871, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
   - {fileID: 8580080446884869884, guid: cfc4c98a30b7e42f9995bb3df8706daa, type: 3}

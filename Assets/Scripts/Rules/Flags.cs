@@ -6,6 +6,8 @@ public class Flags : RulesManager
     int currentFlag;
     [SerializeField] float interval;
     List<HealthPack> flagsInOrder = new();
+    [SerializeField] AudioClip fail;
+    [SerializeField] AudioClip success;
     public override void BeginGame()
     {
         RemoveFlags();
@@ -42,9 +44,14 @@ public class Flags : RulesManager
                 RemoveFlags();
                 Player.instance.ChangeHealth(health);
             }
+            else
+            {
+                AudioManager.instance.PlaySound(success, 0.3f);
+            }
         }
         else
         {
+            AudioManager.instance.PlaySound(fail, 0.3f);
             RemoveFlags();
         }
     }

@@ -203,7 +203,7 @@ public class WaveManager : MonoBehaviour
             UpdateTexts();
             Time.timeScale = 0f;
 
-            endText.text = $"{text}\n\n" + $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" + $"\n{AutoTranslate.Health_Lost(stats.tookDamage.ToString())}\n";
+            endText.text = $"{text}\n\n" + $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" + $"\n{AutoTranslate.Damage_Taken(stats.tookDamage.ToString())}\n";
             if (score > 0)
             {
                 endText.text += $"\n{AutoTranslate.Score(score.ToString())}";

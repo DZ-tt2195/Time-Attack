@@ -200,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flags
   health: 5
   interval: 2
+  fail: {fileID: 8300000, guid: 1cc2ae4958d394ecfbdc84ee28535000, type: 3}
+  success: {fileID: 8300000, guid: dd213b0bce7ae4e72a9700ae87b922af, type: 3}
 --- !u!1 &7032304843996207594
 GameObject:
   m_ObjectHideFlags: 0

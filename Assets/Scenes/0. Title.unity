@@ -703,7 +703,10 @@ MonoBehaviour:
     Shoot: "FX - Laser Shoot (A)" - bolkmar (freesounds.org)
 
     Hit
-    wall: "Error" - Autistic Lucario (freesounds.org)
+    wall or wrong flag: "Error" - Autistic Lucario (freesounds.org)
+
+    Touched
+    flag: "ding" - Daphne in Wonderland (freesounds.org)
 
     Winning: "win" - David819
     (freesounds.org)
@@ -735,7 +738,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.15
+  m_fontSize: 64.75
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1795,7 +1798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &246686521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2894,7 +2897,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 625, y: 600}
-  m_Spacing: {x: 25, y: -100}
+  m_Spacing: {x: 25, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!1 &509491062

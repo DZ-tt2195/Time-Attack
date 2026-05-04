@@ -24,7 +24,13 @@ public class Player : Entity
         this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
     }
-    public virtual string DamageString => damage.ToString();
+    public virtual string DamageString()
+    {
+        if (Translator.inst.TranslationExists($"{this.name}_Damage"))
+            return Translator.inst.Translate($"{this.name}_Damage");
+        else
+            return damage.ToString();
+    }
 
     #endregion
 

@@ -69,6 +69,7 @@ public class BaseEnemy : Entity
     {
         base.HealEffect(amount);
         crossedOut.SetActive(false);
+        immune = false;
         healthText.text = currentHealth.ToString();
         MyExtensions.SetAlpha(this.spriteRenderer, 1f);
     }
