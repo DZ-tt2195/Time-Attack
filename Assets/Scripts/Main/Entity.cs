@@ -30,6 +30,7 @@ public class Entity : MonoBehaviour
     }
     public void ChangeHealth(int change)
     {
+        if (immune && change < 0) return;
         currentHealth = Mathf.Clamp(currentHealth + change, 0, maxHealth);
         if (change > 0)
         {
@@ -39,7 +40,6 @@ public class Entity : MonoBehaviour
         }
         else
         {
-            if (immune) return;
             tookDamage-=change;
             AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
 

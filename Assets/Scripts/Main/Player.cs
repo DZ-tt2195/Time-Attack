@@ -63,20 +63,20 @@ public class Player : Entity
         targetPosition.y = Mathf.Clamp(targetPosition.y, WaveManager.minY, WaveManager.maxY);
         transform.position = Vector3.Lerp(transform.position, targetPosition, 10f * Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Entity entity))
+        if (collision.CompareTag("Resupply"))
+        {
+            Resupply resupply = collision.GetComponent<Resupply>();
+            RulesManager.inst.HitResupply(resupply, currentHealth < maxHealth);
+        }
+        else if (collision.TryGetComponent(out Entity entity))
         {
             this.ChangeHealth(-1);
         }
         else if (collision.CompareTag("Wall") || collision.CompareTag("HurtPlayer"))
         {
             this.ChangeHealth(-1);
-        }
-        else if (collision.CompareTag("Resupply"))
-        {
-            HealthPack resupply = collision.GetComponent<HealthPack>();
-            RulesManager.inst.HitResupply(resupply, currentHealth < maxHealth);
         }
     }
     protected override void DamageEffect(int amount)

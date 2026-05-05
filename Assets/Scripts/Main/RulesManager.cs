@@ -4,15 +4,16 @@ using System.Collections.Generic;
 public class RulesManager : MonoBehaviour
 {
     public static RulesManager inst;
-    protected HealthPack resupplyPrefab { get; private set; }
-    Queue<HealthPack> resupplyQueue = new();
+    protected Resupply resupplyPrefab { get; private set; }
+    Queue<Resupply> resupplyQueue = new();
     [SerializeField] protected int health;
+    protected List<Resupply> activeResupplies = new();
     void Awake()
     {
         inst = this;
         try
         {
-            resupplyPrefab = this.transform.Find("Resupply").GetComponent<HealthPack>();
+            resupplyPrefab = this.transform.Find("Resupply").GetComponent<Resupply>();
             resupplyPrefab.gameObject.SetActive(false);
         } catch { }
     }
@@ -22,13 +23,14 @@ public class RulesManager : MonoBehaviour
     public virtual void EveryWave()
     {
     }
-    protected HealthPack MakeResupply(Vector2 spawn, string text, Vector2 speed)
+    protected Resupply MakeResupply(Vector2 spawn, string text)
     {
-        HealthPack resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
-        resupply.Setup(spawn, text, speed);
+        Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
+        activeResupplies.Add(resupply);
+        resupply.Setup(spawn, text);
         return resupply;
     }
-    public virtual void HitResupply(HealthPack resupply, bool needEnergy)
+    public virtual void HitResupply(Resupply resupply, bool needEnergy)
     {
         if (needEnergy)
         {
@@ -36,9 +38,10 @@ public class RulesManager : MonoBehaviour
             Player.instance.ChangeHealth(health);
         }
     }
-    public void ReturnResupply(HealthPack resupply)
+    public void ReturnResupply(Resupply resupply)
     {
         resupplyQueue.Enqueue(resupply);
+        activeResupplies.Remove(resupply);
         resupply.gameObject.SetActive(false);        
     }
 }

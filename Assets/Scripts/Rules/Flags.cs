@@ -5,7 +5,7 @@ public class Flags : RulesManager
 {
     int currentFlag;
     [SerializeField] float interval;
-    List<HealthPack> flagsInOrder = new();
+    List<Resupply> flagsInOrder = new();
     [SerializeField] AudioClip fail;
     [SerializeField] AudioClip success;
     public override void BeginGame()
@@ -28,12 +28,12 @@ public class Flags : RulesManager
         for (int i = 0; i<5; i++)
         {
             int randomSpot = Random.Range(0, locations.Count);
-            HealthPack nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}", Vector3.zero);
+            Resupply nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}");
             flagsInOrder.Add(nextFlag);
             locations.RemoveAt(randomSpot);
         }        
     }
-    public override void HitResupply(HealthPack resupply, bool needEnergy)
+    public override void HitResupply(Resupply resupply, bool needEnergy)
     {
         if (resupply == flagsInOrder[currentFlag])
         {
@@ -55,4 +55,5 @@ public class Flags : RulesManager
             RemoveFlags();
         }
     }
+
 }

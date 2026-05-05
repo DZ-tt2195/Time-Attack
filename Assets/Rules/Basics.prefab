@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Default
   health: 2
   interval: 2
+  movement: {x: 0, y: -2}
 --- !u!1 &5342660118779704284
 GameObject:
   m_ObjectHideFlags: 0
