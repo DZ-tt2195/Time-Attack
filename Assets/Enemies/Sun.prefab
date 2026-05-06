@@ -418,7 +418,7 @@ MonoBehaviour:
   bulletSpeed: 0.75
   lookAtPlayer: 0
   moveSpeed: 1.75
-  attackRate: 2.25
+  attackRate: 2.5
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0

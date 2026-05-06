@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7fe21782592064554954250e857c8504, type: 3}
-  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
+  m_Color: {r: 1, g: 0.49803922, b: 0.49803922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -261,8 +261,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 1798016bbe6c94e42af3007939ccc320, type: 3}
-  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6a5e1a45b4bda481db6fbcdbb47f715f, type: 3}
+  m_Color: {r: 1, g: 0.495283, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -282,9 +282,9 @@ GameObject:
   - component: {fileID: 2585990113894687071}
   - component: {fileID: 2773687923373102193}
   - component: {fileID: 2323606066435574409}
-  - component: {fileID: 6172040360035817630}
+  - component: {fileID: 194609776221839941}
   m_Layer: 0
-  m_Name: Compass
+  m_Name: Tank
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6172040360035817630
+--- !u!114 &194609776221839941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,10 +389,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7449412055344269272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371a2db7afd13434fb4815a827dff1c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 56bd0f9ffe37f4aa68d1d5251433133e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Angled
+  m_EditorClassIdentifier: Assembly-CSharp::Player
   spriteRenderer: {fileID: 8742010818526069795}
   damage: 2
-  currentHealth: 6
+  currentHealth: 10
   bulletSpeed: 7

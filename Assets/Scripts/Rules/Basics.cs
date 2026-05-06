@@ -10,8 +10,8 @@ public class Basics : RulesManager
     }
     void SpawnResupply()
     {
-        MakeResupply(new(Random.Range(WaveManager.minX + 1f, WaveManager.maxX - 1f), WaveManager.maxY), 
-        AutoTranslate.Health_Pack(health.ToString()));
+        Vector2 spawn = new(Random.Range(WaveManager.minX + 1f, WaveManager.maxX - 1f), WaveManager.maxY);
+        MakeResupply(spawn, AutoTranslate.Health_Pack(health.ToString()));
     }
     void Update()
     {

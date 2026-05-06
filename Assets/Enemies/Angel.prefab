@@ -558,9 +558,9 @@ MonoBehaviour:
   bulletSpeed: 2
   lookAtPlayer: 1
   moveSpeed: 0
-  attackRate: 2
-  wallOff: 5.25
-  wallOn: 1.75
+  attackRate: 2.25
+  wallOff: 5.5
+  wallOn: 1.5
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0

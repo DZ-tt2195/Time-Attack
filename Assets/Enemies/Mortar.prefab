@@ -1157,7 +1157,7 @@ MonoBehaviour:
   lookAtPlayer: 1
   moveSpeed: 0
   attackRate: 1.5
-  waitTime: 1.25
+  waitTime: 1.5
   randomize: 2.5
   listOfRadiuses:
   - {fileID: 7177489698137222962}

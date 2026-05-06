@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Test
   wallToMove: {fileID: 5643621887444947899}
   moveUp: 1
-  moveDown: 7.5
+  moveDown: 7
   thisEnemy: {fileID: 5011879533634328709}
 --- !u!212 &7930850057648667603
 SpriteRenderer:

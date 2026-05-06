@@ -600,7 +600,7 @@ MonoBehaviour:
   bulletSpeed: 2
   lookAtPlayer: 1
   moveSpeed: 0
-  attackRate: 2
+  attackRate: 2.25
   bulletOffset: 0.25
   numBullets: 3
 --- !u!61 &7595905048437823666

@@ -804,7 +804,7 @@ MonoBehaviour:
   - obj: {fileID: 7610205217623488726}
     rot: 300
     radius: 0
-  spinSpeed: 0.75
+  spinSpeed: 0.5
 --- !u!1 &7610205217623488726
 GameObject:
   m_ObjectHideFlags: 0

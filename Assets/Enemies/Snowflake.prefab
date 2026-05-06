@@ -495,7 +495,7 @@ MonoBehaviour:
   bulletSpeed: 3
   lookAtPlayer: 1
   moveSpeed: 0
-  attackRate: 3
+  attackRate: 3.25
 --- !u!1 &9105321438320892961
 GameObject:
   m_ObjectHideFlags: 0

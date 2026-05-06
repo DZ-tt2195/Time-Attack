@@ -451,9 +451,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '1 more weapon
 
-    2 more rules
-
-'
+    1 more rule'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -626,6 +624,7 @@ MonoBehaviour:
   - {fileID: 9137618444036871, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
   - {fileID: 8580080446884869884, guid: cfc4c98a30b7e42f9995bb3df8706daa, type: 3}
   - {fileID: 2306064515519379852, guid: 7170c5b6373184917aeb1e27ccf90374, type: 3}
+  - {fileID: 6309679300035857816, guid: 736159ab66a5940aa8dff07b6bb05e81, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0

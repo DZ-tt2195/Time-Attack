@@ -51,10 +51,12 @@ Basics_Text	Collect 2 health from orbs that drop from above.
 Flags	Flags
 Flags_Text	Touch each flag in order to gain 5 health.
 Heart	Heart
-Heart_Text	Bullets deal more damage when at 3 health or less.
+Heart_Text	Bullets deal more damage when at 4 health or less.
 Heart_Damage	1 or 3
 Carry	Carry
 Carry_Text	Stay on top of the box to move it to the other side and gain 5 health.
+Rotate	Rotate
+Rotate_Text	Stay on top of the rotating box to gain health, but don't touch the barriers.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
