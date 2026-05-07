@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Carry
   health: 5
-  movement: {x: 2, y: 0}
-  rotate: 0
+  movement: {x: 3, y: 0}
 --- !u!1 &5342660118779704284
 GameObject:
   m_ObjectHideFlags: 0

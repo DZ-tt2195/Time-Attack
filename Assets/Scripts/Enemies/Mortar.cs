@@ -5,7 +5,6 @@ using System.Collections;
 
 public class Mortar : BaseEnemy
 {
-    [SerializeField] float waitTime;
     [SerializeField] float randomize;
     [SerializeField] List<SpriteRenderer> listOfRadiuses = new();
     [SerializeField] AudioClip attack;
@@ -13,12 +12,10 @@ public class Mortar : BaseEnemy
     protected override void Awake()
     {
         base.Awake();
-        waitTime *= 2 - PrefManager.GetDifficulty();
         foreach (SpriteRenderer next in listOfRadiuses)
             next.gameObject.SetActive(false);
-        InvokeRepeating(nameof(ShootBullet), attackRate*0.5f, attackRate);
+        Invoke(nameof(ShootBullet), attackRate*0.5f);
     }
-
     protected override void ShootBullet()
     {
         Vector2 playerPosition = Player.instance.transform.position;
@@ -31,16 +28,16 @@ public class Mortar : BaseEnemy
         IEnumerator AttackAll()
         {
             float elapsedTime = 0f;
-            while (elapsedTime < waitTime)
+            while (elapsedTime < attackRate)
             {
                 elapsedTime += Time.deltaTime;
                 foreach (SpriteRenderer next in listOfRadiuses)
                 {
-                    MyExtensions.SetAlpha(next, elapsedTime / waitTime);
+                    MyExtensions.SetAlpha(next, elapsedTime / attackRate);
                 }
                 yield return null;
             }
-            AudioManager.instance.PlaySound(attack, 0.2f);
+            AudioManager.instance.PlaySound(attack, 0.1f);
             foreach (SpriteRenderer next in listOfRadiuses)
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(next.transform.position, 0.8f);
@@ -51,6 +48,7 @@ public class Mortar : BaseEnemy
                 }
                 next.gameObject.SetActive(false);
             }
+            Invoke(nameof(ShootBullet), attackRate*0.5f);
         }
 
         float RandomOffSet()

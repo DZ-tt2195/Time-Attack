@@ -668,7 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Knight
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 6
+  currentHealth: 3
   bulletSpeed: 2.5
   lookAtPlayer: 0
   moveSpeed: 0

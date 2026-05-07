@@ -41,7 +41,7 @@ public class Entity : MonoBehaviour
         else
         {
             tookDamage-=change;
-            AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
+            AudioManager.instance.Damage(this is Player ? 0.5f : 0.25f);
 
             if (currentHealth <= 0)
                 DeathEffect();

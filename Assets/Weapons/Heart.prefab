@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Heart
   spriteRenderer: {fileID: 3298221504286724742}
   damage: 1
-  currentHealth: 10
+  currentHealth: 8
   bulletSpeed: 7
   extraDamage: 3
 --- !u!1 &1038874434450500450

@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Orbit
   spriteRenderer: {fileID: 8742010818526069795}
   damage: 3
-  currentHealth: 10
+  currentHealth: 8
   bulletSpeed: 0
   spinSpeed: 10
   distance: 2.5

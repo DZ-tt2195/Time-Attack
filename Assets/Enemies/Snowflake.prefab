@@ -491,7 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordsMan
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 6
+  currentHealth: 3
   bulletSpeed: 3
   lookAtPlayer: 1
   moveSpeed: 0

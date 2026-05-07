@@ -11,7 +11,7 @@ public class OrbInfo
     public OrbInfo (Bullet bullet)
     {
         this.bullet = bullet;
-        rot = 0;
+        rot = 90;
     }
 }
 public class Crown : Player

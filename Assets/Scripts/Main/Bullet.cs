@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     protected virtual void TryAndReturn(bool landed)
     {
         if (owner == null)
@@ -27,7 +26,6 @@ public class Bullet : MonoBehaviour
                 AudioManager.instance.Miss(0.3f);
         }
     }
-
     public virtual void AssignInfo(AttackInfo info, Entity owner)
     {
         this.transform.position = info.spawnPosition;
@@ -39,7 +37,6 @@ public class Bullet : MonoBehaviour
         Movement();
         this.gameObject.SetActive(true);
     }
-
     void Update()
     {
         Movement();
@@ -53,14 +50,12 @@ public class Bullet : MonoBehaviour
     {
         TryAndReturn(false);        
     }
-
     protected virtual void Movement()
     {
         this.transform.Translate(bulletSpeed * Time.deltaTime * direction, Space.World);
         this.transform.localEulerAngles = new(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity target) && !target.immune && !target.CompareTag(this.tag))
         {

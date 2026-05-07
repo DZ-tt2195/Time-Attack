@@ -1152,12 +1152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 6
+  currentHealth: 3
   bulletSpeed: 0
   lookAtPlayer: 1
   moveSpeed: 0
-  attackRate: 1.5
-  waitTime: 1.5
+  attackRate: 1.25
   randomize: 2.5
   listOfRadiuses:
   - {fileID: 7177489698137222962}

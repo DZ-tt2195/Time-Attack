@@ -190,7 +190,7 @@ public class WaveManager : MonoBehaviour
         }
 
         UpdateTexts();
-        if (blackOutTime > 0f) blackOutTime -= Time.deltaTime;
+        blackOutTime = Mathf.Max(0f, blackOutTime - Time.deltaTime);
         blackOutObject.SetActive(blackOutTime > 0f);
         blackOutObject.transform.position = Player.instance.transform.position;
     }

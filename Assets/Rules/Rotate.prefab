@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rotate
   health: 1
-  rotate: {x: 0, y: 0, z: 75}
+  rotate: {x: 0, y: 0, z: 90}
 --- !u!1 &2340173855074178162
 GameObject:
   m_ObjectHideFlags: 0

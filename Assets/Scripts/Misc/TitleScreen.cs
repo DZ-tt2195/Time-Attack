@@ -53,8 +53,8 @@ public class TitleScreen : MonoBehaviour
         play.text = AutoTranslate.Play();
         chooseLevel.text = AutoTranslate.Choose_Level();
         deleteScores.text = AutoTranslate.Delete();
-        chooseWeapon.text = AutoTranslate.Choose_Weapon();
-        chooseRule.text = AutoTranslate.Choose_Rule();
+        //chooseWeapon.text = AutoTranslate.Choose_Weapon();
+        //chooseRule.text = AutoTranslate.Choose_Rule();
         soundCredits.text = AutoTranslate.Sound_Credits();
 
         LevelInfo();

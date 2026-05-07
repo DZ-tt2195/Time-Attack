@@ -780,7 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Planet
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 8
+  currentHealth: 4
   bulletSpeed: 0
   lookAtPlayer: 0
   moveSpeed: 1
