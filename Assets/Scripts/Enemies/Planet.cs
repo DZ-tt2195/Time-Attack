@@ -24,8 +24,9 @@ public class Planet : BaseEnemy
             next.radius = UnityEngine.Random.Range(1.5f, 3.5f);
     }
 
-    protected override void Update() 
+    protected override void Movement() 
     {
+        //base.Movement();
         transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position, moveSpeed*Time.deltaTime);    
 
         foreach (Moon next in toSpin)

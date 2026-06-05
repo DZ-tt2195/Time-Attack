@@ -8,9 +8,9 @@ public class Sun : BaseEnemy
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.down : Vector3.up;
     }
 
-    protected override void Update()
+    protected override void Movement()
     {
-        base.Update();
+        base.Movement();
         if (this.transform.position.y < WaveManager.minY)
             moveDirection = Vector3.up;
         else if (transform.position.y > WaveManager.maxY)

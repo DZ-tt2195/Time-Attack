@@ -21,15 +21,14 @@ public class Ghost : BaseEnemy
         MyExtensions.SetAlpha(spriteRenderer, 1f);
         healthText.SetAlpha(1f);
     }
-
-    protected override void Update()
+    protected override void Movement()
     {
-        base.Update();
+        base.Movement();
         if (this.transform.position.x < WaveManager.minX)
             moveDirection = Vector3.right;
         else if (transform.position.x > WaveManager.maxX)
             moveDirection = Vector3.left;
-
+        
         if (currentHealth > 0)
         {
             float alpha = Mathf.Max(0, spriteRenderer.color.a - ((4.75f-attackRate) * Time.deltaTime));

@@ -22,7 +22,7 @@ public class BaseEnemy : Entity
         bulletSpeed *= PrefManager.GetDifficulty();
         moveSpeed *= PrefManager.GetDifficulty();
 
-        if (bulletPrefab != null)
+        if (bulletPrefab != null && attackRate != 0f)
             InvokeRepeating(nameof(ShootBullet), attackRate*0.5f, attackRate);
     }
 
@@ -33,10 +33,16 @@ public class BaseEnemy : Entity
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, target, damage));
     }
 
-    protected virtual void Update()
+    void Update()
     {
-        this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection);
+        Movement();
         RotateToPlayer();
+    }
+
+    protected virtual void Movement()
+    {
+        this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
+        //transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position, moveSpeed*Time.deltaTime);    
     }
 
     protected virtual void RotateToPlayer()

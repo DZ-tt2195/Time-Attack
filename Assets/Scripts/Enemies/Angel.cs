@@ -18,9 +18,9 @@ public class Angel : BaseEnemy
         timer = wallOn;
     }
 
-    protected override void Update()
+    protected override void Movement()
     {
-        base.Update();
+        base.Movement();
         timer -= Time.deltaTime;
 
         if (timer < 0f)
