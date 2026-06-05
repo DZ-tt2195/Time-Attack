@@ -1155,7 +1155,7 @@ MonoBehaviour:
   currentHealth: 3
   bulletSpeed: 0
   lookAtPlayer: 1
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 1.25
   randomize: 2.5
   listOfRadiuses:

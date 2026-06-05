@@ -1698,6 +1698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242792213}
   - component: {fileID: 242792214}
+  - component: {fileID: 242792215}
   m_Layer: 5
   m_Name: Volume Slider
   m_TagString: Untagged
@@ -1718,6 +1719,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1280188184}
+  - {fileID: 933150034}
   - {fileID: 848489291}
   - {fileID: 1226407981}
   m_Father: {fileID: 118707557}
@@ -1778,6 +1780,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &242792215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242792212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52997ab698486434980095b7c563197e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VolumeSlider
+  slider: {fileID: 242792214}
+  volumeText: {fileID: 933150032}
 --- !u!1 &246686520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,7 +2553,6 @@ MonoBehaviour:
   bestRun: {fileID: 1189930569}
   levelDropdown: {fileID: 417021698}
   deleteScoreButton: {fileID: 1151110061}
-  volumeSlider: {fileID: 242792214}
   changeWeapon: {fileID: 74080012}
   currentWeaponText: {fileID: 1299306233}
   changeRule: {fileID: 572109964}
@@ -2562,7 +2577,6 @@ MonoBehaviour:
   chooseWeapon: {fileID: 1423233903}
   chooseRule: {fileID: 1395742912}
   deleteScores: {fileID: 2109930141}
-  volume: {fileID: 933150032}
   soundCredits: {fileID: 1152296921}
 --- !u!4 &459313075
 Transform:
@@ -5036,7 +5050,7 @@ RectTransform:
   m_LocalScale: {x: 0.13333333, y: 0.13333333, z: 0.13333333}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1226407981}
+  m_Father: {fileID: 242792213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6504,7 +6518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SOUND CREDITS
+  m_text: Sound Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -6876,7 +6890,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1827991108}
-  - {fileID: 933150034}
   m_Father: {fileID: 242792213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

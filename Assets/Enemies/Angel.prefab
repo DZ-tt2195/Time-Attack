@@ -373,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5643621887444947899}
   - component: {fileID: 6315568432736686251}
-  - component: {fileID: 7249784320865629198}
+  - component: {fileID: 5789604001178780921}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -390,8 +390,8 @@ Transform:
   m_GameObject: {fileID: 6445559324921500627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
-  m_LocalScale: {x: 6.75, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5602975972425853259}
@@ -445,7 +445,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 7fe21782592064554954250e857c8504, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b653f44c572147cb840e9dd6b3ccf00, type: 3}
   m_Color: {r: 0.77254903, g: 1, b: 0.61960787, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -455,8 +455,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &7249784320865629198
-BoxCollider2D:
+--- !u!58 &5789604001178780921
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -490,17 +490,7 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
-    newSize: {x: 0.532, y: 0.532}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.47, y: 0.4}
-  m_EdgeRadius: 0
+  m_Radius: 0.32
 --- !u!1 &7461354543800533658
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +547,7 @@ MonoBehaviour:
   currentHealth: 2
   bulletSpeed: 2
   lookAtPlayer: 1
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 2.25
   wallOff: 5.5
   wallOn: 1.5
@@ -663,7 +653,7 @@ Transform:
   m_GameObject: {fileID: 7610205217623488726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.446, y: -1.12, z: 0}
+  m_LocalPosition: {x: 0.062, y: -0.921, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

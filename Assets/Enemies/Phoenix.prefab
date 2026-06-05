@@ -780,7 +780,7 @@ MonoBehaviour:
   currentHealth: 2
   bulletSpeed: 1
   lookAtPlayer: 1
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 1
   respawnTime: 7
   textBox: {fileID: 9091328771776666972}

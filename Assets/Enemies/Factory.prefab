@@ -491,7 +491,7 @@ MonoBehaviour:
   currentHealth: 4
   bulletSpeed: 1.75
   lookAtPlayer: 0
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 1.5
 --- !u!1 &7610205217623488726
 GameObject:

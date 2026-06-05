@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Sun : BaseEnemy
 {
+    Vector3 moveDirection;
     protected override void Awake()
     {
         base.Awake();
@@ -10,7 +11,7 @@ public class Sun : BaseEnemy
 
     protected override void Movement()
     {
-        base.Movement();
+        this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
         if (this.transform.position.y < WaveManager.minY)
             moveDirection = Vector3.up;
         else if (transform.position.y > WaveManager.maxY)

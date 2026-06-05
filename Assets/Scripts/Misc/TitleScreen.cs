@@ -14,7 +14,6 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text bestRun;
     [SerializeField] TMP_Dropdown levelDropdown;
     [SerializeField] Button deleteScoreButton;
-    [SerializeField] Slider volumeSlider;
     [SerializeField] Button changeWeapon;
     [SerializeField] TMP_Text currentWeaponText;
     [SerializeField] Button changeRule;
@@ -41,7 +40,6 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text chooseWeapon;
     [SerializeField] TMP_Text chooseRule;
     [SerializeField] TMP_Text deleteScores;
-    [SerializeField] TMP_Text volume;
     [SerializeField] TMP_Text soundCredits;
 
     void Awake()
@@ -59,7 +57,6 @@ public class TitleScreen : MonoBehaviour
 
         LevelInfo();
         WeaponInfo();
-        VolumeInfo();
         DifficultyInfo();
         RuleInfo();
         SoundInfo();
@@ -167,18 +164,6 @@ public class TitleScreen : MonoBehaviour
                 currentRuleText.text = AutoTranslate.Random();
             else
                 currentRuleText.text = Translator.inst.Translate(allRules[n].name);
-        }        
-    }
-    void VolumeInfo()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
-        volumeSlider.onValueChanged.AddListener(SetLevel);
-        SetLevel(PlayerPrefs.GetFloat("Volume"));
-
-        void SetLevel(float value)
-        {
-            AudioManager.instance.mixer.SetFloat("Volume", (Mathf.Log10(volumeSlider.value) * 20));
-            PlayerPrefs.SetFloat("Volume", volumeSlider.value);
         }        
     }
     void DifficultyInfo()

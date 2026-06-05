@@ -310,7 +310,7 @@ MonoBehaviour:
   currentHealth: 3
   bulletSpeed: 1.5
   lookAtPlayer: 1
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 1.75
   blackOutTime: 1
 --- !u!1 &7992026019196895915

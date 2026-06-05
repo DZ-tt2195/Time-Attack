@@ -783,7 +783,7 @@ MonoBehaviour:
   currentHealth: 4
   bulletSpeed: 0
   lookAtPlayer: 0
-  moveSpeed: 1
+  moveSpeed: 1.5
   attackRate: 0
   toSpin:
   - obj: {fileID: 7335682293739162065}

@@ -3,12 +3,6 @@ using MyBox;
 
 public class Ghost : BaseEnemy
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        moveDirection = Random.Range(0, 2) == 0 ? Vector3.left : Vector3.right;
-    }
-
     protected override void ShootBullet()
     {
         base.ShootBullet();
@@ -24,11 +18,6 @@ public class Ghost : BaseEnemy
     protected override void Movement()
     {
         base.Movement();
-        if (this.transform.position.x < WaveManager.minX)
-            moveDirection = Vector3.right;
-        else if (transform.position.x > WaveManager.maxX)
-            moveDirection = Vector3.left;
-        
         if (currentHealth > 0)
         {
             float alpha = Mathf.Max(0, spriteRenderer.color.a - ((4.75f-attackRate) * Time.deltaTime));

@@ -26,8 +26,7 @@ public class Planet : BaseEnemy
 
     protected override void Movement() 
     {
-        //base.Movement();
-        transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position, moveSpeed*Time.deltaTime);    
+        base.Movement();
 
         foreach (Moon next in toSpin)
         {

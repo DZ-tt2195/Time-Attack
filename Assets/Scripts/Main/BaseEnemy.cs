@@ -9,7 +9,7 @@ public class BaseEnemy : Entity
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRate;
     protected TMP_Text healthText;
-    protected Vector3 moveDirection;
+    Vector3 targetOffSet;
     public void EnemySetup()
     {
         this.tag = "Enemy";
@@ -22,8 +22,14 @@ public class BaseEnemy : Entity
         bulletSpeed *= PrefManager.GetDifficulty();
         moveSpeed *= PrefManager.GetDifficulty();
 
+        InvokeRepeating(nameof(NewOffset), 0f, 3f);
         if (bulletPrefab != null && attackRate != 0f)
             InvokeRepeating(nameof(ShootBullet), attackRate*0.5f, attackRate);
+    }
+
+    void NewOffset()
+    {
+        targetOffSet = Random.insideUnitCircle.normalized * 5f;
     }
 
     protected virtual void ShootBullet()
@@ -41,8 +47,8 @@ public class BaseEnemy : Entity
 
     protected virtual void Movement()
     {
-        this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
-        //transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position, moveSpeed*Time.deltaTime);    
+        //this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
+        transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position + targetOffSet, moveSpeed*Time.deltaTime);    
     }
 
     protected virtual void RotateToPlayer()

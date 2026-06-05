@@ -65,6 +65,7 @@ public class WaveManager : MonoBehaviour
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
 
+        replayButton.gameObject.SetActive(false);
         replayButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Replay();
         quitButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Quit();
         endText.text = AutoTranslate.Blank();

@@ -603,7 +603,7 @@ MonoBehaviour:
   currentHealth: 4
   bulletSpeed: 0
   lookAtPlayer: 0
-  moveSpeed: 0
+  moveSpeed: 1
   attackRate: 0
 --- !u!50 &3084981597421438330
 Rigidbody2D:
