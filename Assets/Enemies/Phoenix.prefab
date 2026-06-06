@@ -777,11 +777,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 2
+  currentHealth: 4
   bulletSpeed: 1
   lookAtPlayer: 1
   moveSpeed: 1
-  attackRate: 1
+  attackRate: 0.75
   respawnTime: 7
   textBox: {fileID: 9091328771776666972}
 --- !u!61 &7595905048437823666

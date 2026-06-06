@@ -3,16 +3,17 @@ using UnityEngine;
 public class CraneLift : MonoBehaviour
 {
     [SerializeField] Transform wallToMove;
-    [SerializeField] float moveUp;
-    [SerializeField] float moveDown;
-
+    [SerializeField] float advanceSpeed;
+    [SerializeField] float retreatSpeed;
+    [SerializeField] Transform startingPosition;
+    [SerializeField] Transform targetPosition;
     [SerializeField] BaseEnemy thisEnemy;
     bool inContact = false;
     LineRenderer lineRender;
 
     void Awake()
     {
-        moveUp *= PrefManager.GetDifficulty();
+        advanceSpeed *= PrefManager.GetDifficulty();
         lineRender = GetComponent<LineRenderer>();
         lineRender.startWidth = 0.1f;
         lineRender.endWidth = 0.1f;
@@ -21,15 +22,13 @@ public class CraneLift : MonoBehaviour
 
     void Update()
     {
-        Vector3 moveWall = new Vector3(thisEnemy.transform.position.x, 0, 0);
         if (inContact)
-            moveWall.y = Mathf.MoveTowards(wallToMove.position.y, WaveManager.minY, moveDown*Time.deltaTime);
+            wallToMove.transform.position = Vector3.MoveTowards(wallToMove.position, targetPosition.position, advanceSpeed*Time.deltaTime);
         else
-            moveWall.y = Mathf.MoveTowards(wallToMove.position.y, thisEnemy.transform.position.y-0.5f, moveUp*Time.deltaTime);
-        wallToMove.transform.position = moveWall;
+            wallToMove.transform.position = Vector3.MoveTowards(wallToMove.position, startingPosition.position, retreatSpeed*Time.deltaTime);
 
-        lineRender.SetPosition(0, thisEnemy.transform.position + new Vector3(0.3f, 0.25f));
-        lineRender.SetPosition(1, wallToMove.transform.position + new Vector3(0.3f, 0.1f));
+        lineRender.SetPosition(0, thisEnemy.transform.position);
+        lineRender.SetPosition(1, wallToMove.transform.position);
     }
 
     void OnTriggerEnter2D(Collider2D other)

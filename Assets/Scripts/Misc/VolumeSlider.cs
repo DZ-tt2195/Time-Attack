@@ -6,7 +6,7 @@ public class VolumeSlider : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] TMP_Text volumeText;
-    void Start()
+    void Awake()
     {  
         volumeText.text = AutoTranslate.Volume();
         slider.value = PlayerPrefs.GetFloat("Volume");

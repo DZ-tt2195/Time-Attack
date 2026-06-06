@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Snowflake : BaseEnemy
@@ -11,7 +10,8 @@ public class Snowflake : BaseEnemy
         for (float i = -7f; i <= 7f; i += 1.75f)
         {
             float transformX = this.transform.position.x + i;
-            CreateBullet(bulletPrefab, new AttackInfo(new Vector2(transformX, WaveManager.maxY), bulletSpeed, target, damage));
+            float transformY = (this.transform.position.y > 0) ? WaveManager.maxY : WaveManager.minY;
+            CreateBullet(bulletPrefab, new AttackInfo(new Vector2(transformX, transformY), bulletSpeed, target, damage));
         }
     }
 }

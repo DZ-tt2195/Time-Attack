@@ -6,5 +6,7 @@ public class Compass : Player
     { 
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(0.4f, 1f), damage));
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(-0.4f, 1f), damage));
+        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(0.4f, -1f), damage));
+        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, new(-0.4f, -1f), damage));
     }
 }

@@ -14,6 +14,8 @@ public class Staff : BaseEnemy
 
         starPrefab = transform.Find("Star").GetComponent<Star>();
         starPrefab.gameObject.SetActive(false);
+        starPrefab.transform.SetParent(null);
+        starPrefab.tag = this.tag;
     }
 
     protected override void ShootBullet()
@@ -27,7 +29,6 @@ public class Staff : BaseEnemy
         if (currentHealth > 0 && !starPrefab.gameObject.activeSelf)
         {
             starPrefab.transform.position = this.transform.position;
-            starPrefab.tag = this.tag;
             starPrefab.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), damage), this);
         }
 

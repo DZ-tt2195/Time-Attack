@@ -659,9 +659,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5602975972425853259}
+  - component: {fileID: 2914956959400858315}
   - component: {fileID: 7595905048437823666}
   - component: {fileID: 3084981597421438330}
-  - component: {fileID: 2914956959400858315}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Enemy
@@ -693,6 +693,45 @@ Transform:
   - {fileID: 7376998067920691917}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2914956959400858315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461354543800533658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525e807c6e7e24cdeb0f6b16b83ab0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Planet
+  spriteRenderer: {fileID: 2212896351684885597}
+  damage: 1
+  currentHealth: 8
+  bulletSpeed: 0
+  lookAtPlayer: 0
+  moveSpeed: 1.75
+  attackRate: 0
+  toSpin:
+  - obj: {fileID: 7335682293739162065}
+    rot: 0
+    radius: 0
+  - obj: {fileID: 7641815654312793453}
+    rot: 180
+    radius: 0
+  - obj: {fileID: 8621823185898580402}
+    rot: 60
+    radius: 0
+  - obj: {fileID: 4039669700083893177}
+    rot: 120
+    radius: 0
+  - obj: {fileID: 3038942571221026451}
+    rot: 240
+    radius: 0
+  - obj: {fileID: 7610205217623488726}
+    rot: 300
+    radius: 0
+  spinSpeed: 0.5
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -766,45 +805,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2914956959400858315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461354543800533658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525e807c6e7e24cdeb0f6b16b83ab0a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Planet
-  spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
-  currentHealth: 4
-  bulletSpeed: 0
-  lookAtPlayer: 0
-  moveSpeed: 1.5
-  attackRate: 0
-  toSpin:
-  - obj: {fileID: 7335682293739162065}
-    rot: 0
-    radius: 0
-  - obj: {fileID: 7641815654312793453}
-    rot: 180
-    radius: 0
-  - obj: {fileID: 8621823185898580402}
-    rot: 60
-    radius: 0
-  - obj: {fileID: 4039669700083893177}
-    rot: 120
-    radius: 0
-  - obj: {fileID: 3038942571221026451}
-    rot: 240
-    radius: 0
-  - obj: {fileID: 7610205217623488726}
-    rot: 300
-    radius: 0
-  spinSpeed: 0.5
 --- !u!1 &7610205217623488726
 GameObject:
   m_ObjectHideFlags: 0

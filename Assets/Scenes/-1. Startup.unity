@@ -297,8 +297,14 @@ MonoBehaviour:
   - {fileID: 1625374447210381901, guid: 1c59398b3b3ba4183a8f3a79ed1349b9, type: 3}
   listOfPlayers:
   - {fileID: 194609776221839941, guid: 56fa8ca2afcb84d9689c393bd3505340, type: 3}
+  - {fileID: 6172040360035817630, guid: 4fb547154c725480d917bda7d629c02a, type: 3}
+  - {fileID: 3948842187154192434, guid: 738a7b8d56c6547a8b470d17f103c093, type: 3}
+  - {fileID: 7624439563927106827, guid: f1bfd08e369da4e74a078dc4e07a7cd8, type: 3}
   listOfRules:
   - {fileID: 9137618444036871, guid: 5674220d0e0934b6186b4b5003950067, type: 3}
+  - {fileID: 2306064515519379852, guid: 7170c5b6373184917aeb1e27ccf90374, type: 3}
+  - {fileID: 8580080446884869884, guid: cfc4c98a30b7e42f9995bb3df8706daa, type: 3}
+  - {fileID: 6309679300035857816, guid: 736159ab66a5940aa8dff07b6bb05e81, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   mixer: {fileID: 24100000, guid: 6339f169c292e402dbb565e5a7ad1793, type: 2}
+  menuSound: {fileID: 8300000, guid: 492488b5c92b84851a2ddd2ec6b3fef6, type: 3}
   damageSound: {fileID: 8300000, guid: 076dc8f65a40240da96ff3b20c0a127b, type: 3}
   healSound: {fileID: 8300000, guid: 16be2fda298c445bf814c0c51a59ee67, type: 3}
   missSound: {fileID: 8300000, guid: 1cc2ae4958d394ecfbdc84ee28535000, type: 3}

@@ -13,6 +13,12 @@ public class SceneCheck : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => SceneManager.LoadScene(toLoad));
+        button.onClick.AddListener(Clicked);
+        
+        void Clicked()
+        {
+            AudioManager.instance.Menu();
+            SceneManager.LoadScene(toLoad);
+        }
     }
 }

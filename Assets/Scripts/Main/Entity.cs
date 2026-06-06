@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 
+public enum Protection {Barrier, Immunity, Dead}
+
 public class Entity : MonoBehaviour
 {
     [Foldout("Entity info", true)]
@@ -12,7 +14,7 @@ public class Entity : MonoBehaviour
     public int currentHealth;
     protected int maxHealth { get; private set; }
     protected int firedBullets;
-    public bool immune {get; protected set; }
+    [ReadOnly] public List<Protection> protectionSources = new();
     [SerializeField] protected float bulletSpeed;
     protected int tookDamage;
     protected Bullet bulletPrefab { get; private set; }
@@ -28,9 +30,10 @@ public class Entity : MonoBehaviour
         } catch { }
         maxHealth = currentHealth;
     }
+    public bool CanTakeDamage() => protectionSources.Count == 0;
     public void ChangeHealth(int change)
     {
-        if (immune && change < 0) return;
+        if (!CanTakeDamage() && change < 0) return;
         currentHealth = Mathf.Clamp(currentHealth + change, 0, maxHealth);
         if (change > 0)
         {

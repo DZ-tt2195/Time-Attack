@@ -595,10 +595,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 2
+  currentHealth: 4
   bulletSpeed: 6
   lookAtPlayer: 1
-  moveSpeed: 1
+  moveSpeed: 0.75
   attackRate: 2.25
 --- !u!61 &7595905048437823666
 BoxCollider2D:

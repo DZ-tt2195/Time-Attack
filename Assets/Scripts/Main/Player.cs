@@ -85,7 +85,7 @@ public class Player : Entity
     }
     public IEnumerator Immunity(bool animation)
     {
-        immune = true;
+        protectionSources.Add(Protection.Immunity);
         float elapsedTime = 0f;
         bool flicker = true;
 
@@ -109,11 +109,11 @@ public class Player : Entity
 
         WaveManager.instance.mainCamera.backgroundColor = new(gray.x, gray.y, gray.z);
         MyExtensions.SetAlpha(this.spriteRenderer, 1);
-        immune = false;        
+        protectionSources.Remove(Protection.Immunity);
     }
     protected override void DeathEffect()
     {
-        immune = true;
+        protectionSources.Add(Protection.Dead);
         tookDamage++;
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 

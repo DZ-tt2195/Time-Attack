@@ -28,7 +28,7 @@ public class Flags : RulesManager
         for (int i = 0; i<5; i++)
         {
             int randomSpot = Random.Range(0, locations.Count);
-            Resupply nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, 0)), $"{i+1}");
+            Resupply nextFlag = MakeResupply(new(locations[randomSpot], Random.Range(WaveManager.minY+1f, WaveManager.maxY-1f)), $"{i+1}");
             flagsInOrder.Add(nextFlag);
             locations.RemoveAt(randomSpot);
         }        

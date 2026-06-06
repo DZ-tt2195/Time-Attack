@@ -10,7 +10,7 @@ public class Angel : BaseEnemy
     protected override void Awake()
     {
         base.Awake();
-        wall = transform.Find("Wall").gameObject;
+        wall = transform.Find("Barrier").gameObject;
         wallOn *= PrefManager.GetDifficulty();
         wallOff *= 2 - PrefManager.GetDifficulty();
 

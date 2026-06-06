@@ -393,6 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   spriteRenderer: {fileID: 8742010818526069795}
-  damage: 1
+  damage: 2
   currentHealth: 8
   bulletSpeed: 7

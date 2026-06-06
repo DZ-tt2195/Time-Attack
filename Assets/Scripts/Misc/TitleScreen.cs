@@ -42,7 +42,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] TMP_Text deleteScores;
     [SerializeField] TMP_Text soundCredits;
 
-    void Awake()
+    void Start()
     {
         designer.text = AutoTranslate.Designer();
         description.text = AutoTranslate.Description();
@@ -51,8 +51,8 @@ public class TitleScreen : MonoBehaviour
         play.text = AutoTranslate.Play();
         chooseLevel.text = AutoTranslate.Choose_Level();
         deleteScores.text = AutoTranslate.Delete();
-        //chooseWeapon.text = AutoTranslate.Choose_Weapon();
-        //chooseRule.text = AutoTranslate.Choose_Rule();
+        chooseWeapon.text = AutoTranslate.Choose_Weapon();
+        chooseRule.text = AutoTranslate.Choose_Rule();
         soundCredits.text = AutoTranslate.Sound_Credits();
 
         LevelInfo();
@@ -89,6 +89,7 @@ public class TitleScreen : MonoBehaviour
         }        
         void ChangeLevelDropdown(int n)
         {
+            AudioManager.instance.Menu();
             PrefManager.SetCurrentLevel(n);
             Level newLevel = listOfLevels[n];
 
@@ -108,6 +109,7 @@ public class TitleScreen : MonoBehaviour
 
         void OpenWeapons()
         {
+            AudioManager.instance.Menu();
             chooseScreen.gameObject.SetActive(true);
             weaponScreen.gameObject.SetActive(true);
             rulesScreen.gameObject.SetActive(false);
@@ -124,6 +126,7 @@ public class TitleScreen : MonoBehaviour
 
         void SetWeapon(int n)
         {
+            AudioManager.instance.Menu();
             chooseScreen.gameObject.SetActive(false);
             PrefManager.SetCurrentWeapon(n);
             if (n == -1)
@@ -142,6 +145,7 @@ public class TitleScreen : MonoBehaviour
 
         void OpenRules()
         {
+            AudioManager.instance.Menu();
             chooseScreen.gameObject.SetActive(true);
             weaponScreen.gameObject.SetActive(false);
             rulesScreen.gameObject.SetActive(true);
@@ -158,6 +162,7 @@ public class TitleScreen : MonoBehaviour
 
         void SetRule(int n)
         {
+            AudioManager.instance.Menu();
             chooseScreen.gameObject.SetActive(false);
             PrefManager.SetCurrentRule(n);
             if (n == -1)
@@ -185,6 +190,7 @@ public class TitleScreen : MonoBehaviour
         soundCreditsButton.onClick.AddListener(CreditsToggle);
         void CreditsToggle()
         {
+            AudioManager.instance.Menu();
             if (soundCreditsScreen.activeSelf)
                 soundCreditsScreen.SetActive(false);
             else

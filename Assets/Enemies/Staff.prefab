@@ -596,10 +596,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 3
+  currentHealth: 4
   bulletSpeed: 2
   lookAtPlayer: 1
-  moveSpeed: 1
+  moveSpeed: 0.75
   attackRate: 2.25
   bulletOffset: 0.25
   numBullets: 3

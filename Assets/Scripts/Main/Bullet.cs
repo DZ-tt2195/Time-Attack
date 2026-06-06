@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    protected AttackInfo info;
     protected Vector3 direction;
     public Entity owner { get; private set; }
     float bulletSpeed;
@@ -57,7 +58,7 @@ public class Bullet : MonoBehaviour
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Entity target) && !target.immune && !target.CompareTag(this.tag))
+        if (collision.TryGetComponent(out Entity target) && target.CanTakeDamage() && !target.CompareTag(this.tag))
         {
             HitEntity(target);
         }

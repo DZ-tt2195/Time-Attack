@@ -12,10 +12,11 @@ public class AudioManager : MonoBehaviour
     AudioSource audioPlayer;
     public AudioMixer mixer;
     [Foldout("Sound effects", true)]
-    [SerializeField] AudioClip damageSound; public void Damage(float volume) => PlaySound(damageSound, volume);
-    [SerializeField] AudioClip healSound; public void Heal(float volume) => PlaySound(healSound, volume);
-    [SerializeField] AudioClip missSound; public void Miss(float volume) => PlaySound(missSound, volume);
-    [SerializeField] AudioClip shootSound; public void Shoot(float volume) => PlaySound(shootSound, volume);
+    [SerializeField] AudioClip menuSound; public void Menu(float volume = 0.3f) => PlaySound(menuSound, volume);
+    [SerializeField] AudioClip damageSound; public void Damage(float volume = 0.3f) => PlaySound(damageSound, volume);
+    [SerializeField] AudioClip healSound; public void Heal(float volume = 0.3f) => PlaySound(healSound, volume);
+    [SerializeField] AudioClip missSound; public void Miss(float volume = 0.3f) => PlaySound(missSound, volume);
+    [SerializeField] AudioClip shootSound; public void Shoot(float volume = 0.3f) => PlaySound(shootSound, volume);
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class AudioManager : MonoBehaviour
         {
             audioPlayer = GetComponent<AudioSource>();
             instance = this;
+            mixer.SetFloat("Volume", Mathf.Log10(PlayerPrefs.GetFloat("Volume")) * 20);
             DontDestroyOnLoad(this.gameObject);
         }
         else

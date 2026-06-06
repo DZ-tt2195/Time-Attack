@@ -6,10 +6,10 @@ public class BaseEnemy : Entity
     [Foldout("Enemy info", true)]
     protected GameObject crossedOut { get; private set; }
     [SerializeField] bool lookAtPlayer = true;
-    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float moveSpeed = 1f;
     [SerializeField] protected float attackRate;
     protected TMP_Text healthText;
-    Vector3 targetOffSet;
+    Vector3 aimPosition;
     public void EnemySetup()
     {
         this.tag = "Enemy";
@@ -22,14 +22,14 @@ public class BaseEnemy : Entity
         bulletSpeed *= PrefManager.GetDifficulty();
         moveSpeed *= PrefManager.GetDifficulty();
 
-        InvokeRepeating(nameof(NewOffset), 0f, 3f);
+        InvokeRepeating(nameof(NewOffset), 0f, 1.5f);
         if (bulletPrefab != null && attackRate != 0f)
             InvokeRepeating(nameof(ShootBullet), attackRate*0.5f, attackRate);
     }
 
     void NewOffset()
     {
-        targetOffSet = Random.insideUnitCircle.normalized * 5f;
+        aimPosition = Player.instance.transform.position + (Vector3)(Random.insideUnitCircle.normalized * 4f);
     }
 
     protected virtual void ShootBullet()
@@ -48,7 +48,7 @@ public class BaseEnemy : Entity
     protected virtual void Movement()
     {
         //this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
-        transform.position = Vector3.MoveTowards(transform.position, Player.instance.transform.position + targetOffSet, moveSpeed*Time.deltaTime);    
+        transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);    
     }
 
     protected virtual void RotateToPlayer()
@@ -72,7 +72,7 @@ public class BaseEnemy : Entity
 
     protected override void DeathEffect()
     {
-        immune = true;
+        protectionSources.Add(Protection.Dead);
         crossedOut.SetActive(true);
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
         healthText.text = "";
@@ -81,7 +81,7 @@ public class BaseEnemy : Entity
     {
         base.HealEffect(amount);
         crossedOut.SetActive(false);
-        immune = false;
+        protectionSources.Remove(Protection.Dead);
         healthText.text = currentHealth.ToString();
         MyExtensions.SetAlpha(this.spriteRenderer, 1f);
     }

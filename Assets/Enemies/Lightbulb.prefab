@@ -191,9 +191,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3410044725069211363}
+  - component: {fileID: 7281539886758776230}
   - component: {fileID: 7057070096884584653}
   - component: {fileID: 5724173682885027921}
-  - component: {fileID: 7281539886758776230}
   m_Layer: 0
   m_Name: Lightbulb
   m_TagString: Enemy
@@ -220,6 +220,26 @@ Transform:
   - {fileID: 7410436186469128980}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7281539886758776230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982296199460572256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca5d14dacadf42ecaa4b281c65e9912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lightbulb
+  spriteRenderer: {fileID: 5882722530765502989}
+  damage: 1
+  currentHealth: 6
+  bulletSpeed: 1.5
+  lookAtPlayer: 1
+  moveSpeed: 0.75
+  attackRate: 1.75
+  blackOutTime: 1
 --- !u!61 &7057070096884584653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,26 +313,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7281539886758776230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7982296199460572256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca5d14dacadf42ecaa4b281c65e9912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lightbulb
-  spriteRenderer: {fileID: 5882722530765502989}
-  damage: 1
-  currentHealth: 3
-  bulletSpeed: 1.5
-  lookAtPlayer: 1
-  moveSpeed: 1
-  attackRate: 1.75
-  blackOutTime: 1
 --- !u!1 &7992026019196895915
 GameObject:
   m_ObjectHideFlags: 0

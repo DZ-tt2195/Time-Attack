@@ -79,7 +79,7 @@ public class WaveManager : MonoBehaviour
             waveList = waveList.Shuffle();
 
         Player player = ThingsToCarry.inst.RandomWeapon();
-        Instantiate(player, new Vector3(0, -3), new Quaternion());
+        Instantiate(player, Vector3.zero, new Quaternion());
         weaponInfo.AssignWeapon(player);
 
         RulesManager energy = ThingsToCarry.inst.RandomRule();
@@ -89,6 +89,7 @@ public class WaveManager : MonoBehaviour
         playButton.onClick.AddListener(BeginGame);
         void BeginGame()
         {
+            AudioManager.instance.Menu();
             playButton.gameObject.SetActive(false);
             replayButton.gameObject.SetActive(true);
             quitButton.gameObject.SetActive(true);
