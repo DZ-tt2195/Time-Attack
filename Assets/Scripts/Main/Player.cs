@@ -15,6 +15,8 @@ public class Player : Entity
 
     [Foldout("Player info", true)]
     float immuneTime = 2.5f;
+    [SerializeField] int currentEnergy;
+    int maxEnergy;
 
     protected override void Awake()
     {
@@ -23,6 +25,7 @@ public class Player : Entity
 
         this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
+        maxEnergy = currentEnergy;
     }
     public virtual string DamageString()
     {
@@ -43,12 +46,15 @@ public class Player : Entity
             if (currentHealth > 0)
             {
                 FollowMouse();
-                EveryFrame();
-                if (Input.GetKeyDown(KeyCode.Mouse0) && CanUseWeapon())
+                if (Input.GetKeyDown(KeyCode.Mouse0) && currentEnergy >= 1)
                 {
-                    currentHealth--;
+                    currentEnergy--;
                     AudioManager.instance.Shoot(0.3f);
                     FireWeapon();
+                }
+                else if (Input.GetKeyDown(KeyCode.Mouse1) && SubWeapon.inst.CanUse())
+                {
+                    SubWeapon.inst.UseSubWeapon();
                 }
             }
         }
@@ -68,7 +74,7 @@ public class Player : Entity
         if (collision.CompareTag("Resupply"))
         {
             Resupply resupply = collision.GetComponent<Resupply>();
-            RulesManager.inst.HitResupply(resupply, currentHealth < maxHealth);
+            RulesManager.inst.HitResupply(resupply, this.currentEnergy < this.maxEnergy);
         }
         else if (collision.TryGetComponent(out Entity entity))
         {
@@ -81,6 +87,7 @@ public class Player : Entity
     }
     protected override void DamageEffect(int amount)
     {
+        base.DamageEffect(amount);
         StartCoroutine(Immunity(true));
     }
     public IEnumerator Immunity(bool animation)
@@ -113,7 +120,7 @@ public class Player : Entity
     }
     protected override void DeathEffect()
     {
-        protectionSources.Add(Protection.Dead);
+        base.DeathEffect();
         tookDamage++;
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 
@@ -128,7 +135,10 @@ public class Player : Entity
             WaveManager.instance.EndGame(AutoTranslate.Lost(), EndStats(), -1);
         }
     }
-
+    public void ChangeEnergy(int amount)
+    {
+        this.currentEnergy = Mathf.Min(this.currentEnergy + amount, maxEnergy);
+    }
     #endregion
 
 #region Ending
@@ -137,25 +147,19 @@ public class Player : Entity
     {
         return (firedBullets - landedBullets, tookDamage);
     }
-    public (int health, int maxHealth) HealthInfo()
+    public (int health, int maxHealth) EnergyInfo()
     {
-        return (this.currentHealth, this.maxHealth);
+        return (this.currentEnergy, this.maxEnergy);
     }
 
     #endregion
 
 #region Weapon
     
-    protected virtual bool CanUseWeapon()
-    {
-        return currentHealth > 1;
-    }
     protected virtual void FireWeapon()
     { 
         CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up, damage));
-    }
-    protected virtual void EveryFrame()
-    {
+        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.down, damage));
     }
 
 #endregion

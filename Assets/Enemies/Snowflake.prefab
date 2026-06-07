@@ -419,7 +419,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
   currentHealth: 6
+  protectionSources: 
   bulletSpeed: 3
+  healthText: {fileID: 4389480831791137980}
   lookAtPlayer: 1
   moveSpeed: 0.75
   attackRate: 3.25
@@ -522,7 +524,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9105321438320892961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -579,7 +581,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4389480831791137980

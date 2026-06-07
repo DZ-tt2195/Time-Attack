@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave, and shooting makes you lose health.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: May 07, 2026
+Last_Update	Last Updated: June 07, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -24,9 +24,10 @@ Wave	Wave: $Num$ / $Max$
 Victory	You Won!
 Lost	You Lost.
 Enemies	Enemies: $Num$ / $Max$
-Health	Health: $Num$ / $Max$
+Energy	Energy: $Num$ / $Max$
+Subweapon	$Weapon$: $Num$%
 FPS	FPS: $Num$
-Health_Pack	 +$Num$ Health
+Energy_Pack	 +$Num$ Energy
 Score	Score: $Num$
 Tutorial_1	Tutorial 1
 Tutorial_2	Tutorial 2
@@ -39,24 +40,15 @@ Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its s
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
 Sound_Credits	Sound Credits
 Tank	Tank
-Tank_Text	Shoots straight forward
+Tank_Text	Shoots forward and backwards
 Compass	Compass
-Compass_Text	Shoots 2 bullets at a diagonal angle
+Compass_Text	Shoots 4 bullets at diagonal angles
 Crown	Crown
 Crown_Text	Bullets orbit around this
-Basics	Basics
-Basics_Text	Collect 2 health from orbs that drop from above.
-Flags	Flags
-Flags_Text	Touch each flag in order to gain 5 health.
 Heart	Heart
 Heart_Text	Bullets deal more damage when at 4 health or less.
 Heart_Damage	1 or 3
-Carry	Carry
-Carry_Text	Stay on top of the box to move it to the other side and gain 5 health.
-Rotate	Rotate
-Rotate_Text	Stay on top of the rotating box to gain health, but don't touch the barriers.
 Choose_Weapon	Choose Weapon
-Choose_Rule	Choose Rule
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -71,3 +63,5 @@ Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
 Update_6	May 07, 2026
 Update_6_Text	Energy and Health are the same thing \nYou start with more Health, but shooting makes you lose 1 health \nWaves in Enemy Rush are now shuffled \nYou can see each enemy's health, and attack slightly less often \nChanged some sprites and added sounds
+Update_7	June 07, 2026
+Update_7_Text	All enemies now slowly move towards you, like Planet does \nTweaked Crane, Knight, and Sun \nAdded different weapons and rules for gaining health

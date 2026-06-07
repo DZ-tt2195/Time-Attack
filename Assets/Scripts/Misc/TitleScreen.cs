@@ -26,10 +26,6 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] Transform storeWeapons;
     [SerializeField] WeaponDisplay weaponDisplayPrefab;
     [SerializeField] Button randomWeapon;
-    [SerializeField] Transform rulesScreen;
-    [SerializeField] Transform storeRules;
-    [SerializeField] RulesDisplay rulesDisplayPrefab;
-    [SerializeField] Button randomRule;
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;
     [SerializeField] TMP_Text description;
@@ -52,13 +48,11 @@ public class TitleScreen : MonoBehaviour
         chooseLevel.text = AutoTranslate.Choose_Level();
         deleteScores.text = AutoTranslate.Delete();
         chooseWeapon.text = AutoTranslate.Choose_Weapon();
-        chooseRule.text = AutoTranslate.Choose_Rule();
         soundCredits.text = AutoTranslate.Sound_Credits();
 
         LevelInfo();
         WeaponInfo();
         DifficultyInfo();
-        RuleInfo();
         SoundInfo();
     }
     void LevelInfo()
@@ -112,7 +106,6 @@ public class TitleScreen : MonoBehaviour
             AudioManager.instance.Menu();
             chooseScreen.gameObject.SetActive(true);
             weaponScreen.gameObject.SetActive(true);
-            rulesScreen.gameObject.SetActive(false);
         }
         
         for (int i = 0; i<allWeapons.Count; i++)
@@ -135,6 +128,7 @@ public class TitleScreen : MonoBehaviour
                 currentWeaponText.text = Translator.inst.Translate(allWeapons[n].name);
         }        
     }
+    /*
     void RuleInfo()
     {
         List<RulesManager> allRules = ThingsToCarry.inst.AllRules();
@@ -170,7 +164,7 @@ public class TitleScreen : MonoBehaviour
             else
                 currentRuleText.text = Translator.inst.Translate(allRules[n].name);
         }        
-    }
+    }*/
     void DifficultyInfo()
     {
         if (!PlayerPrefs.HasKey(PrefManager.Difficulty)) PrefManager.SetDifficulty(1f);

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
-
+using TMPro;
 public enum Protection {Barrier, Immunity, Dead}
 
 public class Entity : MonoBehaviour
@@ -20,6 +20,7 @@ public class Entity : MonoBehaviour
     protected Bullet bulletPrefab { get; private set; }
     protected Queue<Bullet> bulletQueue = new();
     protected int landedBullets { get; private set; }
+    [SerializeField] protected TMP_Text healthText;
 
     protected virtual void Awake()
     {
@@ -29,16 +30,18 @@ public class Entity : MonoBehaviour
             bulletPrefab.gameObject.SetActive(false);
         } catch { }
         maxHealth = currentHealth;
+        healthText.text = maxHealth.ToString();
     }
     public bool CanTakeDamage() => protectionSources.Count == 0;
     public void ChangeHealth(int change)
     {
         if (!CanTakeDamage() && change < 0) return;
         currentHealth = Mathf.Clamp(currentHealth + change, 0, maxHealth);
+        healthText.text = currentHealth.ToString();
+
         if (change > 0)
         {
-            if (change > 0)
-                AudioManager.instance.Heal(0.3f);
+            AudioManager.instance.Heal(0.3f);
             HealEffect(change); 
         }
         else
@@ -54,12 +57,15 @@ public class Entity : MonoBehaviour
     }
     protected virtual void DeathEffect()
     {
+        protectionSources.Add(Protection.Dead);
+        healthText.text = "";
     }
     protected virtual void DamageEffect(int amount)
     {
     }
     protected virtual void HealEffect(int amount)
     {
+        protectionSources.Remove(Protection.Dead);
     }
     protected Bullet CreateBullet(Bullet prefab, AttackInfo info)
     {
