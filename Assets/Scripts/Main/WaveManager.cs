@@ -82,9 +82,7 @@ public class WaveManager : MonoBehaviour
         quitButton.gameObject.SetActive(true);
         pauseScreen.SetActive(false);
 
-        Player player = Instantiate(ThingsToCarry.inst.RandomWeapon(), Vector3.zero, new Quaternion());
         SubWeapon sub = Instantiate(ThingsToCarry.inst.RandomSub());
-
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         waveList = currentLevel.listOfWaves;
         if (currentLevel.levelType == LevelType.Shuffled)

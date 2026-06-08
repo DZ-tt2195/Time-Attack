@@ -1,11 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using MyBox;
-using TMPro;
 using System.Collections;
-using System.Diagnostics;
-using System;
-using System.Linq;
+using System.Collections.Generic;
 public class Player : Entity
 {
 
@@ -17,6 +13,8 @@ public class Player : Entity
     float immuneTime = 2.5f;
     [SerializeField] int currentEnergy;
     int maxEnergy;
+    [SerializeField] List<Transform> toSpin = new();
+    [SerializeField] float spinSpeed;
 
     protected override void Awake()
     {
@@ -26,6 +24,12 @@ public class Player : Entity
         this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
         maxEnergy = currentEnergy;
+
+        float randomAngle1 = Random.Range(0f, 360f);
+        toSpin[0].eulerAngles = new(0, 0, randomAngle1);
+
+        float randomAngle2 = randomAngle1 + Random.Range(60f, 300f);
+        toSpin[1].eulerAngles = new(0, 0, randomAngle2);
     }
     public virtual string DamageString()
     {
@@ -46,11 +50,20 @@ public class Player : Entity
             if (currentHealth > 0)
             {
                 FollowMouse();
+                foreach (Transform next in toSpin)
+                    next.Rotate(0, 0, spinSpeed * Time.deltaTime); 
+
                 if (Input.GetKeyDown(KeyCode.Mouse0) && currentEnergy >= 1)
                 {
                     currentEnergy--;
                     AudioManager.instance.Shoot(0.3f);
-                    FireWeapon();
+
+                    for (int i = 0; i<toSpin.Count; i++)
+                    {
+                        Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(bulletPrefab);
+                        Vector2 dir = toSpin[i].right;
+                        CreateBullet(bulletPrefab, new AttackInfo(toSpin[i].position, bulletSpeed, dir, damage));
+                    }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse1) && SubWeapon.inst.CanUse())
                 {
@@ -153,15 +166,5 @@ public class Player : Entity
     }
 
     #endregion
-
-#region Weapon
-    
-    protected virtual void FireWeapon()
-    { 
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up, damage));
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.down, damage));
-    }
-
-#endregion
 
 }

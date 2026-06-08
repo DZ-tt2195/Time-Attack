@@ -7,8 +7,6 @@ public class Customizer : MonoBehaviour
     void Awake()
     {
         inst = this;
-        weaponInfo.AssignWeapon(ThingsToCarry.inst.RandomWeapon());        
-        //rulesInfo.AssignRule(ThingsToCarry.inst.RandomRule());
     }
     public void BeginGame()
     {

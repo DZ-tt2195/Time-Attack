@@ -13,10 +13,6 @@ public static class PrefManager
     public static int GetCurrentLevel() => PlayerPrefs.GetInt(CurrentLevel);
     public static void SetCurrentLevel(int value) => PlayerPrefs.SetInt(CurrentLevel, value);
 
-    public const string CurrentWeapon = nameof(CurrentWeapon);
-    public static int GetCurrentWeapon() => PlayerPrefs.GetInt(CurrentWeapon);
-    public static void SetCurrentWeapon(int value) => PlayerPrefs.SetInt(CurrentWeapon, value);
-
     public const string CurrentSub = nameof(CurrentSub);
     public static int GetCurrentSub() => PlayerPrefs.GetInt(CurrentSub);
     public static void SetCurrentSub(int value) => PlayerPrefs.SetInt(CurrentSub, value);

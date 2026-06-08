@@ -47,11 +47,11 @@ public class TitleScreen : MonoBehaviour
         play.text = AutoTranslate.Play();
         chooseLevel.text = AutoTranslate.Choose_Level();
         deleteScores.text = AutoTranslate.Delete();
-        chooseWeapon.text = AutoTranslate.Choose_Weapon();
+        //chooseWeapon.text = AutoTranslate.Choose_Weapon();
         soundCredits.text = AutoTranslate.Sound_Credits();
 
         LevelInfo();
-        WeaponInfo();
+        //WeaponInfo();
         DifficultyInfo();
         SoundInfo();
     }
@@ -93,6 +93,7 @@ public class TitleScreen : MonoBehaviour
                 bestRun.text = AutoTranslate.No_Score();
         }        
     }
+    /*
     void WeaponInfo()
     {
         List<Player> allWeapons = ThingsToCarry.inst.AllWeapons();
@@ -127,7 +128,7 @@ public class TitleScreen : MonoBehaviour
             else
                 currentWeaponText.text = Translator.inst.Translate(allWeapons[n].name);
         }        
-    }
+    }*/
     /*
     void RuleInfo()
     {
