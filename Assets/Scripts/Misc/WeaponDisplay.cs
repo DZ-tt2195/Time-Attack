@@ -4,18 +4,13 @@ using UnityEngine.UI;
 using MyBox;
 public class WeaponDisplay : MonoBehaviour
 {
-    [SerializeField] Image weaponSprite;
+    [SerializeField] TMP_Text nameText;
     [SerializeField] TMP_Text descriptionText;
-    [SerializeField] TMP_Text damageText;
-    [ReadOnly] public Player thisPlayer;
     public Button button;
 
-    public void AssignWeapon(Player player)
+    public void AssignWeapon(SubWeapon weapon)
     {
-        thisPlayer = player;
-        weaponSprite.sprite = player.spriteRenderer.sprite;
-        weaponSprite.color = player.spriteRenderer.color;
-        descriptionText.text = Translator.inst.Translate($"{player.name}_Text");
-        damageText.text = $"[{player.DamageString()}]";
+        nameText.text = Translator.inst.Translate(weapon.name);
+        descriptionText.text = Translator.inst.Translate($"{weapon.name}_Text");
     }
 }

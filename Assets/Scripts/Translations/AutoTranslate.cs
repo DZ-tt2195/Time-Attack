@@ -36,6 +36,7 @@ public static string Tutorial_2 () => Translator.inst.Translate("Tutorial_2", ne
 public static string Enemy_Rush () => Translator.inst.Translate("Enemy_Rush", new() {});
 public static string Random () => Translator.inst.Translate("Random", new() {});
 public static string Endless () => Translator.inst.Translate("Endless", new() {});
+public static string Choose_SubWeapon () => Translator.inst.Translate("Choose_SubWeapon", new() {});
 public static string First_Tutorial () => Translator.inst.Translate("First_Tutorial", new() {});
 public static string Second_Tutorial () => Translator.inst.Translate("Second_Tutorial", new() {});
 public static string Third_Tutorial () => Translator.inst.Translate("Third_Tutorial", new() {});

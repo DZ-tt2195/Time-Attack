@@ -44,6 +44,7 @@ public class WaveManager : MonoBehaviour
     [Foldout("Audio", true)]
     [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip loseSound;
+    
     [Foldout("FPS", true)]
     int lastframe = 0;
     int lastupdate = 60;
@@ -77,6 +78,7 @@ public class WaveManager : MonoBehaviour
     public void BeginGame()
     {
         AudioManager.instance.Menu();
+        Customizer.inst.BeginGame();
         playButton.gameObject.SetActive(false);
         replayButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
