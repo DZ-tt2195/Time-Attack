@@ -28,7 +28,7 @@ public class Factory : BaseEnemy
     protected override void ShootBullet()
     {
         foreach ((Vector3 movement, Vector3 position) in positionsToShoot)
-            CreateBullet(bulletPrefab, new AttackInfo(position, bulletSpeed, movement, damage));
+            CreateBullet(DefaultAttack(position, movement));
         
         numBullets--;
         if (numBullets == 0) Reset();

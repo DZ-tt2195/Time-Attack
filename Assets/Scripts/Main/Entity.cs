@@ -4,31 +4,23 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using TMPro;
+using System;
 public enum Protection {Barrier, Immunity, Dead}
 
-public class Entity : MonoBehaviour
+public class Entity : StoreBullets
 {
     [Foldout("Entity info", true)]
     public SpriteRenderer spriteRenderer;
     [SerializeField] protected int damage = 1;
     public int currentHealth;
     protected int maxHealth { get; private set; }
-    protected int firedBullets;
     [ReadOnly] public List<Protection> protectionSources = new();
-    [SerializeField] protected float bulletSpeed;
     protected int tookDamage;
-    protected Bullet bulletPrefab { get; private set; }
-    protected Queue<Bullet> bulletQueue = new();
-    protected int landedBullets { get; private set; }
     [SerializeField] protected TMP_Text healthText;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
-        try
-        {
-            bulletPrefab = this.transform.Find("Bullet").GetComponent<Bullet>();
-            bulletPrefab.gameObject.SetActive(false);
-        } catch { }
+        base.Awake();
         maxHealth = currentHealth;
         healthText.text = maxHealth.ToString();
     }
@@ -67,19 +59,17 @@ public class Entity : MonoBehaviour
     {
         protectionSources.Remove(Protection.Dead);
     }
-    protected Bullet CreateBullet(Bullet prefab, AttackInfo info)
+    protected AttackInfo DefaultAttack(Vector2 spawn, Vector2 direction)
+    {
+        return new AttackInfo(spawn, bulletSpeed, direction, Hit);
+        void Hit(Entity entity) => entity.ChangeHealth(-damage);        
+    }
+    protected Bullet CreateBullet(AttackInfo info)
     {
         firedBullets++;
-        Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(prefab);
+        Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(bulletPrefab);
         newBullet.AssignInfo(info, this);
         return newBullet;
-    }
-    public void ReturnBullet(Bullet bullet, bool landed)
-    {
-        bulletQueue.Enqueue(bullet);
-        bullet.gameObject.SetActive(false);
-        if (landed)
-            landedBullets++;
     }
 }
 public class AttackInfo
@@ -87,13 +77,13 @@ public class AttackInfo
     public Vector2 spawnPosition{get; private set;}
     public float bulletSpeed{get; private set;}
     public Vector2 direction{get; private set;}
-    public int damage {get; private set;}
+    public Action<Entity> hitTarget {get; private set;}
 
-    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, int damage)
+    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Action<Entity> hitTarget)
     {
         this.spawnPosition = spawnposition;
         this.bulletSpeed = bulletSpeed;
         this.direction = direction;
-        this.damage = damage;
+        this.hitTarget = hitTarget;
     }
 }

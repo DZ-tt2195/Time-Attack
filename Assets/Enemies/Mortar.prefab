@@ -902,7 +902,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8646325550116084806
@@ -1150,11 +1150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4f5c4d31d1c4dc2943859c19a3dc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 6
+  currentHealth: 3
   protectionSources: 
-  bulletSpeed: 0
   healthText: {fileID: 8646325550116084806}
   lookAtPlayer: 1
   moveSpeed: 0.75

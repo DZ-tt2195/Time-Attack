@@ -191,9 +191,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4807919239139169966}
-  - component: {fileID: 4157442715977164450}
   - component: {fileID: 7397169136509518116}
   - component: {fileID: 5645342545888160545}
+  - component: {fileID: 8954329950760305530}
   - component: {fileID: 4444981909030806222}
   m_Layer: 0
   m_Name: Star
@@ -217,19 +217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5602975972425853259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4157442715977164450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483801107813507696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed046ddeda7140f08f4f2b0f4541767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disappearOnWall: 1
 --- !u!212 &7397169136509518116
 SpriteRenderer:
   serializedVersion: 2
@@ -316,6 +303,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8954329950760305530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483801107813507696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  disappearOnWall: 1
 --- !u!61 &4444981909030806222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -594,11 +594,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed574fc8486748789cb334bfc115f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 2
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
   currentHealth: 4
   protectionSources: 
-  bulletSpeed: 2
   healthText: {fileID: 8777176986021941860}
   lookAtPlayer: 1
   moveSpeed: 0.75
@@ -761,7 +761,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8777176986021941860

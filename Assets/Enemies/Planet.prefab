@@ -705,11 +705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525e807c6e7e24cdeb0f6b16b83ab0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Planet
+  bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 8
+  currentHealth: 4
   protectionSources: 
-  bulletSpeed: 0
   healthText: {fileID: 5011160519040992263}
   lookAtPlayer: 0
   moveSpeed: 1.75
@@ -1202,7 +1202,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5011160519040992263

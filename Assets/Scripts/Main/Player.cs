@@ -62,7 +62,7 @@ public class Player : Entity
                     {
                         Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(bulletPrefab);
                         Vector2 dir = toSpin[i].right;
-                        CreateBullet(bulletPrefab, new AttackInfo(toSpin[i].position, bulletSpeed, dir, damage));
+                        CreateBullet(DefaultAttack(toSpin[i].position, dir));
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Mouse1) && SubWeapon.inst.CanUse())

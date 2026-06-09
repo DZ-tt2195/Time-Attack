@@ -4,9 +4,9 @@ public class Knight : BaseEnemy
 {
     protected override void ShootBullet()
     {
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.left, damage));
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.right, damage));
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.up, damage));
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, Vector3.down, damage));
+        CreateBullet(DefaultAttack(this.transform.position, Vector3.left));
+        CreateBullet(DefaultAttack(this.transform.position, Vector3.right));
+        CreateBullet(DefaultAttack(this.transform.position, Vector3.up));
+        CreateBullet(DefaultAttack(this.transform.position, Vector3.down));
     }
 }

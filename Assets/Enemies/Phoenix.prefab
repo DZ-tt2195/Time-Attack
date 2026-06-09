@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1903068501894384175}
   - component: {fileID: 9091328771776666972}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Time Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &9091328771776666972
@@ -446,7 +446,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &9084269081306082685
@@ -775,11 +775,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a613eefbcd3ca4e239b01c9e42ec54f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 1
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 4
+  currentHealth: 2
   protectionSources: 
-  bulletSpeed: 1
   healthText: {fileID: 9084269081306082685}
   lookAtPlayer: 1
   moveSpeed: 1

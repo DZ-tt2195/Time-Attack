@@ -11,7 +11,7 @@ public class Snowflake : BaseEnemy
         {
             float transformX = this.transform.position.x + i;
             float transformY = (this.transform.position.y > 0) ? WaveManager.maxY : WaveManager.minY;
-            CreateBullet(bulletPrefab, new AttackInfo(new Vector2(transformX, transformY), bulletSpeed, target, damage));
+            CreateBullet(DefaultAttack(new Vector2(transformX, transformY), target));
         }
     }
 }

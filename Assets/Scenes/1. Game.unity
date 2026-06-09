@@ -5322,7 +5322,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 17847422ca6be4f92b14613b431982ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5548,6 +5548,7 @@ MonoBehaviour:
   - {fileID: 739478175}
   - {fileID: 1226735360}
   - {fileID: 1791670244}
+  - {fileID: 1850310567}
 --- !u!1 &2005577506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,11 +6428,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bd0f9ffe37f4aa68d1d5251433133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  bulletSpeed: 7
   spriteRenderer: {fileID: 6438494536739822877}
-  damage: 2
+  damage: 1
   currentHealth: 10
   protectionSources: 
-  bulletSpeed: 7
   healthText: {fileID: 5992719068442753987}
   currentEnergy: 5
   toSpin:
@@ -6547,7 +6548,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7fe21782592064554954250e857c8504, type: 3}
-  m_Color: {r: 1, g: 0.49803922, b: 0.49803922, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6825,7 +6826,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &9044745909305988343

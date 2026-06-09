@@ -445,7 +445,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4188058806598154744
@@ -593,11 +593,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eacedff480b84e0aa52afd8203f69f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Knight
+  bulletSpeed: 2.5
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 6
+  currentHealth: 3
   protectionSources: 
-  bulletSpeed: 2.5
   healthText: {fileID: 4188058806598154744}
   lookAtPlayer: 0
   moveSpeed: 0.75

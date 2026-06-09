@@ -38,7 +38,7 @@ public class BaseEnemy : Entity
     {
         Vector2 target = AimAtPlayer();
         target.Normalize();
-        CreateBullet(bulletPrefab, new AttackInfo(this.transform.position, bulletSpeed, target, damage));
+        CreateBullet(DefaultAttack(this.transform.position, target));
     }
     void Update()
     {

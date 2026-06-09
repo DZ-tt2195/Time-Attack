@@ -189,6 +189,7 @@ public class WaveManager : MonoBehaviour
         UpdateTexts();
         blackOutTime = Mathf.Max(0f, blackOutTime - Time.deltaTime);
         blackOutObject.SetActive(blackOutTime > 0f);
+        blackOutObject.transform.SetAsLastSibling();
         blackOutObject.transform.position = Player.instance.transform.position;
     }
     public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)

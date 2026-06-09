@@ -3,12 +3,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     protected AttackInfo info;
-    protected Vector3 direction;
     public Entity owner { get; private set; }
-    float bulletSpeed;
     public SpriteRenderer spriteRenderer { get; private set; }
     [SerializeField] bool disappearOnWall = true;
-    int damage;
 
     protected virtual void Awake()
     {
@@ -31,10 +28,8 @@ public class Bullet : MonoBehaviour
     {
         this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
-        this.bulletSpeed = info.bulletSpeed;
-        this.direction = info.direction;
         this.owner = owner;
-        this.damage = info.damage;
+        this.info = info;
         Movement();
         this.gameObject.SetActive(true);
     }
@@ -53,24 +48,20 @@ public class Bullet : MonoBehaviour
     }
     protected virtual void Movement()
     {
-        this.transform.Translate(bulletSpeed * Time.deltaTime * direction, Space.World);
-        this.transform.localEulerAngles = new(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90);
+        this.transform.Translate(info.bulletSpeed * Time.deltaTime * info.direction, Space.World);
+        this.transform.localEulerAngles = new(0, 0, Mathf.Atan2(info.direction.y, info.direction.x) * Mathf.Rad2Deg + 90);
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity target) && target.CanTakeDamage() && !target.CompareTag(this.tag))
         {
-            HitEntity(target);
+            info.hitTarget(target);
+            TryAndReturn(this);
         }
         else if (disappearOnWall && collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
             if (this.CompareTag("Player")) AudioManager.instance.Miss(0.1f);
             TryAndReturn(false);
         }
-    }
-    protected virtual void HitEntity(Entity target)
-    {
-        target.ChangeHealth(-damage);
-        TryAndReturn(true);        
     }
 }

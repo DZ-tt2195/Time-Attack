@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubWeapon : MonoBehaviour
+public class SubWeapon : StoreBullets
 {
     public static SubWeapon inst;
     float timer;
     [SerializeField] float maxTimer;
     protected HashSet<BaseEnemy> enemiesInRange = new();
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         inst = this;
         this.name = this.name.Replace("(Clone)", "");
     }
