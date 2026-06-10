@@ -7,6 +7,7 @@ public class Level : ScriptableObject
     public List<Wave<Collection>> listOfWaves = new();
     public string levelName = nameof(AutoTranslate.Blank);
     public LevelType levelType;
+    public bool includeRules = true;
 }
 
 [System.Serializable]

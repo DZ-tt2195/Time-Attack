@@ -18,7 +18,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] Transform chooseScreen;
     [SerializeField] Transform weaponScreen;
     [SerializeField] Transform storeWeapons;
-    [SerializeField] WeaponDisplay weaponDisplayPrefab;
+    [SerializeField] RulesDisplay weaponDisplayPrefab;
     [SerializeField] Button randomWeapon;
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;

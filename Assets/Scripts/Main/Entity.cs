@@ -12,8 +12,8 @@ public class Entity : StoreBullets
     [Foldout("Entity info", true)]
     public SpriteRenderer spriteRenderer;
     [SerializeField] protected int damage = 1;
-    public int currentHealth;
-    protected int maxHealth { get; private set; }
+    protected int currentHealth {get; private set;}
+    [SerializeField] protected int maxHealth;
     [ReadOnly] public List<Protection> protectionSources = new();
     protected int tookDamage;
     [SerializeField] protected TMP_Text healthText;
@@ -21,7 +21,7 @@ public class Entity : StoreBullets
     protected override void Awake()
     {
         base.Awake();
-        maxHealth = currentHealth;
+        currentHealth = maxHealth;
         healthText.text = maxHealth.ToString();
     }
     public bool CanTakeDamage() => protectionSources.Count == 0;
@@ -71,6 +71,7 @@ public class Entity : StoreBullets
         newBullet.AssignInfo(info, this);
         return newBullet;
     }
+    public int GetHealth() => currentHealth;
 }
 public class AttackInfo
 {

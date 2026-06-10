@@ -2,24 +2,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using MyBox;
+using System.Linq;
+[System.Serializable]
+public class RulesSlider
+{
+    public Slider slider;
+    public TMP_Text textBox;
+}
 
 public class Customizer : MonoBehaviour
 {
     public static Customizer inst;
-    [SerializeField] WeaponDisplay weaponInfo;
+    [Foldout("Difficulty", true)]
     [SerializeField] Slider difficultySlider;
     [SerializeField] TMP_Text difficultyLabel;
-    [SerializeField] Button random;
-    [SerializeField] TMP_Text chooseSubWeaponText;
-    [SerializeField] WeaponDisplay displayPrefab;
-    [SerializeField] WeaponDisplay displayOnScreen;
+    [Foldout("Rules Choosing", true)]
+    [SerializeField] TMP_Text chooseRulesText;
+    [SerializeField] RulesDisplay displayPrefab;
     [SerializeField] Transform storeWeapons;
+    [Foldout("Rules UI", true)]
+    [SerializeField] List<RulesDisplay> displaysOnScreen;
+    HashSet<Rule> currentRules = new();
+    [SerializeField] List<RulesSlider> rulesSliders = new();
     void Awake()
     {
         inst = this;
-        chooseSubWeaponText.text = AutoTranslate.Choose_SubWeapon();
         DifficultyInfo();
-        WeaponInfo();
+        RulesSetup();
     }
     void DifficultyInfo()
     {
@@ -34,35 +44,66 @@ public class Customizer : MonoBehaviour
             PrefManager.SetDifficulty(value);
         }
     }    
-    void WeaponInfo()
+    void RulesSetup()
     {
-        chooseSubWeaponText.text = AutoTranslate.Choose_SubWeapon();
-        List<SubWeapon> allSubWeapons = ThingsToCarry.inst.AllSubs();
-        if (!PlayerPrefs.HasKey(PrefManager.CurrentSub)) PrefManager.SetCurrentSub(-1);
-        random.onClick.AddListener(() => SetWeapon(-1));
-        random.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Random();
-
-        for (int i = 0; i<allSubWeapons.Count; i++)
+        if (ThingsToCarry.inst.CurrentLevel().includeRules)
         {
-            int n = i;
-            WeaponDisplay nextDisplay = Instantiate(displayPrefab, storeWeapons);
-            nextDisplay.AssignWeapon(allSubWeapons[n]);
-            nextDisplay.button.onClick.AddListener(() => SetWeapon(n));
+            chooseRulesText.text = AutoTranslate.Choose_Rule();
+            List<Rule> allRules = ThingsToCarry.inst.AllRules();
+
+            foreach (Rule rule in allRules)
+            {
+                RulesDisplay nextDisplay = Instantiate(displayPrefab, storeWeapons);
+                nextDisplay.AssignRule(rule);
+                nextDisplay.toggle.isOn = false;
+                nextDisplay.toggle.onValueChanged.AddListener(RulesToggle);
+
+                void RulesToggle(bool enabled)
+                {
+                    if (enabled)
+                    {
+                        currentRules.Add(rule);
+                        if (currentRules.Count > displaysOnScreen.Count)
+                            nextDisplay.toggle.isOn = false;
+                        else
+                            AudioManager.instance.Menu();
+                    }
+                    else
+                    {
+                        AudioManager.instance.Menu();
+                        currentRules.Remove(rule);
+                    }
+                }
+            }
         }
-        SetWeapon(PrefManager.GetCurrentSub());
-
-        void SetWeapon(int n)
+        else
         {
-            AudioManager.instance.Menu();
-            PrefManager.SetCurrentSub(n);
-            displayOnScreen.AssignWeapon(ThingsToCarry.inst.RandomSub());
-        }        
+            storeWeapons.gameObject.SetActive(false);
+            chooseRulesText.gameObject.SetActive(false);
+        }
     }    
     public void BeginGame()
     {
         difficultySlider.gameObject.SetActive(false);
         storeWeapons.gameObject.SetActive(false);
-        chooseSubWeaponText.gameObject.SetActive(false);
-        random.gameObject.SetActive(false);
+        chooseRulesText.gameObject.SetActive(false);
+
+        if (ThingsToCarry.inst.CurrentLevel().includeRules)
+        {
+            List<Rule> allRules = ThingsToCarry.inst.AllRules();
+            while (currentRules.Count < displaysOnScreen.Count)
+            {
+                int randomNumber = Random.Range(0, allRules.Count);
+                currentRules.Add(allRules[randomNumber]);                
+            }
+
+            List<Rule> selectedRules = currentRules.ToList();
+            for (int i = 0; i<selectedRules.Count; i++)
+            {
+                Rule newRule = Instantiate(selectedRules[i]);
+                newRule.AssignSlider(rulesSliders[i]);
+                displaysOnScreen[i].AssignRule(newRule);
+            }
+        }
     }
 }

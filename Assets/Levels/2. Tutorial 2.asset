@@ -28,4 +28,5 @@ MonoBehaviour:
       position: {x: 0, y: 2}
     tutorialKey: Fourth_Tutorial
   levelName: Tutorial_2
-  endless: 0
+  levelType: 0
+  includeRules: 0

@@ -18,6 +18,6 @@ public class Resupply : MonoBehaviour
         this.transform.Translate(direction*Time.deltaTime);
         if (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
             this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f)
-            RulesManager.inst.ReturnResupply(this);
+            EnergyManager.inst.ReturnResupply(this);
     }
 }

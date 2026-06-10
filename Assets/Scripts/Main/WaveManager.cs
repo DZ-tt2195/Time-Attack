@@ -31,8 +31,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] TMP_Text timerText;
     [SerializeField] Slider energySlider;
     [SerializeField] TMP_Text energyCounter;
-    [SerializeField] Slider subWeaponSlider;
-    [SerializeField] TMP_Text subWeaponCounter;
     [SerializeField] TMP_Text tutorialText;
 
     [Foldout("Pause screen", true)]
@@ -41,6 +39,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] Button replayButton;
     [SerializeField] Button quitButton;
     [SerializeField] TMP_Text endText;
+    
     [Foldout("Audio", true)]
     [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip loseSound;
@@ -78,13 +77,11 @@ public class WaveManager : MonoBehaviour
     public void BeginGame()
     {
         AudioManager.instance.Menu();
-        Customizer.inst.BeginGame();
         playButton.gameObject.SetActive(false);
         replayButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         pauseScreen.SetActive(false);
 
-        SubWeapon sub = Instantiate(ThingsToCarry.inst.RandomSub());
         Level currentLevel = ThingsToCarry.inst.CurrentLevel();
         waveList = currentLevel.listOfWaves;
         if (currentLevel.levelType == LevelType.Shuffled)
@@ -94,10 +91,9 @@ public class WaveManager : MonoBehaviour
         enemySlider.gameObject.SetActive(true);
         timerText.gameObject.SetActive(true);
         energySlider.gameObject.SetActive(true);
-        subWeaponSlider.gameObject.SetActive(true);
 
         state = GameState.Playing;
-        RulesManager.inst.BeginGame();
+        EnergyManager.inst.BeginGame();
         gameTimer.Start();
         NewWave();
     }
@@ -172,7 +168,7 @@ public class WaveManager : MonoBehaviour
         {
             foreach (BaseEnemy enemy in allEnemies)
             {
-                if (enemy.currentHealth > 0)
+                if (enemy.GetHealth() > 0)
                     currentEnemies++;
             }
 
@@ -223,11 +219,6 @@ public class WaveManager : MonoBehaviour
         (int energy, int maxEnergy) playerStats = Player.instance.EnergyInfo();
         energySlider.value = playerStats.energy / (float)playerStats.maxEnergy;
         energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());
-
-        (float timer, float maxTimer) subWeaponStats = SubWeapon.inst.TimerInfo();
-        subWeaponSlider.value = subWeaponStats.timer / subWeaponStats.maxTimer;
-        subWeaponCounter.text = AutoTranslate.Subweapon(Translator.inst.Translate(SubWeapon.inst.name), (subWeaponSlider.value*100).ToString("F1"));
-
         timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
         timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";
 
@@ -247,6 +238,7 @@ public class WaveManager : MonoBehaviour
             return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
         }        
     }
+    public List<BaseEnemy> GetEnemies() => allEnemies;
 
 #endregion
 

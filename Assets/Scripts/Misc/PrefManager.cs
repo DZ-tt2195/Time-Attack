@@ -12,10 +12,5 @@ public static class PrefManager
     public const string CurrentLevel = nameof(CurrentLevel);
     public static int GetCurrentLevel() => PlayerPrefs.GetInt(CurrentLevel);
     public static void SetCurrentLevel(int value) => PlayerPrefs.SetInt(CurrentLevel, value);
-
-    public const string CurrentSub = nameof(CurrentSub);
-    public static int GetCurrentSub() => PlayerPrefs.GetInt(CurrentSub);
-    public static void SetCurrentSub(int value) => PlayerPrefs.SetInt(CurrentSub, value);
-
 }
 

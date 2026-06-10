@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
-public class RulesManager : MonoBehaviour
+public class EnergyManager : MonoBehaviour
 {
-    public static RulesManager inst;
+    public static EnergyManager inst;
     protected Resupply resupplyPrefab { get; private set; }
     Queue<Resupply> resupplyQueue = new();
     [SerializeField] protected int energy;

@@ -31,7 +31,7 @@ public class Phoenix : BaseEnemy
                 yield return null;
             }
 
-            ChangeHealth(maxHealth);
+            ChangeHealth(this.maxHealth);
             textBox.text = "";
         }
     }

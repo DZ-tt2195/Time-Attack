@@ -11,8 +11,8 @@ public class Player : Entity
 
     [Foldout("Player info", true)]
     float immuneTime = 2.5f;
-    [SerializeField] int currentEnergy;
-    int maxEnergy;
+    int currentEnergy;
+    [SerializeField] int maxEnergy;
     [SerializeField] List<Transform> toSpin = new();
     [SerializeField] float spinSpeed;
 
@@ -23,7 +23,7 @@ public class Player : Entity
 
         this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
-        maxEnergy = currentEnergy;
+        currentEnergy = maxEnergy;
 
         float randomAngle1 = Random.Range(0f, 360f);
         toSpin[0].eulerAngles = new(0, 0, randomAngle1);
@@ -65,10 +65,6 @@ public class Player : Entity
                         CreateBullet(DefaultAttack(toSpin[i].position, dir));
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Mouse1) && SubWeapon.inst.CanUse())
-                {
-                    SubWeapon.inst.UseSubWeapon();
-                }
             }
         }
     }
@@ -87,7 +83,7 @@ public class Player : Entity
         if (collision.CompareTag("Resupply"))
         {
             Resupply resupply = collision.GetComponent<Resupply>();
-            RulesManager.inst.HitResupply(resupply, this.currentEnergy < this.maxEnergy);
+            EnergyManager.inst.HitResupply(resupply, this.currentEnergy < this.maxEnergy);
         }
         else if (collision.TryGetComponent(out Entity entity))
         {
@@ -152,10 +148,6 @@ public class Player : Entity
     {
         this.currentEnergy = Mathf.Min(this.currentEnergy + amount, maxEnergy);
     }
-    #endregion
-
-#region Ending
-
     public (int, int) EndStats()
     {
         return (firedBullets - landedBullets, tookDamage);

@@ -416,7 +416,7 @@ MonoBehaviour:
   bulletSpeed: 2
   spriteRenderer: {fileID: 2212896351684885597}
   damage: 1
-  currentHealth: 3
+  maxHealth: 3
   protectionSources: 
   healthText: {fileID: 7976568969252187110}
   lookAtPlayer: 1

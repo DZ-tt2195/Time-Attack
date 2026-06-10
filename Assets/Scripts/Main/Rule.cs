@@ -1,34 +1,47 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using MyBox;
 
-public class SubWeapon : StoreBullets
+public class Rule : StoreBullets
 {
-    public static SubWeapon inst;
-    float timer;
-    [SerializeField] float maxTimer;
+    [Foldout("Rules info", true)]
+    float timer = 0f;
+    [SerializeField] float maxTimer = 10f;
+    [SerializeField] bool beOnPlayer;
     protected HashSet<BaseEnemy> enemiesInRange = new();
+    Slider slider;
     protected override void Awake()
     {
         base.Awake();
-        inst = this;
         this.name = this.name.Replace("(Clone)", "");
+    }
+    public void AssignSlider(RulesSlider rulesslider)
+    {
+        this.slider = rulesslider.slider;
+        this.slider.gameObject.SetActive(true);
+        rulesslider.textBox.text = Translator.inst.Translate(this.name);
     }
     void Update()
     {
         if (WaveManager.state == GameState.Playing)
         {
             timer = Mathf.Min(timer+Time.deltaTime, maxTimer);
-            this.transform.position = Player.instance.transform.position;
+            if (CanUse())
+            {
+                timer = 0f;
+                ActivateRule();
+            }
+            if (beOnPlayer)
+            {
+                this.transform.position = Player.instance.transform.position;
+            }
+            this.slider.value = timer/maxTimer;
         }
     }
     public bool CanUse() => timer >= maxTimer;
-    public (float timer, float maxTimer) TimerInfo()
+    protected virtual void ActivateRule()
     {
-        return (this.timer, this.maxTimer);
-    }
-    public virtual void UseSubWeapon()
-    {
-        this.timer = 0f;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

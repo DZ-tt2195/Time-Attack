@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class Freeze : SubWeapon
+public class Freeze : Rule
 {
     [SerializeField] float stunTime;
-    public override void UseSubWeapon()
+    protected override void ActivateRule()
     {
-        base.UseSubWeapon();
         foreach (BaseEnemy enemy in enemiesInRange)
             enemy.StunThis(stunTime);
     }

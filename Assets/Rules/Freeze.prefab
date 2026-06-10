@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e8618669d6c43e78147de192585cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Freeze
+  bulletSpeed: 0
   maxTimer: 10
+  beOnPlayer: 1
   stunTime: 3
 --- !u!212 &6626662838147560955
 SpriteRenderer:
