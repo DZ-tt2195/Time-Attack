@@ -10,7 +10,7 @@ public class Player : Entity
     public static Player instance;
 
     [Foldout("Player info", true)]
-    float immuneTime = 2.5f;
+    [SerializeField] float immuneTime;
     int currentEnergy;
     [SerializeField] int maxEnergy;
     [SerializeField] List<Transform> toSpin = new();
@@ -133,7 +133,7 @@ public class Player : Entity
         tookDamage++;
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 
-        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+        Level currentLevel = GameFiles.inst.CurrentLevel();
         if (currentLevel.levelType == LevelType.Endless)
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10;

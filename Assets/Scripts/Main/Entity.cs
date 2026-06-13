@@ -1,10 +1,7 @@
 using UnityEngine;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using TMPro;
-using System;
 public enum Protection {Barrier, Immunity, Dead}
 
 public class Entity : StoreBullets
@@ -72,19 +69,4 @@ public class Entity : StoreBullets
         return newBullet;
     }
     public int GetHealth() => currentHealth;
-}
-public class AttackInfo
-{
-    public Vector2 spawnPosition{get; private set;}
-    public float bulletSpeed{get; private set;}
-    public Vector2 direction{get; private set;}
-    public Action<Entity> hitTarget {get; private set;}
-
-    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Action<Entity> hitTarget)
-    {
-        this.spawnPosition = spawnposition;
-        this.bulletSpeed = bulletSpeed;
-        this.direction = direction;
-        this.hitTarget = hitTarget;
-    }
 }

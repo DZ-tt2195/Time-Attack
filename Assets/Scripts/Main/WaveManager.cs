@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
     [Foldout("Pause screen", true)]
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Button playButton;
-    [SerializeField] Button replayButton;
+    [SerializeField] Button restartButton;
     [SerializeField] Button quitButton;
     [SerializeField] TMP_Text endText;
     
@@ -65,8 +65,9 @@ public class WaveManager : MonoBehaviour
         maxX = mainCamera.transform.position.x + cameraWidth / 2f;
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
+        UnityEngine.Debug.Log($"{minX} - {maxX}; {minY} - {maxY}");
 
-        replayButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Replay();
+        restartButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Restart();
         quitButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Quit();
         playButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Play();
         endText.text = AutoTranslate.Blank();
@@ -78,11 +79,11 @@ public class WaveManager : MonoBehaviour
     {
         AudioManager.instance.Menu();
         playButton.gameObject.SetActive(false);
-        replayButton.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         pauseScreen.SetActive(false);
 
-        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+        Level currentLevel = GameFiles.inst.CurrentLevel();
         waveList = currentLevel.listOfWaves;
         if (currentLevel.levelType == LevelType.Shuffled)
             waveList = waveList.Shuffle();
@@ -105,7 +106,7 @@ public class WaveManager : MonoBehaviour
     void NewWave()
     {
         StartCoroutine(Player.instance.Immunity(false));
-        Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+        Level currentLevel = GameFiles.inst.CurrentLevel();
 
         if (currentWave < waveList.Count() || currentLevel.levelType == LevelType.Endless)
         {
@@ -134,7 +135,7 @@ public class WaveManager : MonoBehaviour
     }
     void CreateEnemy(Vector2 start, BaseEnemy prefab)
     {
-        BaseEnemy enemy = Instantiate(prefab != null ? prefab : ThingsToCarry.inst.RandomEnemy());
+        BaseEnemy enemy = Instantiate(prefab != null ? prefab : GameFiles.inst.RandomEnemy());
         enemy.EnemySetup();
         enemy.transform.position = start;
         allEnemies.Add(enemy);
@@ -209,7 +210,7 @@ public class WaveManager : MonoBehaviour
             {
                 AudioManager.instance.PlaySound(loseSound, 0.3f);                
             }
-            Level currentLevel = ThingsToCarry.inst.CurrentLevel();
+            Level currentLevel = GameFiles.inst.CurrentLevel();
             if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }

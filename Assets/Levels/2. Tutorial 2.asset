@@ -15,9 +15,9 @@ MonoBehaviour:
   listOfWaves:
   - enemies:
     - toCreate: {fileID: 1135478034882460308, guid: 83c245ebb2cec4f0185e4a614d367591, type: 3}
-      position: {x: 0, y: 2}
+      position: {x: -5, y: 3.5}
     - toCreate: {fileID: 1601267638787446188, guid: 378439694e5c9463c8219a2147fae4c2, type: 3}
-      position: {x: 0, y: 3.5}
+      position: {x: 5, y: 3.5}
     tutorialKey: Third_Tutorial
   - enemies:
     - toCreate: {fileID: 7516396602756695447, guid: 56791cf3361bd40f6a1e8d3039aaeadd, type: 3}

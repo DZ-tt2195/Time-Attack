@@ -8,8 +8,9 @@ public class BaseEnemy : Entity
     [SerializeField] bool lookAtPlayer = true;
     [SerializeField] protected float moveSpeed = 1f;
     [SerializeField] protected float attackRate;
-    Vector3 aimPosition;
+    Vector2 aimPosition;
     float stunTime = 0f;
+    Transform tracker;
     public void EnemySetup()
     {
         this.tag = "Enemy";
@@ -17,17 +18,22 @@ public class BaseEnemy : Entity
         crossedOut.SetActive(false);
         healthText.text = currentHealth.ToString();
 
+        tracker = transform.Find("Tracker");
+        tracker.gameObject.SetActive(Application.isEditor);
+        tracker.SetParent(null);
+
         attackRate *= 2-PrefManager.GetDifficulty();
         bulletSpeed *= PrefManager.GetDifficulty();
         moveSpeed *= PrefManager.GetDifficulty();
 
-        InvokeRepeating(nameof(NewOffset), 0f, 1.5f);
+        InvokeRepeating(nameof(NewOffset), 0f, 1f);
         if (bulletPrefab != null && attackRate != 0f)
             InvokeRepeating(nameof(TryToShoot), attackRate*0.5f, attackRate);
     }
     void NewOffset()
     {
-        aimPosition = Player.instance.transform.position + (Vector3)(Random.insideUnitCircle.normalized * 4f);
+        aimPosition = Player.instance.transform.position + (Vector3)(Random.insideUnitCircle.normalized * 3f);
+        tracker.position = aimPosition;
     }
     void TryToShoot()
     {

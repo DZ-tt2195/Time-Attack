@@ -19,7 +19,7 @@ public class ElectricWave : Bullet
         vanishTime *= PrefManager.GetDifficulty();
     }
 
-    public override void AssignInfo(AttackInfo info, Entity owner)
+    public override void AssignInfo(AttackInfo info, StoreBullets owner)
     {
         base.AssignInfo(info, owner);
         this.transform.localScale = Vector3.zero;

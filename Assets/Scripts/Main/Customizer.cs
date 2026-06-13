@@ -46,10 +46,10 @@ public class Customizer : MonoBehaviour
     }    
     void RulesSetup()
     {
-        if (ThingsToCarry.inst.CurrentLevel().includeRules)
+        if (GameFiles.inst.CurrentLevel().includeRules)
         {
             chooseRulesText.text = AutoTranslate.Choose_Rule();
-            List<Rule> allRules = ThingsToCarry.inst.AllRules();
+            List<Rule> allRules = GameFiles.inst.AllRules();
 
             foreach (Rule rule in allRules)
             {
@@ -85,16 +85,16 @@ public class Customizer : MonoBehaviour
     public void BeginGame()
     {
         difficultySlider.gameObject.SetActive(false);
-        storeWeapons.gameObject.SetActive(false);
+        storeWeapons.transform.parent.gameObject.SetActive(false);
         chooseRulesText.gameObject.SetActive(false);
 
-        if (ThingsToCarry.inst.CurrentLevel().includeRules)
+        if (GameFiles.inst.CurrentLevel().includeRules)
         {
-            List<Rule> allRules = ThingsToCarry.inst.AllRules();
+            List<Rule> allRules = GameFiles.inst.AllRules();
             while (currentRules.Count < displaysOnScreen.Count)
             {
                 int randomNumber = Random.Range(0, allRules.Count);
-                currentRules.Add(allRules[randomNumber]);                
+                currentRules.Add(allRules[randomNumber]);
             }
 
             List<Rule> selectedRules = currentRules.ToList();

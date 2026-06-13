@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 1547519738}
   - component: {fileID: 1547519739}
   - component: {fileID: 1547519740}
+  - component: {fileID: 1547519741}
   m_Layer: 0
   m_Name: Moves Between Scenes
   m_TagString: Untagged
@@ -297,6 +298,7 @@ MonoBehaviour:
   listOfRules:
   - {fileID: 8111600464299033200, guid: 1df336800a5b64efc94dd41e42c52680, type: 3}
   - {fileID: 3103506096971162904, guid: 9724f01b9698b41dab27373cdc14159d, type: 3}
+  - {fileID: 6087843930147102569, guid: 9aa09d8b0d7994fad9dde8f1cd445579, type: 3}
 --- !u!114 &1547519739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +414,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1547519741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547519735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af179cff683a4d99962a307b6f477b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnOff
+  forceOn: []
+  forceOff:
+  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

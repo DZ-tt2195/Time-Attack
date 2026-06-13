@@ -47,7 +47,7 @@ public class TitleScreen : MonoBehaviour
     void LevelInfo()
     {
         if (!PlayerPrefs.HasKey(PrefManager.CurrentLevel)) PrefManager.SetCurrentLevel(0);
-        List<Level> listOfLevels = ThingsToCarry.inst.AllLevels();
+        List<Level> listOfLevels = GameFiles.inst.AllLevels();
 
         levelDropdown.onValueChanged.AddListener(ChangeLevelDropdown);
         for (int i = 0; i < listOfLevels.Count; i++)

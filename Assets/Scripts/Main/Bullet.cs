@@ -1,9 +1,9 @@
 using UnityEngine;
-
+using System;
 public class Bullet : MonoBehaviour
 {
     protected AttackInfo info;
-    public Entity owner { get; private set; }
+    public StoreBullets owner { get; private set; }
     public SpriteRenderer spriteRenderer { get; private set; }
     [SerializeField] bool disappearOnWall = true;
 
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
                 AudioManager.instance.Miss(0.3f);
         }
     }
-    public virtual void AssignInfo(AttackInfo info, Entity owner)
+    public virtual void AssignInfo(AttackInfo info, StoreBullets owner)
     {
         this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
@@ -63,5 +63,21 @@ public class Bullet : MonoBehaviour
             if (this.CompareTag("Player")) AudioManager.instance.Miss(0.1f);
             TryAndReturn(false);
         }
+    }
+}
+
+public class AttackInfo
+{
+    public Vector2 spawnPosition{get; private set;}
+    public float bulletSpeed{get; private set;}
+    public Vector2 direction{get; private set;}
+    public Action<Entity> hitTarget {get; private set;}
+
+    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Action<Entity> hitTarget)
+    {
+        this.spawnPosition = spawnposition;
+        this.bulletSpeed = bulletSpeed;
+        this.direction = direction;
+        this.hitTarget = hitTarget;
     }
 }

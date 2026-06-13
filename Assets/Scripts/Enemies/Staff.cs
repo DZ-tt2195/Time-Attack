@@ -30,7 +30,12 @@ public class Staff : BaseEnemy
         {
             star.transform.position = this.transform.position;
             star.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), Hit), this);
-            void Hit(Entity entity) => this.ChangeHealth(-damage);
+            
+            void Hit(Entity entity)
+            {
+                this.ChangeHealth(-damage);
+                Debug.Log("hit star");
+            }
         }
 
         float RandomOffSet()

@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ThingsToCarry : MonoBehaviour
+public class GameFiles : MonoBehaviour
 {
     [SerializeField] List<Level> listOfLevels;
     [SerializeField] List<BaseEnemy> enemiesToSpawn;
     [SerializeField] List<Rule> listOfRules;
-    public static ThingsToCarry inst;
+    public static GameFiles inst;
 
     void Awake()
     {

@@ -13,7 +13,10 @@ public class Mortar : BaseEnemy
     {
         base.Awake();
         foreach (SpriteRenderer next in listOfRadiuses)
+        {
             next.gameObject.SetActive(false);
+            next.transform.SetParent(null);
+        }
         Invoke(nameof(ShootBullet), attackRate*0.5f);
     }
     protected override void ShootBullet()
