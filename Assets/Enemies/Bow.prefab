@@ -692,7 +692,7 @@ MonoBehaviour:
   protectionSources: 
   healthText: {fileID: 4978872290501777853}
   lookAtPlayer: 1
-  moveSpeed: 1.5
+  moveSpeed: 1.25
   attackRate: 2.25
 --- !u!61 &7595905048437823666
 BoxCollider2D:

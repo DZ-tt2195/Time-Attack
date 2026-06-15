@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class Staff : BaseEnemy
 {
-    GameObject wall;
-    Bullet star;
+    [SerializeField] GameObject wall;
+    [SerializeField] Bullet star;
     [SerializeField] float bulletOffset;
     [SerializeField] int numBullets;
 
     protected override void Awake()
     {
         base.Awake();
-        wall = transform.Find("Wall").gameObject;
-
-        star = transform.Find("Star").GetComponent<Bullet>();
         star.gameObject.SetActive(false);
         star.transform.SetParent(null);
         star.tag = this.tag;

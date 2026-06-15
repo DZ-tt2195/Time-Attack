@@ -3,8 +3,10 @@ using UnityEngine;
 public class Warp : Rule
 {
     [SerializeField] float stunTime;
+    [SerializeField] AudioClip warp;
     protected override void ActivateRule()
     {
+        AudioManager.instance.PlaySound(warp, 0.3f);
         foreach (BaseEnemy enemy in WaveManager.instance.GetEnemies())
         {
             int randomNum = Random.Range(0, 4);

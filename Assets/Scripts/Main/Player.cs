@@ -130,7 +130,6 @@ public class Player : Entity
     protected override void DeathEffect()
     {
         base.DeathEffect();
-        tookDamage++;
         MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
 
         Level currentLevel = GameFiles.inst.CurrentLevel();

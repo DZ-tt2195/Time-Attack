@@ -50,6 +50,7 @@ MonoBehaviour:
   maxTimer: 10
   beOnPlayer: 1
   stunTime: 3
+  freezeSound: {fileID: 8300000, guid: e219ff2e1c5c7412e8b97c0f7527ce1e, type: 3}
 --- !u!212 &6626662838147560955
 SpriteRenderer:
   serializedVersion: 2

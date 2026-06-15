@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196318980786439570}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 543902004253656809}
   - {fileID: 6967943259190004317}
   - {fileID: 6582112531909770925}
-  m_Father: {fileID: 5602975972425853259}
+  m_Father: {fileID: 7901992417150348869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &521515775329260405
 MonoBehaviour:
@@ -55,7 +55,7 @@ MonoBehaviour:
   retreatSpeed: 3
   startingPosition: {fileID: 6967943259190004317}
   targetPosition: {fileID: 6582112531909770925}
-  thisEnemy: {fileID: 5011879533634328709}
+  thisEnemy: {fileID: 1430891057291369447}
 --- !u!212 &2057386622020868608
 SpriteRenderer:
   serializedVersion: 2
@@ -481,7 +481,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.14, z: 0}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5913266266559145613}
@@ -619,7 +619,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.14, z: 0}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 261955442564890868}
@@ -757,7 +757,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.14, z: 0}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2631156170822530286}
@@ -1019,6 +1019,41 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 258053023438708031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4091929715958824739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7901992417150348869}
+  m_Layer: 0
+  m_Name: Spin This
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7901992417150348869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091929715958824739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 258053023438708031}
+  - {fileID: 5913266266559145613}
+  - {fileID: 2631156170822530286}
+  - {fileID: 261955442564890868}
+  m_Father: {fileID: 5602975972425853259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4283070173276348017
 GameObject:
@@ -1318,7 +1353,7 @@ Transform:
   m_GameObject: {fileID: 4378524491318651245}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.1, z: 0}
+  m_LocalPosition: {x: 0, y: -4.100001, z: 0}
   m_LocalScale: {x: 1.5, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1442,7 +1477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966003373070061172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 4.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1450,7 +1485,7 @@ Transform:
   - {fileID: 1707571051157470158}
   - {fileID: 6868213053994016564}
   - {fileID: 7021791935204012970}
-  m_Father: {fileID: 5602975972425853259}
+  m_Father: {fileID: 7901992417150348869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &7113608904832055185
 MonoBehaviour:
@@ -1469,7 +1504,7 @@ MonoBehaviour:
   retreatSpeed: 3
   startingPosition: {fileID: 6868213053994016564}
   targetPosition: {fileID: 7021791935204012970}
-  thisEnemy: {fileID: 5011879533634328709}
+  thisEnemy: {fileID: 1430891057291369447}
 --- !u!212 &5796221924066295596
 SpriteRenderer:
   serializedVersion: 2
@@ -1713,7 +1748,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.14, z: 0}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.20000002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 258053023438708031}
@@ -1863,9 +1898,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5602975972425853259}
-  - component: {fileID: 5011879533634328709}
   - component: {fileID: 7595905048437823666}
   - component: {fileID: 3084981597421438330}
+  - component: {fileID: 1430891057291369447}
   m_Layer: 0
   m_Name: Crane
   m_TagString: Enemy
@@ -1888,35 +1923,11 @@ Transform:
   m_Children:
   - {fileID: 5519192855519680965}
   - {fileID: 4835152787140418453}
-  - {fileID: 258053023438708031}
-  - {fileID: 5913266266559145613}
-  - {fileID: 2631156170822530286}
-  - {fileID: 261955442564890868}
+  - {fileID: 7901992417150348869}
   - {fileID: 8050174980346949411}
   - {fileID: 5082513779416106376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5011879533634328709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461354543800533658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325a5d3d1bc7d47e5a669eedd7fe3446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseEnemy
-  bulletSpeed: 0
-  spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
-  maxHealth: 3
-  protectionSources: 
-  healthText: {fileID: 3946208523625539186}
-  lookAtPlayer: 0
-  moveSpeed: 1
-  attackRate: 0
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1990,6 +2001,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1430891057291369447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461354543800533658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2636d3a6bfb14629a13090aaafc48bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Crane
+  bulletSpeed: 0
+  spriteRenderer: {fileID: 2212896351684885597}
+  damage: 1
+  maxHealth: 3
+  protectionSources: 
+  healthText: {fileID: 3946208523625539186}
+  lookAtPlayer: 0
+  moveSpeed: 1
+  attackRate: 0
+  rotationSpeed: 40
+  rotateThis: {fileID: 7901992417150348869}
+  listOfLifts:
+  - {fileID: 8289067644178602239}
+  - {fileID: 7113608904832055185}
+  - {fileID: 521515775329260405}
+  - {fileID: 7176181452686281603}
 --- !u!1 &7643158841473500965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,7 +2065,7 @@ Transform:
   - {fileID: 5643621887444947899}
   - {fileID: 5360037335550122090}
   - {fileID: 5665541386099181504}
-  m_Father: {fileID: 5602975972425853259}
+  m_Father: {fileID: 7901992417150348869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8289067644178602239
 MonoBehaviour:
@@ -2045,7 +2084,7 @@ MonoBehaviour:
   retreatSpeed: 3
   startingPosition: {fileID: 5360037335550122090}
   targetPosition: {fileID: 5665541386099181504}
-  thisEnemy: {fileID: 5011879533634328709}
+  thisEnemy: {fileID: 1430891057291369447}
 --- !u!212 &7930850057648667603
 SpriteRenderer:
   serializedVersion: 2
@@ -2289,7 +2328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8114296319025559213}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: -4.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2297,7 +2336,7 @@ Transform:
   - {fileID: 1660369766148675662}
   - {fileID: 5110416130030195152}
   - {fileID: 6633770295394522735}
-  m_Father: {fileID: 5602975972425853259}
+  m_Father: {fileID: 7901992417150348869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!114 &7176181452686281603
 MonoBehaviour:
@@ -2316,7 +2355,7 @@ MonoBehaviour:
   retreatSpeed: 3
   startingPosition: {fileID: 5110416130030195152}
   targetPosition: {fileID: 6633770295394522735}
-  thisEnemy: {fileID: 5011879533634328709}
+  thisEnemy: {fileID: 1430891057291369447}
 --- !u!212 &941346747985788055
 SpriteRenderer:
   serializedVersion: 2

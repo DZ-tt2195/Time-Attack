@@ -275,8 +275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -95, y: 0}
-  m_SizeDelta: {x: 1090, y: 700}
+  m_AnchoredPosition: {x: -75, y: 0}
+  m_SizeDelta: {x: 1150, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118250490
 MonoBehaviour:
@@ -314,10 +314,21 @@ MonoBehaviour:
     Hit wall: "Error" - Autistic
     Lucario (freesounds.org)
 
-    Winning: "win" - David819 (freesounds.org)
+    Walls appearing: "power_up" - 400 Sounds Pack (ci.itch.io)
 
-    Losing:
-    "energy deactivation" - d777_hickoryyy (freesounds.org)'
+    Walls
+    disappearing: "power_down" - 400 Sounds Pack (ci.itch.io)
+
+    Freeze: "Ice Shatter
+    SFX" - ImATaco (freesounds.org)
+
+    Warp: "Time Warp effect" - chinomaker (freesounds.org)
+
+    Winning:
+    "win" - David819 (freesounds.org)
+
+    Losing: "energy deactivation" - d777_hickoryyy
+    (freesounds.org)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -344,7 +355,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58.15
+  m_fontSize: 61.35
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -17,15 +17,16 @@ MonoBehaviour:
     - toCreate: {fileID: 0}
       position: {x: -8, y: 3.5}
     - toCreate: {fileID: 0}
-      position: {x: 8, y: 3.5}
-    - toCreate: {fileID: 0}
-      position: {x: -3, y: -3.5}
-    - toCreate: {fileID: 0}
-      position: {x: 3, y: -3.5}
-    - toCreate: {fileID: 0}
       position: {x: 0, y: 3.5}
     - toCreate: {fileID: 0}
+      position: {x: 8, y: 3.5}
+    - toCreate: {fileID: 0}
+      position: {x: -8, y: -3.5}
+    - toCreate: {fileID: 0}
       position: {x: 0, y: -3.5}
+    - toCreate: {fileID: 0}
+      position: {x: 8, y: -3.5}
     tutorialKey: Blank
   levelName: Endless
   levelType: 1
+  includeRules: 1

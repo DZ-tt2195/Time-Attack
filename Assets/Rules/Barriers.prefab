@@ -145,6 +145,8 @@ MonoBehaviour:
   listOfWalls:
   - {fileID: 5534188233204100074}
   - {fileID: 8972950324759744893}
+  shieldOn: {fileID: 8300000, guid: 3ad5016e9ad4d4f8b9aad495cadc3195, type: 3}
+  shieldOff: {fileID: 8300000, guid: 5c7a774a307a44f94a6c63af808ada94, type: 3}
 --- !u!1 &5534188233204100074
 GameObject:
   m_ObjectHideFlags: 0

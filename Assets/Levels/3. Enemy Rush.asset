@@ -150,9 +150,9 @@ MonoBehaviour:
       position: {x: 5, y: 0}
     tutorialKey: Blank
   - enemies:
-    - toCreate: {fileID: 5011879533634328709, guid: 6e751607689f44dc6ba142a4bef5a121, type: 3}
+    - toCreate: {fileID: 1430891057291369447, guid: 6e751607689f44dc6ba142a4bef5a121, type: 3}
       position: {x: -8, y: 0}
-    - toCreate: {fileID: 5011879533634328709, guid: 6e751607689f44dc6ba142a4bef5a121, type: 3}
+    - toCreate: {fileID: 1430891057291369447, guid: 6e751607689f44dc6ba142a4bef5a121, type: 3}
       position: {x: 8, y: 0}
     tutorialKey: Blank
   levelName: Enemy_Rush

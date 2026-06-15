@@ -482,8 +482,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.5, y: 5.5, z: 1.1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5602975972425853259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -650,10 +650,13 @@ MonoBehaviour:
   protectionSources: 
   healthText: {fileID: 6401529762480104485}
   lookAtPlayer: 0
-  moveSpeed: 1
+  moveSpeed: 1.5
   attackRate: 0
+  wall: {fileID: 6445559324921500627}
   wallOff: 5.5
   wallOn: 1.5
+  shieldOn: {fileID: 8300000, guid: 3ad5016e9ad4d4f8b9aad495cadc3195, type: 3}
+  shieldOff: {fileID: 8300000, guid: 5c7a774a307a44f94a6c63af808ada94, type: 3}
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0
