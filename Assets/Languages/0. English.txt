@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: June 14, 2026
+Last_Update	Last Updated: June 16, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -45,6 +45,8 @@ Warp	Warp
 Warp_Text	All enemies will randomly warp to the edge of the screen.
 Barriers	Barriers
 Barriers_Text	Walls will pop up that block your bullets, and disappear shortly afterwards
+Burn	Burn
+Burn_Text	Damages all enemies around you; if there are no enemies to hit, you take damage instead.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -59,5 +61,5 @@ Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
 Update_6	May 07, 2026
 Update_6_Text	Energy and Health are the same thing \nYou start with more Health, but shooting makes you lose 1 health \nWaves in Enemy Rush are now shuffled \nYou can see each enemy's health, and attack slightly less often \nChanged some sprites and added sounds
-Update_7	June 14, 2026
+Update_7	June 16, 2026
 Update_7_Text	All enemies now slowly move towards you, like how Planet does \nRedesigned some enemies and they have less health \nSeperated health and energy again; you start with more health and never get more \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added

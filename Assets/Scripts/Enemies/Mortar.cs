@@ -59,4 +59,10 @@ public class Mortar : BaseEnemy
             return Random.Range(-randomize, randomize);
         }
     }
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        for (int i = 0; i<listOfRadiuses.Count; i++)
+            Destroy(listOfRadiuses[i].gameObject);
+    }
 }

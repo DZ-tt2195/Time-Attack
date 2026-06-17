@@ -12,6 +12,7 @@ public class EnergyManager : MonoBehaviour
     void Awake()
     {
         inst = this;
+        moveSpeed *= PrefManager.GetDifficulty();
         try
         {
             resupplyPrefab = this.transform.Find("Resupply").GetComponent<Resupply>();

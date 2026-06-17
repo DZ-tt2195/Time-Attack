@@ -87,7 +87,7 @@ public class BaseEnemy : Entity
         crossedOut.SetActive(false);
         MyExtensions.SetAlpha(this.spriteRenderer, 1f);
     }
-    public void OnDestroy()
+    public virtual void OnDestroy()
     {
         while (bulletQueue.Count > 0)
         {

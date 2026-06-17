@@ -1850,6 +1850,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rule Display 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4980725876065702889, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980725876065702889, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -87.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5162222115214119084, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4362,8 +4370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RulesManager
   energy: 2
-  interval: 4
-  moveSpeed: 4
+  interval: 3
+  moveSpeed: 5
 --- !u!1 &1226735360
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,6 +5219,14 @@ PrefabInstance:
     - target: {fileID: 4938908533133342518, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_Name
       value: Rule Display 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980725876065702889, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -175.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980725876065702889, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -87.499985
       objectReference: {fileID: 0}
     - target: {fileID: 5162222115214119084, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_IsActive
@@ -7306,7 +7322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bd0f9ffe37f4aa68d1d5251433133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  bulletSpeed: 7
+  bulletSpeed: 10
   spriteRenderer: {fileID: 6438494536739822877}
   damage: 1
   maxHealth: 10
@@ -7317,7 +7333,7 @@ MonoBehaviour:
   toSpin:
   - {fileID: 2031994637}
   - {fileID: 693341688}
-  spinSpeed: 30
+  spinSpeed: 40
 --- !u!50 &2640164510612888767
 Rigidbody2D:
   serializedVersion: 5
@@ -7614,7 +7630,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 7fe21782592064554954250e857c8504, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ca3a79bd5f7a47d9b8b50123c00f828, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
