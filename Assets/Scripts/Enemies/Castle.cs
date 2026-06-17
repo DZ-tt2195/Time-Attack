@@ -1,19 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crane : BaseEnemy
+public class Castle : BaseEnemy
 {
     [SerializeField] float rotationSpeed;
     [SerializeField] Transform rotateThis;
-    [SerializeField] List<CraneLift> listOfLifts = new();
     protected override void Awake()
     {
         base.Awake();
         rotationSpeed *= PrefManager.GetDifficulty();
-        rotationSpeed *= (Random.Range(0, 2) == 0 ? 1 : -1);
-
-        int randomNum = Random.Range(0, listOfLifts.Count);
-        listOfLifts[randomNum].gameObject.SetActive(false);
+        rotationSpeed *= Random.Range(0, 2) == 0 ? 1 : -1;
+        rotateThis.transform.localEulerAngles = new Vector3(0, 0, Random.Range(0, 360f));
     }
     protected override void Movement()
     {

@@ -9,7 +9,7 @@ Volume	Volume
 Translator_Credit	Original Language
 Language	Language
 Choose_Level	Choose Level
-Controls	Left click to shoot, space to pause
+Controls	Click to shoot, space to pause
 Play	Play
 Delete	Delete Scores
 Restart	Restart
@@ -62,4 +62,4 @@ Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
 Update_6	May 07, 2026
 Update_6_Text	Energy and Health are the same thing \nYou start with more Health, but shooting makes you lose 1 health \nWaves in Enemy Rush are now shuffled \nYou can see each enemy's health, and attack slightly less often \nChanged some sprites and added sounds
 Update_7	June 16, 2026
-Update_7_Text	All enemies now slowly move towards you, like how Planet does \nRedesigned some enemies and they have less health \nSeperated health and energy again; you start with more health and never get more \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added
+Update_7_Text	All enemies now slowly move towards you, like how Planet does \nRedesigned some enemies, and they all have less health \nSeperated health and energy again; you start with more health and never get more \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added \nChanged game name from Relentless Waves to Time Attack
