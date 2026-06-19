@@ -7,7 +7,7 @@ public class Rule : StoreBullets
 {
     [Foldout("Rules info", true)]
     float timer = 0f;
-    [SerializeField] float maxTimer = 10f;
+    [SerializeField] float maxTimer = 10f; public float GetTime => maxTimer;
     [SerializeField] bool beOnPlayer;
     protected HashSet<BaseEnemy> enemiesInRange = new();
     Slider slider;

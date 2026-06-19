@@ -12,6 +12,6 @@ public class RulesDisplay : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         nameText.text = Translator.inst.Translate(rule.name);
-        descriptionText.text = Translator.inst.Translate($"{rule.name}_Text");
+        descriptionText.text = Translator.inst.Translate($"{rule.name}_Text", new() {("Num", rule.GetTime.ToString())});
     }
 }
