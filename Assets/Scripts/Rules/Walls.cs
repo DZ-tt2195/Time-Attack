@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barriers : Rule
+public class Walls : Rule
 {
     [SerializeField] List<GameObject> listOfWalls = new();
     [SerializeField] AudioClip shieldOn;

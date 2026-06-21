@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5744196431506970532}
   - component: {fileID: 6087843930147102569}
   m_Layer: 0
-  m_Name: Barriers
+  m_Name: Walls
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

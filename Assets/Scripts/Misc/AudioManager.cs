@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void PlaySound(AudioClip audio, float volume)
+    public void PlaySound(AudioClip audio, float volume = 0.3f)
     {
         audioPlayer.PlayOneShot(audio, volume);
     }

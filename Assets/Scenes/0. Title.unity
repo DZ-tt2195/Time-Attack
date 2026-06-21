@@ -311,24 +311,27 @@ MonoBehaviour:
     Shoot:
     "FX - Laser Shoot (A)" - bolkmar (freesounds.org)
 
-    Hit wall: "Error" - Autistic
-    Lucario (freesounds.org)
+    Bullet missed: "Error"
+    - Autistic Lucario (freesounds.org)
 
-    Walls appearing: "power_up" - 400 Sounds Pack (ci.itch.io)
+    Walls appearing: "power_up" - 400 Sounds
+    Pack (ci.itch.io)
 
-    Walls
-    disappearing: "power_down" - 400 Sounds Pack (ci.itch.io)
+    Walls disappearing: "power_down" - 400 Sounds Pack (ci.itch.io)
 
-    Freeze: "Ice Shatter
-    SFX" - ImATaco (freesounds.org)
+    Freeze:
+    "Ice Shatter SFX" - ImATaco (freesounds.org)
 
-    Warp: "Time Warp effect" - chinomaker (freesounds.org)
+    Warp: "Time Warp effect" -
+    chinomaker (freesounds.org)
 
-    Winning:
-    "win" - David819 (freesounds.org)
+    Winning: "win" - David819 (freesounds.org)
 
-    Losing: "energy deactivation" - d777_hickoryyy
-    (freesounds.org)'
+    Losing:
+    "energy deactivation" - d777_hickoryyy (freesounds.org)
+
+    Jammed: "ding" -
+    Daphne in Wonderland (freesounds.org)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -355,7 +358,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.35
+  m_fontSize: 61.15
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1140,7 +1143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &246686521
 RectTransform:
   m_ObjectHideFlags: 0

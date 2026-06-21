@@ -4,6 +4,6 @@ public class Deplete : Rule
 {
     protected override void ActivateRule()
     {
-        Player.instance.ChangeEnergy(-5);
+        Player.instance.ChangeEnergy(-10);
     }
 }
