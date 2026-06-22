@@ -326,7 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Lightbulb
   bulletSpeed: 1.5
   spriteRenderer: {fileID: 5882722530765502989}
-  damage: 1
   maxHealth: 2
   protectionSources: 
   healthText: {fileID: 1922412044188112427}
@@ -334,6 +333,7 @@ MonoBehaviour:
   moveSpeed: 1
   attackRate: 1.75
   blackOutTime: 1
+  blackout: {fileID: 8300000, guid: ebeb4422fe76d497996c3daed9f3a8e4, type: 3}
 --- !u!61 &7057070096884584653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -757,4 +757,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  disappearOnWall: 1

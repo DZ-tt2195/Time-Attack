@@ -591,7 +591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearOnWall: 1
 --- !u!212 &7307465337714780801
 SpriteRenderer:
   serializedVersion: 2
@@ -778,14 +777,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 1
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
-  maxHealth: 1
+  maxHealth: 2
   protectionSources: 
   healthText: {fileID: 9084269081306082685}
   lookAtPlayer: 1
   moveSpeed: 1
   attackRate: 1
-  respawnTime: 7
+  respawnTime: 8
   textBox: {fileID: 9091328771776666972}
 --- !u!61 &7595905048437823666
 BoxCollider2D:

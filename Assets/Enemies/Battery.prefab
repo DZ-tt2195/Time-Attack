@@ -507,7 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 2
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
   maxHealth: 2
   protectionSources: 
   healthText: {fileID: 7976568969252187110}
@@ -617,8 +616,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 13, y: 13, z: 0.8125}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5602975972425853259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -634,9 +633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75e1b8a4a5ea4ef5aa3ea112ba35004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearOnWall: 1
-  targetXpand: 13
-  travelTime: 2.75
+  targetXpand: 12
+  travelTime: 3
   vanishTime: 1.15
 --- !u!212 &7177628417667645969
 SpriteRenderer:

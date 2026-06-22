@@ -13,7 +13,7 @@ public class EnergyManager : StoreBullets
         base.Awake();
         inst = this;
         bulletSpeed *= PrefManager.GetDifficulty();
-        energyText.text = AutoTranslate.Energy_Pack(energy.ToString());
+        energyText.text = AutoTranslate.Resupply_Text(energy.ToString());
     }
     public void BeginGame()
     {

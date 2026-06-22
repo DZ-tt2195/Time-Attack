@@ -301,21 +301,24 @@ MonoBehaviour:
   m_text: 'Pressing buttons: "Telephone button noise" - Caitlyn_100 (freesounds.org)
 
     Gaining
-    health: "Itemize" - Scrampunk_ (freesounds.org)
+    health or energy: "Itemize" - Scrampunk_ (freesounds.org)
 
-    Mortar attack: "Cannon1"
-    - Isaac200000 (freesounds.org)
+    Damage: "Damage
+    sound effect" - Raclure (freesounds.org)
 
-    Damage: "Damage sound effect" - Raclure (freesounds.org)
+    Shoot: "FX - Laser Shoot (A)" -
+    bolkmar (freesounds.org)
 
-    Shoot:
-    "FX - Laser Shoot (A)" - bolkmar (freesounds.org)
+    Bullet missed: "Error" - Autistic Lucario (freesounds.org)
 
-    Bullet missed: "Error"
-    - Autistic Lucario (freesounds.org)
+    Mortar
+    attack: "Cannon1" - Isaac200000 (freesounds.org)
 
-    Walls appearing: "power_up" - 400 Sounds
-    Pack (ci.itch.io)
+    Lightbulb blackout: "Shock_One"
+    - Nodgez (freesounds.org)
+
+    Walls appearing: "power_up" - 400 Sounds Pack
+    (ci.itch.io)
 
     Walls disappearing: "power_down" - 400 Sounds Pack (ci.itch.io)
 
@@ -358,7 +361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.15
+  m_fontSize: 56.75
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Lightbulb : BaseEnemy
 {
     [SerializeField] float blackOutTime;
-
+    [SerializeField] AudioClip blackout;
     protected override void Awake()
     {
         base.Awake();
@@ -15,11 +15,13 @@ public class Lightbulb : BaseEnemy
     {
         base.DamageEffect(change);
         WaveManager.instance.blackOutTime += this.blackOutTime*-1*change;
+        AudioManager.instance.PlaySound(blackout);
     }
 
     protected override void DeathEffect()
     {
         base.DeathEffect();
         WaveManager.instance.blackOutTime += this.blackOutTime;
+        AudioManager.instance.PlaySound(blackout);
     }
 }

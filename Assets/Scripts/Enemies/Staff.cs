@@ -36,9 +36,4 @@ public class Staff : BaseEnemy
             return Random.Range(-bulletOffset, bulletOffset);
         }
     }
-    protected override void DeathEffect()
-    {
-        base.DeathEffect();
-        wall.SetActive(false);
-    }
 }

@@ -24,7 +24,7 @@ public class Entity : StoreBullets
     public void ChangeHealth(int change)
     {
         if (!CanTakeDamage() && change < 0) return;
-        currentHealth = Mathf.Clamp(currentHealth + change, 0, maxHealth);
+        currentHealth = Mathf.Min(currentHealth + change, 0);
         healthText.text = currentHealth.ToString();
 
         if (change > 0)
@@ -37,7 +37,7 @@ public class Entity : StoreBullets
             tookDamage-=change;
             AudioManager.instance.Damage(this is Player ? 0.5f : 0.25f);
 
-            if (currentHealth <= 0)
+            if (currentHealth == 0)
                 DeathEffect();
             else
                 DamageEffect(change);
