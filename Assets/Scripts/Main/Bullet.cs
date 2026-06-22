@@ -5,24 +5,10 @@ public class Bullet : MonoBehaviour
     protected AttackInfo info;
     public StoreBullets owner { get; private set; }
     public SpriteRenderer spriteRenderer { get; private set; }
-    [SerializeField] bool disappearOnWall = true;
 
     protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-    protected virtual void TryAndReturn(bool landed)
-    {
-        if (owner == null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            owner.ReturnBullet(this, landed);
-            if (owner == Player.instance && !landed)
-                AudioManager.instance.Miss(0.3f);
-        }
     }
     public virtual void AssignInfo(AttackInfo info, StoreBullets owner)
     {
@@ -36,15 +22,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         Movement();
-        if (disappearOnWall && (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
-            this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f))
+        if (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
+            this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f)
         {
-            Exited();
+            ForceReturn();
         }
-    }
-    protected virtual void Exited()
-    {
-        TryAndReturn(false);        
     }
     protected virtual void Movement()
     {
@@ -53,31 +35,19 @@ public class Bullet : MonoBehaviour
     }
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Entity target) && target.CanTakeDamage() && !target.CompareTag(this.tag))
+        if (collision.TryGetComponent(out Entity target) && info.canHit(target, this))
         {
             info.hitTarget(target);
-            TryAndReturn(this);
+            info.returnBullet(this, true);
         }
-        else if (disappearOnWall && collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
+        else if (collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
             if (this.CompareTag("Player")) AudioManager.instance.Miss(0.1f);
-            TryAndReturn(false);
+            ForceReturn();
         }
     }
-}
-
-public class AttackInfo
-{
-    public Vector2 spawnPosition{get; private set;}
-    public float bulletSpeed{get; private set;}
-    public Vector2 direction{get; private set;}
-    public Action<Entity> hitTarget {get; private set;}
-
-    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Action<Entity> hitTarget)
+    public void ForceReturn()
     {
-        this.spawnPosition = spawnposition;
-        this.bulletSpeed = bulletSpeed;
-        this.direction = direction;
-        this.hitTarget = hitTarget;
+        info.returnBullet(this, false);        
     }
 }

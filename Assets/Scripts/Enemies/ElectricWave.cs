@@ -50,7 +50,7 @@ public class ElectricWave : Bullet
         {
             SetAlpha(spriteRenderer, 1 - (myTimer / vanishTime));
             if (myTimer >= vanishTime)
-                TryAndReturn(false);
+                ForceReturn();
         }
 
         invertTime -= Time.deltaTime;

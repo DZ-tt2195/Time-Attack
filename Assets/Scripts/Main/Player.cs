@@ -60,12 +60,19 @@ public class Player : Entity
         }
         void Attack()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && currentEnergy >= 1)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                currentEnergy--;
-                AudioManager.instance.Shoot(0.3f);
-                foreach (Transform nextHand in toSpin)
-                    CreateBullet(DefaultAttack(nextHand.position, nextHand.right));                    
+                if (currentEnergy >= 1)
+                {
+                    currentEnergy--;
+                    AudioManager.instance.Shoot(0.3f);
+                    foreach (Transform nextHand in toSpin)
+                        CreateBullet(DefaultAttack(nextHand.position, nextHand.right));  
+                }
+                else
+                {
+                    AudioManager.instance.Miss(0.3f);                    
+                }               
             }
         }
 
@@ -80,13 +87,8 @@ public class Player : Entity
         }
     }
     void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Resupply"))
-        {
-            Resupply resupply = collision.GetComponent<Resupply>();
-            EnergyManager.inst.HitResupply(resupply, this.currentEnergy < this.maxEnergy);
-        }
-        else if (collision.TryGetComponent(out Entity entity))
+    { 
+        if (collision.TryGetComponent(out Entity entity))
         {
             this.ChangeHealth(-1);
         }

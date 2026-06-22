@@ -65,7 +65,7 @@ public class WaveManager : MonoBehaviour
         maxX = mainCamera.transform.position.x + cameraWidth / 2f;
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
-        UnityEngine.Debug.Log($"{minX} - {maxX}; {minY} - {maxY}");
+        //UnityEngine.Debug.Log($"{minX} - {maxX}; {minY} - {maxY}");
 
         restartButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Restart();
         quitButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Quit();

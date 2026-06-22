@@ -2161,11 +2161,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623830086}
+  - component: {fileID: 623830090}
   - component: {fileID: 623830089}
   - component: {fileID: 623830088}
-  - component: {fileID: 623830087}
   m_Layer: 0
-  m_Name: Resupply
+  m_Name: Bullet
   m_TagString: Resupply
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2180,26 +2180,13 @@ Transform:
   m_GameObject: {fileID: 623830085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.79, y: 0.64, z: 0}
+  m_LocalPosition: {x: -2.889, y: -0.284, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1281090555}
   m_Father: {fileID: 1213801594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &623830087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623830085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e6862a3275848d1ba2552ae08649de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 1281090556}
 --- !u!58 &623830088
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2295,6 +2282,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &623830090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623830085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e6862a3275848d1ba2552ae08649de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Resupply
 --- !u!1 &625398851
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,7 +4335,7 @@ GameObject:
   - component: {fileID: 1213801595}
   m_Layer: 0
   m_Name: Energy Manager
-  m_TagString: Untagged
+  m_TagString: Resupply
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4369,9 +4368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc82dec40cb44475824a92bbe98e24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RulesManager
+  bulletSpeed: 3.5
   energy: 2
   interval: 3
-  moveSpeed: 5
+  energyText: {fileID: 1281090556}
 --- !u!1 &1226735360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,7 +4519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +2 Energy
+  m_text: +? Energy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -6438,7 +6438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1850310568
 Transform:
   m_ObjectHideFlags: 0
@@ -7324,7 +7324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   bulletSpeed: 10
   spriteRenderer: {fileID: 6438494536739822877}
-  damage: 1
   maxHealth: 10
   protectionSources: 
   healthText: {fileID: 5992719068442753987}
@@ -7374,7 +7373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearOnWall: 1
 --- !u!224 &4462864043242345207
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,23 +1,17 @@
-using TMPro;
 using UnityEngine;
 
-public class Resupply : MonoBehaviour
+public class Resupply : Bullet
 {
-    [SerializeField] TMP_Text textBox;
-    Vector2 direction;
-    public void Setup(Vector2 spawn, Vector2 direction, string text)
+    protected override void OnTriggerStay2D(Collider2D collision)
     {
-        this.tag = "Resupply";
-        this.transform.position = spawn;
-        if (textBox != null) this.textBox.text = text;
-        this.direction = direction;
-        this.gameObject.SetActive(true);        
+        if (collision.TryGetComponent(out Entity target) && info.canHit(target, this))
+        {
+            info.hitTarget(target);
+            info.returnBullet(this, true);
+        }
     }
-    void Update()
+    protected override void Movement()
     {
-        this.transform.Translate(direction*Time.deltaTime);
-        if (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
-            this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f)
-            EnergyManager.inst.ReturnResupply(this);
+        this.transform.Translate(info.bulletSpeed * Time.deltaTime * info.direction, Space.World);
     }
 }

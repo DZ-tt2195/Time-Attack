@@ -8,7 +8,6 @@ public class Entity : StoreBullets
 {
     [Foldout("Entity info", true)]
     public SpriteRenderer spriteRenderer;
-    [SerializeField] protected int damage = 1;
     protected int currentHealth {get; private set;}
     [SerializeField] protected int maxHealth;
     [ReadOnly] public List<Protection> protectionSources = new();
@@ -55,18 +54,6 @@ public class Entity : StoreBullets
     protected virtual void HealEffect(int amount)
     {
         protectionSources.Remove(Protection.Dead);
-    }
-    protected AttackInfo DefaultAttack(Vector2 spawn, Vector2 direction)
-    {
-        return new AttackInfo(spawn, bulletSpeed, direction, Hit);
-        void Hit(Entity entity) => entity.ChangeHealth(-damage);        
-    }
-    protected Bullet CreateBullet(AttackInfo info)
-    {
-        firedBullets++;
-        Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(bulletPrefab);
-        newBullet.AssignInfo(info, this);
-        return newBullet;
     }
     public int GetHealth() => currentHealth;
 }

@@ -60,8 +60,9 @@ public class BaseEnemy : Entity
     }
     protected virtual void Movement()
     {
-        //this.transform.Translate(moveSpeed * Time.deltaTime * moveDirection); 
-        transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);    
+        transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);  
+        if (Vector3.Distance(transform.position, aimPosition) < 0.01f)
+            NewOffset();
     }
     protected virtual void RotateToPlayer()
     {
@@ -86,15 +87,6 @@ public class BaseEnemy : Entity
         base.HealEffect(amount);
         crossedOut.SetActive(false);
         MyExtensions.SetAlpha(this.spriteRenderer, 1f);
-    }
-    public virtual void OnDestroy()
-    {
-        while (bulletQueue.Count > 0)
-        {
-            Bullet nextBullet = bulletQueue.Dequeue();
-            if (nextBullet != null)
-                Destroy(nextBullet.gameObject);
-        }
     }
     public void StunThis(float stunTime)
     {

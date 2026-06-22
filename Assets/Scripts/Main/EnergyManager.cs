@@ -1,46 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
-public class EnergyManager : MonoBehaviour
+public class EnergyManager : StoreBullets
 {
     public static EnergyManager inst;
-    protected Resupply resupplyPrefab { get; private set; }
-    Queue<Resupply> resupplyQueue = new();
     [SerializeField] protected int energy;
     [SerializeField] float interval;
-    [SerializeField] float moveSpeed;
-    void Awake()
+    [SerializeField] TMP_Text energyText;
+    protected override void Awake()
     {
+        base.Awake();
         inst = this;
-        moveSpeed *= PrefManager.GetDifficulty();
-        try
-        {
-            resupplyPrefab = this.transform.Find("Resupply").GetComponent<Resupply>();
-            resupplyPrefab.gameObject.SetActive(false);
-        } catch { }
+        bulletSpeed *= PrefManager.GetDifficulty();
+        energyText.text = AutoTranslate.Energy_Pack(energy.ToString());
     }
     public void BeginGame()
     {
         InvokeRepeating(nameof(SpawnResupply), interval/2f, interval);        
-    }
-    protected Resupply MakeResupply(Vector2 spawn, Vector2 direction, string text)
-    {
-        Resupply resupply = (resupplyQueue.Count > 0) ? resupplyQueue.Dequeue() : Instantiate(resupplyPrefab);
-        resupply.Setup(spawn, direction, text);
-        return resupply;
-    }
-    public void HitResupply(Resupply resupply, bool needEnergy)
-    {
-        if (needEnergy)
-        {
-            ReturnResupply(resupply);
-            Player.instance.ChangeEnergy(energy);
-        }
-    }
-    public void ReturnResupply(Resupply resupply)
-    {
-        resupplyQueue.Enqueue(resupply);
-        resupply.gameObject.SetActive(false);        
     }
     void SpawnResupply()
     {
@@ -66,6 +43,10 @@ public class EnergyManager : MonoBehaviour
                 direction = Vector2.left;
                 break;
         }
-        MakeResupply(spawn, direction, AutoTranslate.Energy_Pack(energy.ToString()));
+
+        CreateBullet(new AttackInfo(spawn, bulletSpeed, direction, IsPlayer, GiveEnergy, ReturnBullet));
+
+        bool IsPlayer(Entity entity, Bullet bullet) => entity is Player;
+        void GiveEnergy(Entity entity) => Player.instance.ChangeEnergy(energy);
     }
 }

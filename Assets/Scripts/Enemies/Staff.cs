@@ -14,7 +14,6 @@ public class Staff : BaseEnemy
         star.transform.SetParent(null);
         star.tag = this.tag;
     }
-
     protected override void ShootBullet()
     {
         Vector2 target = AimAtPlayer();
@@ -25,14 +24,11 @@ public class Staff : BaseEnemy
 
         if (currentHealth > 0 && !star.gameObject.activeSelf)
         {
-            star.transform.position = this.transform.position;
-            star.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), Hit), this);
+            star.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), IsPlayer, Hit, Return), this);
             
-            void Hit(Entity entity)
-            {
-                this.ChangeHealth(-damage);
-                Debug.Log("hit star");
-            }
+            bool IsPlayer(Entity entity, Bullet bullet) => entity is Player;
+            void Hit(Entity entity) => this.ChangeHealth(-1);
+            void Return(Bullet bullet, bool landed) => bullet.gameObject.SetActive(false);
         }
 
         float RandomOffSet()
@@ -40,7 +36,6 @@ public class Staff : BaseEnemy
             return Random.Range(-bulletOffset, bulletOffset);
         }
     }
-
     protected override void DeathEffect()
     {
         base.DeathEffect();
