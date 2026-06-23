@@ -1159,6 +1159,7 @@ MonoBehaviour:
   lookAtPlayer: 1
   moveSpeed: 1
   attackRate: 1.25
+  myBehavior: 1
   randomize: 2.25
   listOfRadiuses:
   - {fileID: 7177489698137222962}

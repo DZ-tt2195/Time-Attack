@@ -513,6 +513,7 @@ MonoBehaviour:
   lookAtPlayer: 1
   moveSpeed: 1
   attackRate: 4.25
+  myBehavior: 1
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0

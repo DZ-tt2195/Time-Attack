@@ -4368,7 +4368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc82dec40cb44475824a92bbe98e24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RulesManager
-  bulletSpeed: 3.5
+  bulletSpeed: 2.5
   energy: 2
   interval: 3
   energyText: {fileID: 1281090556}
@@ -7244,7 +7244,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.05, y: 0.05}
+  m_Size: {x: 0.02, y: 0.02}
   m_EdgeRadius: 0
 --- !u!1 &1514010783421431862
 GameObject:
@@ -7334,6 +7334,7 @@ MonoBehaviour:
   - {fileID: 693341688}
   spinSpeed: 40
   spinHands: 0
+  moveSpeed: 8
 --- !u!50 &2640164510612888767
 Rigidbody2D:
   serializedVersion: 5

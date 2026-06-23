@@ -452,7 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  disappearOnWall: 1
 --- !u!1 &5792137662472203459
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,13 +686,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Knight
   bulletSpeed: 2
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
   maxHealth: 2
   protectionSources: 
   healthText: {fileID: 4188058806598154744}
   lookAtPlayer: 0
   moveSpeed: 1
   attackRate: 2
+  myBehavior: 1
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0

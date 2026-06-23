@@ -332,6 +332,7 @@ MonoBehaviour:
   lookAtPlayer: 1
   moveSpeed: 1
   attackRate: 1.75
+  myBehavior: 1
   blackOutTime: 1
   blackout: {fileID: 8300000, guid: ebeb4422fe76d497996c3daed9f3a8e4, type: 3}
 --- !u!61 &7057070096884584653

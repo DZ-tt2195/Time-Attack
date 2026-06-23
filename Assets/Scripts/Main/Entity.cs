@@ -24,7 +24,7 @@ public class Entity : StoreBullets
     public void ChangeHealth(int change)
     {
         if (!CanTakeDamage() && change < 0) return;
-        currentHealth = Mathf.Min(currentHealth + change, 0);
+        currentHealth = Mathf.Max(currentHealth + change, 0);
         healthText.text = currentHealth.ToString();
 
         if (change > 0)

@@ -507,13 +507,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Waller
   bulletSpeed: 1.75
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
   maxHealth: 3
   protectionSources: 
   healthText: {fileID: 5579430089183112168}
   lookAtPlayer: 0
   moveSpeed: 1
   attackRate: 1.5
+  myBehavior: 1
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -634,7 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b9b263332c4775a6b226bee3bb2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearOnWall: 1
 --- !u!212 &6512933568364424432
 SpriteRenderer:
   serializedVersion: 2

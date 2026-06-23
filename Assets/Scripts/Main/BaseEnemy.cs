@@ -3,11 +3,13 @@ using UnityEngine;
 using TMPro;
 public class BaseEnemy : Entity
 {
+    enum AimBehavior {ToPlayer, Random};
     [Foldout("Enemy info", true)]
     protected GameObject crossedOut { get; private set; }
     [SerializeField] bool lookAtPlayer = true;
     [SerializeField] protected float moveSpeed = 1f;
     [SerializeField] protected float attackRate;
+    [SerializeField] AimBehavior myBehavior;
     Vector2 aimPosition;
     float stunTime = 0f;
     Transform tracker;
@@ -32,7 +34,14 @@ public class BaseEnemy : Entity
     }
     void NewOffset()
     {
-        aimPosition = Player.instance.transform.position + (Vector3)(Random.insideUnitCircle.normalized * 3f);
+        if (myBehavior == AimBehavior.ToPlayer)
+        {
+            aimPosition = Player.instance.transform.position + (Vector3)(Random.insideUnitCircle.normalized * 3f);            
+        }
+        else if (myBehavior == AimBehavior.Random)
+        {
+            aimPosition = new Vector2(Random.Range(WaveManager.minX, WaveManager.maxX), Random.Range(WaveManager.minY, WaveManager.maxY));
+        }
         tracker.position = aimPosition;
     }
     void TryToShoot()

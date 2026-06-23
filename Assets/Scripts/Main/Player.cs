@@ -16,6 +16,7 @@ public class Player : Entity
     [SerializeField] List<Transform> toSpin = new();
     [SerializeField] float spinSpeed;
     [ReadOnly] public bool spinHands;
+    [SerializeField] float moveSpeed;
 
     protected override void Awake()
     {
@@ -40,15 +41,24 @@ public class Player : Entity
 
     void Update()
     {
-        void FollowMouse()
+        void Movement()
         {
+            /*
             Vector3 mouseScreenPosition = Input.mousePosition;
-            Vector3 targetPosition = WaveManager.instance.mainCamera.ScreenToWorldPoint
-                (new(mouseScreenPosition.x, mouseScreenPosition.y, WaveManager.instance.mainCamera.nearClipPlane));
-
+            mouseScreenPosition.z = Mathf.Abs(WaveManager.instance.mainCamera.transform.position.z);
+            Vector3 targetPosition = WaveManager.instance.mainCamera.ScreenToWorldPoint(mouseScreenPosition);
             targetPosition.x = Mathf.Clamp(targetPosition.x, WaveManager.minX, WaveManager.maxX);
             targetPosition.y = Mathf.Clamp(targetPosition.y, WaveManager.minY, WaveManager.maxY);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 10f * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            */
+
+            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            transform.position += (Vector3)(moveSpeed * Time.deltaTime * input);
+
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, WaveManager.minX, WaveManager.maxX);
+            pos.y = Mathf.Clamp(pos.y, WaveManager.minY, WaveManager.maxY);
+            transform.position = pos;
         }
         void SpinHands()
         {
@@ -80,7 +90,7 @@ public class Player : Entity
         {
             if (currentHealth > 0)
             {
-                FollowMouse();
+                Movement();
                 SpinHands();
                 Attack();
             }

@@ -14,12 +14,6 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] Button deleteScoreButton;
     [SerializeField] Button soundCreditsButton;
     [SerializeField] GameObject soundCreditsScreen;
-    [Foldout("Customize screen", true)]
-    [SerializeField] Transform chooseScreen;
-    [SerializeField] Transform weaponScreen;
-    [SerializeField] Transform storeWeapons;
-    [SerializeField] RulesDisplay weaponDisplayPrefab;
-    [SerializeField] Button randomWeapon;
     [Foldout("Texts", true)]
     [SerializeField] TMP_Text designer;
     [SerializeField] TMP_Text description;
