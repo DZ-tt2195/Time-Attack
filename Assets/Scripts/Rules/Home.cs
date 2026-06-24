@@ -3,6 +3,7 @@ using UnityEngine;
 public class Home : Rule
 {
     [SerializeField] Transform homeSprite;
+    [SerializeField] AudioClip warp;
     protected override void Awake()
     {
         base.Awake();
@@ -10,11 +11,12 @@ public class Home : Rule
     }
     protected override void ActivateRule()
     {
+        AudioManager.instance.PlaySound(warp, 0.3f);
         Player.instance.transform.position = homeSprite.transform.position;
         NewHome();
     }
     void NewHome()
     {
-        homeSprite.transform.position = new Vector2(Random.Range(WaveManager.minX + 1f, WaveManager.maxX - 1f), Random.Range(WaveManager.minY + 1f, WaveManager.maxY - 1f));        
+        homeSprite.transform.position = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));        
     }
 }

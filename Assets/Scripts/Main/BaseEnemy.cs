@@ -21,14 +21,15 @@ public class BaseEnemy : Entity
         healthText.text = currentHealth.ToString();
 
         tracker = transform.Find("Tracker");
-        tracker.gameObject.SetActive(Application.isEditor);
+        //tracker.gameObject.SetActive(Application.isEditor);
+        tracker.gameObject.SetActive(false);
         tracker.SetParent(null);
 
         attackRate *= 2-PrefManager.GetDifficulty();
         bulletSpeed *= PrefManager.GetDifficulty();
         moveSpeed *= PrefManager.GetDifficulty();
 
-        InvokeRepeating(nameof(NewOffset), 0f, 1f);
+        InvokeRepeating(nameof(NewOffset), 0f, myBehavior == AimBehavior.ToPlayer ? 1f : 3f);
         if (bulletPrefab != null && attackRate != 0f)
             InvokeRepeating(nameof(TryToShoot), attackRate*0.5f, attackRate);
     }
@@ -40,7 +41,7 @@ public class BaseEnemy : Entity
         }
         else if (myBehavior == AimBehavior.Random)
         {
-            aimPosition = new Vector2(Random.Range(WaveManager.minX, WaveManager.maxX), Random.Range(WaveManager.minY, WaveManager.maxY));
+            aimPosition = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));
         }
         tracker.position = aimPosition;
     }
@@ -100,5 +101,10 @@ public class BaseEnemy : Entity
     public void StunThis(float stunTime)
     {
         this.stunTime+=stunTime;
+    }
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        Destroy(tracker.gameObject);
     }
 }

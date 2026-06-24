@@ -49,6 +49,7 @@ MonoBehaviour:
   maxTimer: 10
   beOnPlayer: 0
   homeSprite: {fileID: 2297416796854400589}
+  warp: {fileID: 8300000, guid: 185e903953e4b418e81cdb675ffcf4a7, type: 3}
 --- !u!1 &8042501907928214780
 GameObject:
   m_ObjectHideFlags: 0

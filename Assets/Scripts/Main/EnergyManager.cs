@@ -27,24 +27,24 @@ public class EnergyManager : StoreBullets
         switch (randomNum)
         {
             case 0:
-                spawn = new(Random.Range(WaveManager.minX+1f, WaveManager.maxX-1f), WaveManager.maxY-1f);
+                spawn = new(WaveManager.RandomX(1f), WaveManager.maxY-1f);
                 direction = Vector2.down;
                 break;
             case 1:
-                spawn = new(Random.Range(WaveManager.minX+1f, WaveManager.maxX-1f), WaveManager.minY+1f);
+                spawn = new(WaveManager.RandomX(1f), WaveManager.minY+1f);
                 direction = Vector2.up;
                 break;
             case 2:
-                spawn = new(WaveManager.minX+1f, Random.Range(WaveManager.minY+1f, WaveManager.maxY-1f));
+                spawn = new(WaveManager.minX+1f, WaveManager.RandomY(1f));
                 direction = Vector2.right;
                 break;
             case 3:
-                spawn = new(WaveManager.maxX-1f, Random.Range(WaveManager.minY+1f, WaveManager.maxY-1f));
+                spawn = new(WaveManager.maxX-1f, WaveManager.RandomY(1f));
                 direction = Vector2.left;
                 break;
         }
 
-        CreateBullet(new AttackInfo(spawn, bulletSpeed, direction, IsPlayer, GiveEnergy, ReturnBullet));
+        CreateBullet(new BulletInfo(spawn, bulletSpeed, direction, IsPlayer, GiveEnergy, ReturnBullet));
 
         bool IsPlayer(Entity entity, Bullet bullet) => entity is Player;
         void GiveEnergy(Entity entity) => Player.instance.ChangeEnergy(energy);

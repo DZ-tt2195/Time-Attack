@@ -12,7 +12,7 @@ public class ExpandRay : Bullet
         travelTime *= 2 - PrefManager.GetDifficulty();
     }
 
-    public override void AssignInfo(AttackInfo info, StoreBullets owner)
+    public override void AssignInfo(BulletInfo info, StoreBullets owner)
     {
         base.AssignInfo(info, owner);
         this.transform.localScale = Vector3.zero;

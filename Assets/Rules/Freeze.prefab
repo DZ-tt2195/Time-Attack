@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   bulletSpeed: 0
   maxTimer: 10
   beOnPlayer: 1
-  stunTime: 3
+  stunTime: 4
   freezeSound: {fileID: 8300000, guid: e219ff2e1c5c7412e8b97c0f7527ce1e, type: 3}
 --- !u!212 &6626662838147560955
 SpriteRenderer:

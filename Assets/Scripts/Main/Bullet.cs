@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 public class Bullet : MonoBehaviour
 {
-    protected AttackInfo info;
+    protected BulletInfo info;
     public StoreBullets owner { get; private set; }
     public SpriteRenderer spriteRenderer { get; private set; }
 
@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public virtual void AssignInfo(AttackInfo info, StoreBullets owner)
+    public virtual void AssignInfo(BulletInfo info, StoreBullets owner)
     {
         this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
@@ -22,8 +22,8 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         Movement();
-        if (this.transform.position.x < WaveManager.minX - 0.5f || this.transform.position.x > WaveManager.maxX + 0.5f ||
-            this.transform.position.y < WaveManager.minY - 0.5f || this.transform.position.y > WaveManager.maxY + 0.5f)
+        if (this.transform.position.x < WaveManager.minX || this.transform.position.x > WaveManager.maxX ||
+            this.transform.position.y < WaveManager.minY || this.transform.position.y > WaveManager.maxY)
         {
             ForceReturn();
         }

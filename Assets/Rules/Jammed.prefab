@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jammed
   bulletSpeed: 0
-  maxTimer: 10
+  maxTimer: 5
   beOnPlayer: 0
   jammed: {fileID: 8300000, guid: dd213b0bce7ae4e72a9700ae87b922af, type: 3}
 --- !u!58 &2321356552120497382

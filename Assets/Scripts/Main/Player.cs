@@ -149,11 +149,11 @@ public class Player : Entity
         if (currentLevel.levelType == LevelType.Endless)
         {
             int score = (int)(PrefManager.GetDifficulty() * 100) + (WaveManager.instance.currentWave-1)*10;
-            WaveManager.instance.EndGame(AutoTranslate.Lost(), EndStats(), score);
+            WaveManager.instance.EndGame(AutoTranslate.Lost(), tookDamage, score);
         }
         else
         {
-            WaveManager.instance.EndGame(AutoTranslate.Lost(), EndStats(), -1);
+            WaveManager.instance.EndGame(AutoTranslate.Lost(), tookDamage, -1);
         }
     }
     public void ChangeEnergy(int amount)
@@ -162,10 +162,7 @@ public class Player : Entity
         if (amount > 0)
             AudioManager.instance.Heal(0.3f);
     }
-    public (int, int) EndStats()
-    {
-        return (firedBullets - landedBullets, tookDamage);
-    }
+    public int DamageTaken() => tookDamage;
     public (int health, int maxHealth) EnergyInfo()
     {
         return (this.currentEnergy, this.maxEnergy);

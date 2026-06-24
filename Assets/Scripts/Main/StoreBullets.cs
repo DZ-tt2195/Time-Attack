@@ -21,7 +21,7 @@ public class StoreBullets : MonoBehaviour
             bulletPrefab.gameObject.SetActive(false);
         } catch { }
     }
-    protected Bullet CreateBullet(AttackInfo info)
+    protected Bullet CreateBullet(BulletInfo info)
     {
         firedBullets++;
         Bullet newBullet = (bulletQueue.Count > 0) ? bulletQueue.Dequeue() : Instantiate(bulletPrefab);
@@ -37,9 +37,9 @@ public class StoreBullets : MonoBehaviour
         if (landed)
             landedBullets++;
     }
-    protected AttackInfo DefaultAttack(Vector2 spawn, Vector2 direction)
+    protected BulletInfo DefaultAttack(Vector2 spawn, Vector2 direction)
     {
-        return new AttackInfo(spawn, bulletSpeed, direction, CanHit, Hit, Return);
+        return new BulletInfo(spawn, bulletSpeed, direction, CanHit, Hit, Return);
         bool CanHit(Entity entity, Bullet bullet) => !bullet.CompareTag(entity.tag) && entity.CanTakeDamage();
         void Hit(Entity entity) => entity.ChangeHealth(-1);
         void Return(Bullet bullet, bool landed)
@@ -51,8 +51,6 @@ public class StoreBullets : MonoBehaviour
             else
             {
                 this.ReturnBullet(bullet, landed);
-                if (this == Player.instance && !landed)
-                    AudioManager.instance.Miss(0.3f);                
             }
         } 
     }
@@ -66,7 +64,7 @@ public class StoreBullets : MonoBehaviour
         }
     }
 }
-public class AttackInfo
+public class BulletInfo
 {
     public Vector2 spawnPosition{get; private set;}
     public float bulletSpeed{get; private set;}
@@ -75,7 +73,7 @@ public class AttackInfo
     public Action<Entity> hitTarget {get; private set;}
     public Action<Bullet, bool> returnBullet {get; private set;}
 
-    public AttackInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Func<Entity, Bullet, bool> canHit, Action<Entity> hitTarget, Action<Bullet, bool> returnBullet)
+    public BulletInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Func<Entity, Bullet, bool> canHit, Action<Entity> hitTarget, Action<Bullet, bool> returnBullet)
     {
         this.spawnPosition = spawnposition;
         this.bulletSpeed = bulletSpeed;

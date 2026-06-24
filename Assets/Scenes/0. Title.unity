@@ -325,16 +325,16 @@ MonoBehaviour:
     Freeze:
     "Ice Shatter SFX" - ImATaco (freesounds.org)
 
-    Warp: "Time Warp effect" -
-    chinomaker (freesounds.org)
+    Jammed: "ding" - Daphne in
+    Wonderland (freesounds.org)
+
+    Warp and Home: "Time Warp effect" - chinomaker
+    (freesounds.org)
 
     Winning: "win" - David819 (freesounds.org)
 
     Losing:
-    "energy deactivation" - d777_hickoryyy (freesounds.org)
-
-    Jammed: "ding" -
-    Daphne in Wonderland (freesounds.org)'
+    "energy deactivation" - d777_hickoryyy (freesounds.org)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -1146,7 +1146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &246686521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1774,11 +1774,6 @@ MonoBehaviour:
   deleteScoreButton: {fileID: 1151110061}
   soundCreditsButton: {fileID: 221328863}
   soundCreditsScreen: {fileID: 246686520}
-  chooseScreen: {fileID: 0}
-  weaponScreen: {fileID: 0}
-  storeWeapons: {fileID: 0}
-  weaponDisplayPrefab: {fileID: 7029344760866544870, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
-  randomWeapon: {fileID: 0}
   designer: {fileID: 992580724}
   description: {fileID: 795842980}
   lastUpdate: {fileID: 1872405279}

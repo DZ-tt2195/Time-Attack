@@ -6438,7 +6438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1850310568
 Transform:
   m_ObjectHideFlags: 0
@@ -7324,7 +7324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   bulletSpeed: 10
   spriteRenderer: {fileID: 6438494536739822877}
-  maxHealth: 10
+  maxHealth: 15
   protectionSources: 
   healthText: {fileID: 5992719068442753987}
   immuneTime: 2
@@ -7332,7 +7332,7 @@ MonoBehaviour:
   toSpin:
   - {fileID: 2031994637}
   - {fileID: 693341688}
-  spinSpeed: 40
+  spinSpeed: 45
   spinHands: 0
   moveSpeed: 8
 --- !u!50 &2640164510612888767

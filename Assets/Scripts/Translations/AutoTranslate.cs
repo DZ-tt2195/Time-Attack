@@ -20,7 +20,6 @@ public static string Paused () => Translator.inst.Translate("Paused", new() {});
 public static string No_Score () => Translator.inst.Translate("No_Score", new() {});
 public static string Best_Score (string Num) => Translator.inst.Translate("Best_Score", new() {("Num", Num)});
 public static string Difficulty (string Num) => Translator.inst.Translate("Difficulty", new() {("Num", Num)});
-public static string Bullets_Missed (string Num) => Translator.inst.Translate("Bullets_Missed", new() {("Num", Num)});
 public static string Damage_Taken (string Num) => Translator.inst.Translate("Damage_Taken", new() {("Num", Num)});
 public static string Wave (string Num,string Max) => Translator.inst.Translate("Wave", new() {("Num", Num),("Max", Max)});
 public static string Victory () => Translator.inst.Translate("Victory", new() {});

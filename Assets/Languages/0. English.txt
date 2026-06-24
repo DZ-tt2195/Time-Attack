@@ -18,7 +18,6 @@ Paused	Paused
 No_Score	No score found.
 Best_Score	Best Score: $Num$
 Difficulty	Difficulty: $Num$%
-Bullets_Missed	Bullets Missed: $Num$
 Damage_Taken	Damage Taken: $Num$
 Wave	Wave: $Num$ / $Max$
 Victory	You Won!
@@ -40,7 +39,7 @@ Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its s
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
 Sound_Credits	Sound Credits
 Freeze	Freeze
-Freeze_Text	[$Num$] All enemies around you can't move or attack.
+Freeze_Text	[$Num$] All enemies around you can't move or attack temporarily.
 Warp	Warp
 Warp_Text	[$Num$] All enemies randomly warp to the edge of the screen.
 Walls	Walls

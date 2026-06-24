@@ -20,7 +20,7 @@ public class Factory : BaseEnemy
         {
             bool moveRight = Random.Range(0, 2) == 0;
             Vector3 movement = moveRight ? Vector3.right : Vector3.left;
-            Vector3 toShoot = new(moveRight ? WaveManager.minX+0.1f : WaveManager.maxX - 0.1f, Random.Range(WaveManager.minY+0.25f, 2f));
+            Vector3 toShoot = new(moveRight ? WaveManager.minX+0.1f : WaveManager.maxX - 0.1f, WaveManager.RandomY(0.25f));
             positionsToShoot.Add((movement, toShoot));
         }
     }

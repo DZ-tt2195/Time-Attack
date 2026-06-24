@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using System.Diagnostics;
-using System.Threading;
 public enum GameState {Setup, Playing, Paused, Over}
 public class WaveManager : MonoBehaviour
 {
@@ -128,9 +127,9 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            (int missedBullets, int tookDamage) = Player.instance.EndStats();
-            int score = (int)(PrefManager.GetDifficulty() * 100) - missedBullets - tookDamage*2;
-            EndGame(AutoTranslate.Victory(), new(missedBullets, tookDamage), score);
+            int damageTaken = Player.instance.DamageTaken();
+            int score = (int)(PrefManager.GetDifficulty() * 100) - damageTaken*2;
+            EndGame(AutoTranslate.Victory(), damageTaken, score);
         }
     }
     void CreateEnemy(Vector2 start, BaseEnemy prefab)
@@ -191,7 +190,7 @@ public class WaveManager : MonoBehaviour
         blackOutObject.transform.SetAsLastSibling();
         blackOutObject.transform.position = Player.instance.transform.position;
     }
-    public void EndGame(string text, (int missedBullets, int tookDamage) stats, int score)
+    public void EndGame(string text, int tookDamage, int score)
     {
         if (!pauseScreen.activeSelf)
         {
@@ -200,7 +199,7 @@ public class WaveManager : MonoBehaviour
             UpdateTexts();
             Time.timeScale = 0f;
 
-            endText.text = $"{text}\n\n" + $"{AutoTranslate.Bullets_Missed(stats.missedBullets.ToString())}" + $"\n{AutoTranslate.Damage_Taken(stats.tookDamage.ToString())}\n";
+            endText.text = $"{text}\n\n" + $"{AutoTranslate.Damage_Taken(tookDamage.ToString())}\n";
             if (score > 0)
             {
                 endText.text += $"\n{AutoTranslate.Score(score.ToString())}";
@@ -239,7 +238,13 @@ public class WaveManager : MonoBehaviour
             return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
         }        
     }
+
+#endregion
+
+#region Helpers
     public List<BaseEnemy> GetEnemies() => allEnemies;
+    public static float RandomX(float offset) => Random.Range(minX + offset, maxX - offset);
+    public static float RandomY(float offset) => Random.Range(minY + offset, maxY - offset);
 
 #endregion
 

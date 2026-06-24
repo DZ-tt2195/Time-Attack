@@ -19,7 +19,7 @@ public class ElectricWave : Bullet
         vanishTime *= PrefManager.GetDifficulty();
     }
 
-    public override void AssignInfo(AttackInfo info, StoreBullets owner)
+    public override void AssignInfo(BulletInfo info, StoreBullets owner)
     {
         base.AssignInfo(info, owner);
         this.transform.localScale = Vector3.zero;
@@ -28,9 +28,8 @@ public class ElectricWave : Bullet
         moving = true;
         myTimer = 0;
         invertTime = 0.25f;
-        SetAlpha(spriteRenderer, 1);
+        MyExtensions.SetAlpha(spriteRenderer, 1);
     }
-
     protected override void Movement()
     {
         myTimer += Time.deltaTime;
@@ -48,7 +47,7 @@ public class ElectricWave : Bullet
         }
         else
         {
-            SetAlpha(spriteRenderer, 1 - (myTimer / vanishTime));
+            MyExtensions.SetAlpha(spriteRenderer, 1 - (myTimer / vanishTime));
             if (myTimer >= vanishTime)
                 ForceReturn();
         }
@@ -62,12 +61,5 @@ public class ElectricWave : Bullet
 
         float newYScale = Mathf.Abs(this.transform.localScale.y) * (inverted ? -1 : 1);
         this.transform.localScale = new Vector3(this.transform.localScale.x, newYScale);
-    }
-
-    void SetAlpha(SpriteRenderer target, float alpha)
-    {
-        Color newColor = target.color;
-        newColor.a = alpha;
-        target.color = newColor;
     }
 }

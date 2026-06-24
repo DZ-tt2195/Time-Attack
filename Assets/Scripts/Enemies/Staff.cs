@@ -24,7 +24,7 @@ public class Staff : BaseEnemy
 
         if (currentHealth > 0 && !star.gameObject.activeSelf)
         {
-            star.AssignInfo(new AttackInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), IsPlayer, Hit, Return), this);
+            star.AssignInfo(new BulletInfo(this.transform.position, bulletSpeed, new(target.x + RandomOffSet(), target.y + RandomOffSet()), IsPlayer, Hit, Return), this);
             
             bool IsPlayer(Entity entity, Bullet bullet) => entity is Player;
             void Hit(Entity entity) => this.ChangeHealth(-1);
@@ -35,5 +35,10 @@ public class Staff : BaseEnemy
         {
             return Random.Range(-bulletOffset, bulletOffset);
         }
+    }
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        Destroy(star.gameObject);
     }
 }
