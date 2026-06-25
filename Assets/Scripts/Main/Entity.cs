@@ -10,13 +10,15 @@ public class Entity : StoreBullets
     public SpriteRenderer spriteRenderer;
     protected int currentHealth {get; private set;}
     [SerializeField] protected int maxHealth;
-    [ReadOnly] public List<Protection> protectionSources = new();
+    protected List<Protection> protectionSources = new();
     protected int tookDamage;
     [SerializeField] protected TMP_Text healthText;
+    protected float stunTime {get; private set;}
 
     protected override void Awake()
     {
         base.Awake();
+        stunTime = 0f;
         currentHealth = maxHealth;
         healthText.text = maxHealth.ToString();
     }
@@ -35,7 +37,7 @@ public class Entity : StoreBullets
         else
         {
             tookDamage-=change;
-            AudioManager.instance.Damage(this is Player ? 0.5f : 0.25f);
+            AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
 
             if (currentHealth == 0)
                 DeathEffect();
@@ -56,4 +58,17 @@ public class Entity : StoreBullets
         protectionSources.Remove(Protection.Dead);
     }
     public int GetHealth() => currentHealth;
+    public void StunThis(float stunTime)
+    {
+        this.stunTime+=stunTime;
+    }
+    void Update()
+    {
+        stunTime = Mathf.Max(stunTime-Time.deltaTime, 0);
+        if (stunTime == 0f && WaveManager.state == GameState.Playing) 
+            EveryFrame();
+    }
+    protected virtual void EveryFrame()
+    {
+    }
 }

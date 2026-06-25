@@ -8,7 +8,6 @@ public class Player : Entity
 #region Setup
 
     public static Player instance;
-
     [Foldout("Player info", true)]
     [SerializeField] float immuneTime;
     int currentEnergy;
@@ -38,11 +37,10 @@ public class Player : Entity
     #endregion
 
 #region Gameplay
-
-    void Update()
+    protected override void EveryFrame()
     {
-        void Movement()
-        {
+        if (currentHealth == 0)
+            return;
             /*
             Vector3 mouseScreenPosition = Input.mousePosition;
             mouseScreenPosition.z = Mathf.Abs(WaveManager.instance.mainCamera.transform.position.z);
@@ -52,60 +50,40 @@ public class Player : Entity
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             */
 
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-            transform.position += (Vector3)(moveSpeed * Time.deltaTime * input);
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        transform.position += (Vector3)(moveSpeed * Time.deltaTime * input);
 
-            Vector3 pos = transform.position;
-            pos.x = Mathf.Clamp(pos.x, WaveManager.minX, WaveManager.maxX);
-            pos.y = Mathf.Clamp(pos.y, WaveManager.minY, WaveManager.maxY);
-            transform.position = pos;
-        }
-        void SpinHands()
-        {
-            if (spinHands)
-            {
-                foreach (Transform next in toSpin)
-                    next.Rotate(0, 0, spinSpeed * Time.deltaTime); 
-            }
-        }
-        void Attack()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (currentEnergy >= 1)
-                {
-                    currentEnergy--;
-                    AudioManager.instance.Shoot(0.3f);
-                    foreach (Transform nextHand in toSpin)
-                        CreateBullet(DefaultAttack(nextHand.position, nextHand.right));  
-                }
-                else
-                {
-                    AudioManager.instance.Miss(0.3f);                    
-                }               
-            }
-        }
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, WaveManager.minX, WaveManager.maxX);
+        pos.y = Mathf.Clamp(pos.y, WaveManager.minY, WaveManager.maxY);
+        transform.position = pos;
 
-        if (WaveManager.state == GameState.Playing)
+        if (spinHands)
         {
-            if (currentHealth > 0)
+            foreach (Transform next in toSpin)
+                next.Rotate(0, 0, spinSpeed * Time.deltaTime); 
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (currentEnergy >= 1)
             {
-                Movement();
-                SpinHands();
-                Attack();
+                currentEnergy--;
+                AudioManager.instance.Shoot(0.3f);
+                foreach (Transform nextHand in toSpin)
+                    CreateBullet(DefaultAttack(nextHand.position, nextHand.right));  
             }
+            else
+            {
+                AudioManager.instance.Miss(0.3f);                    
+            }               
         }
     }
     void OnTriggerStay2D(Collider2D collision)
     { 
         if (collision.TryGetComponent(out Entity entity))
-        {
             this.ChangeHealth(-1);
-        }
         else if (collision.CompareTag("Wall") || collision.CompareTag("HurtPlayer"))
-        {
             this.ChangeHealth(-1);
-        }
     }
     protected override void DamageEffect(int amount)
     {
@@ -163,11 +141,10 @@ public class Player : Entity
             AudioManager.instance.Heal(0.3f);
     }
     public int DamageTaken() => tookDamage;
-    public (int health, int maxHealth) EnergyInfo()
+    public (int currentEnergy, int maxEnergy) EnergyInfo()
     {
         return (this.currentEnergy, this.maxEnergy);
     }
-
     #endregion
 
 }

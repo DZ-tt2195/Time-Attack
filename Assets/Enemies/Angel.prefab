@@ -651,8 +651,9 @@ MonoBehaviour:
   lookAtPlayer: 0
   moveSpeed: 1.5
   attackRate: 0
+  myBehavior: 0
   wall: {fileID: 6445559324921500627}
-  wallOff: 5.5
+  wallOff: 5.75
   wallOn: 1.5
   shieldOn: {fileID: 8300000, guid: 3ad5016e9ad4d4f8b9aad495cadc3195, type: 3}
   shieldOff: {fileID: 8300000, guid: 5c7a774a307a44f94a6c63af808ada94, type: 3}

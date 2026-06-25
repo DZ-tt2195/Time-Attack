@@ -1154,13 +1154,12 @@ MonoBehaviour:
   bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
   maxHealth: 3
-  protectionSources: 
   healthText: {fileID: 8646325550116084806}
   lookAtPlayer: 1
   moveSpeed: 1
   attackRate: 1.25
   myBehavior: 1
-  randomize: 2.25
+  randomize: 2.5
   listOfRadiuses:
   - {fileID: 7177489698137222962}
   - {fileID: 6957713442744018409}

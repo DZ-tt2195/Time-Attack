@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Deplete
   bulletSpeed: 0
-  maxTimer: 20
+  maxTimer: 15
   beOnPlayer: 0
+  deplete: {fileID: 8300000, guid: aff867c356bf3485bbe6edcd2a8534f3, type: 3}
 --- !u!58 &2321356552120497382
 CircleCollider2D:
   m_ObjectHideFlags: 0

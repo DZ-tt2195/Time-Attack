@@ -13,9 +13,9 @@ public class Phoenix : BaseEnemy
         respawnTime *= 2 - PrefManager.GetDifficulty();
         textBox.text = "";
     }
-    protected override void Movement()
+    protected override void EveryFrame()
     {
-        base.Movement();
+        base.EveryFrame();
         if (currentHealth == 0)
         {
             currentTimer -= Time.deltaTime;
@@ -28,7 +28,6 @@ public class Phoenix : BaseEnemy
             textBox.text = "";
         }
     }
-
     protected override void DeathEffect()
     {
         base.DeathEffect();

@@ -9,7 +9,7 @@ public class Rule : StoreBullets
     float timer = 0f;
     [SerializeField] float maxTimer = 10f; public float GetTime => maxTimer;
     [SerializeField] bool beOnPlayer;
-    protected HashSet<BaseEnemy> enemiesInRange = new();
+    protected HashSet<Entity> entitiesInRange = new();
     Slider slider;
     protected override void Awake()
     {
@@ -39,18 +39,21 @@ public class Rule : StoreBullets
             this.slider.value = timer/maxTimer;
         }
     }
-    public bool CanUse() => timer >= maxTimer;
+    protected virtual bool CanUse()
+    { 
+        return timer == maxTimer;
+    }
     protected virtual void ActivateRule()
     {
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out BaseEnemy enemy))
-            enemiesInRange.Add(enemy);
+        if (collision.TryGetComponent(out Entity entity))
+            entitiesInRange.Add(entity);
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out BaseEnemy enemy))
-            enemiesInRange.Remove(enemy);        
+        if (collision.TryGetComponent(out Entity entity))
+            entitiesInRange.Remove(entity);        
     }
 }

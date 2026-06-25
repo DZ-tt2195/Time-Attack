@@ -15,9 +15,9 @@ public class Ghost : BaseEnemy
         MyExtensions.SetAlpha(spriteRenderer, 1f);
         healthText.SetAlpha(1f);
     }
-    protected override void Movement()
+    protected override void EveryFrame()
     {
-        base.Movement();
+        base.EveryFrame();
         if (currentHealth > 0)
         {
             float alpha = Mathf.Max(0, spriteRenderer.color.a - ((4.75f-attackRate) * Time.deltaTime));

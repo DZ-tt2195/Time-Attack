@@ -799,25 +799,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Planet
   bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
   maxHealth: 3
   protectionSources: 
   healthText: {fileID: 5011160519040992263}
   lookAtPlayer: 0
   moveSpeed: 1.5
   attackRate: 0
+  myBehavior: 0
   toSpin:
   - obj: {fileID: 7335682293739162065}
     rot: 0
-    radius: 0
-  - obj: {fileID: 7641815654312793453}
-    rot: 180
     radius: 0
   - obj: {fileID: 8621823185898580402}
     rot: 60
     radius: 0
   - obj: {fileID: 4039669700083893177}
     rot: 120
+    radius: 0
+  - obj: {fileID: 7641815654312793453}
+    rot: 180
     radius: 0
   - obj: {fileID: 3038942571221026451}
     rot: 240

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Warp
   bulletSpeed: 0
-  maxTimer: 15
+  maxTimer: 10
   beOnPlayer: 0
   stunTime: 0
   warp: {fileID: 8300000, guid: 185e903953e4b418e81cdb675ffcf4a7, type: 3}

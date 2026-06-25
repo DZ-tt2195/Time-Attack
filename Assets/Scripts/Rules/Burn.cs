@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Burn : Rule
 {
+    [SerializeField] AudioClip burn;
     protected override void ActivateRule()
     {
+        AudioManager.instance.PlaySound(burn, 0.5f);
         bool hitEnemy = false;
-        foreach (BaseEnemy enemy in enemiesInRange)
+        foreach (Entity entity in entitiesInRange)
         {
-            if (enemy.CanTakeDamage())
+            if (entity == Player.instance)
+                continue;
+
+            if (entity.CanTakeDamage())
             {
                 hitEnemy = true;
-                enemy.ChangeHealth(-1);
+                entity.ChangeHealth(-1);
             }
         }
         if (!hitEnemy)

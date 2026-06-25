@@ -298,43 +298,49 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pressing buttons: "Telephone button noise" - Caitlyn_100 (freesounds.org)
-
-    Gaining
-    health or energy: "Itemize" - Scrampunk_ (freesounds.org)
-
-    Damage: "Damage
-    sound effect" - Raclure (freesounds.org)
-
-    Shoot: "FX - Laser Shoot (A)" -
-    bolkmar (freesounds.org)
-
-    Bullet missed: "Error" - Autistic Lucario (freesounds.org)
-
-    Mortar
-    attack: "Cannon1" - Isaac200000 (freesounds.org)
-
-    Lightbulb blackout: "Shock_One"
-    - Nodgez (freesounds.org)
-
-    Walls appearing: "power_up" - 400 Sounds Pack
-    (ci.itch.io)
-
-    Walls disappearing: "power_down" - 400 Sounds Pack (ci.itch.io)
-
-    Freeze:
-    "Ice Shatter SFX" - ImATaco (freesounds.org)
-
-    Jammed: "ding" - Daphne in
-    Wonderland (freesounds.org)
-
-    Warp and Home: "Time Warp effect" - chinomaker
+  m_text: 'Pressing buttons / Checkpoint: "Telephone button noise" - Caitlyn_100
     (freesounds.org)
 
-    Winning: "win" - David819 (freesounds.org)
+    Gaining health or energy: "Itemize" - Scrampunk_ (freesounds.org)
 
-    Losing:
-    "energy deactivation" - d777_hickoryyy (freesounds.org)'
+    Damage:
+    "Damage sound effect" - Raclure (freesounds.org)
+
+    Shoot: "FX - Laser Shoot
+    (A)" - bolkmar (freesounds.org)
+
+    Bullet missed: "Error" - Autistic Lucario
+    (freesounds.org)
+
+    Mortar attack: "Cannon1" - Isaac200000 (freesounds.org)
+
+    Lightbulb
+    blackout: "Shock_One" - Nodgez (freesounds.org)
+
+    Walls appearing: "power_up"
+    - 400 Sounds Pack (ci.itch.io)
+
+    Walls disappearing: "power_down" - 400 Sounds
+    Pack (ci.itch.io)
+
+    Freeze: "Ice Shatter SFX" - ImATaco (freesounds.org)
+
+    Burn:
+    "fire_lighting" - 400 Sounds pack (ci.itch.io)
+
+    Deplete: "fall_quick" - 400
+    Sounds Pack (ci.itch.io)
+
+    Jammed: "ding" - Daphne in Wonderland (freesounds.org)
+
+    Warp
+    and Home: "Time Warp effect" - chinomaker (freesounds.org)
+
+    Winning: "win"
+    - David819 (freesounds.org)
+
+    Losing: "energy deactivation" - d777_hickoryyy
+    (freesounds.org)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
   m_sharedMaterial: {fileID: -3852492252101762229, guid: 31e79ddad7b2d41c395ada76a18cbcdd, type: 2}
@@ -361,7 +367,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.75
+  m_fontSize: 49.6
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1

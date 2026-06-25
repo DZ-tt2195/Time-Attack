@@ -12,9 +12,9 @@ public class Castle : BaseEnemy
         rotationSpeed *= Random.Range(0, 2) == 0 ? 1 : -1;
         rotateThis.transform.localEulerAngles = new Vector3(0, 0, Random.Range(0, 360f));
     }
-    protected override void Movement()
+    protected override void EveryFrame()
     {
-        base.Movement();
+        base.EveryFrame();
         rotateThis.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }

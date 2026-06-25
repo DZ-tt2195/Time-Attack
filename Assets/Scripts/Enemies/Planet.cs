@@ -24,9 +24,9 @@ public class Planet : BaseEnemy
             next.radius = UnityEngine.Random.Range(1.5f, 3.5f);
     }
 
-    protected override void Movement() 
+    protected override void EveryFrame() 
     {
-        base.Movement();
+        base.EveryFrame();
 
         foreach (Moon next in toSpin)
         {

@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: June 23, 2026
+Last_Update	Last Updated: June 25, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -54,6 +54,8 @@ Necromancy	Necromancy
 Necromancy_Text	[$Num$] All dead enemies come back with 2 health.
 Home	Home
 Home_Text	[$Num$] You teleport to where the home is, and it moves somewhere else.
+Checkpoint	Checkpoint
+Checkpoint_Text	[$Num$] Touch the flag to spend 5 energy and gain 2 health.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025

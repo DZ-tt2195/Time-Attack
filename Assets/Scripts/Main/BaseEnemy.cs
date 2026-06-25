@@ -11,7 +11,6 @@ public class BaseEnemy : Entity
     [SerializeField] protected float attackRate;
     [SerializeField] AimBehavior myBehavior;
     Vector2 aimPosition;
-    float stunTime = 0f;
     Transform tracker;
     public void EnemySetup()
     {
@@ -56,31 +55,16 @@ public class BaseEnemy : Entity
         target.Normalize();
         CreateBullet(DefaultAttack(this.transform.position, target));
     }
-    void Update()
-    {
-        if (stunTime > 0f) 
-        {
-            stunTime -= Time.deltaTime;
-        }
-        else
-        {
-            Movement();
-            RotateToPlayer();
-        }
-    }
-    protected virtual void Movement()
-    {
-        transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);  
-        if (Vector3.Distance(transform.position, aimPosition) < 0.01f)
-            NewOffset();
-    }
-    protected virtual void RotateToPlayer()
+    protected override void EveryFrame()
     {
         if (lookAtPlayer)
         {
             Vector2 aimDirection = AimAtPlayer();
             spriteRenderer.transform.localEulerAngles = new(0, 0, Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg + 90);
         }        
+        transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);  
+        if (Vector3.Distance(transform.position, aimPosition) < 0.01f)
+            NewOffset();
     }
     protected Vector2 AimAtPlayer()
     {
@@ -97,10 +81,6 @@ public class BaseEnemy : Entity
         base.HealEffect(amount);
         crossedOut.SetActive(false);
         MyExtensions.SetAlpha(this.spriteRenderer, 1f);
-    }
-    public void StunThis(float stunTime)
-    {
-        this.stunTime+=stunTime;
     }
     public override void OnDestroy()
     {
