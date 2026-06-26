@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6087843930147102569}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d555c4f3a3748a289ebc0a62c839d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Barriers
-  bulletSpeed: 0
   maxTimer: 5
   beOnPlayer: 0
   listOfWalls:

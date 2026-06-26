@@ -49,7 +49,7 @@ public class ElectricWave : Bullet
         {
             MyExtensions.SetAlpha(spriteRenderer, 1 - (myTimer / vanishTime));
             if (myTimer >= vanishTime)
-                ForceReturn();
+                ForceReturn(false);
         }
 
         invertTime -= Time.deltaTime;

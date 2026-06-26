@@ -23,7 +23,6 @@ public class Player : Entity
         instance = this;
         spinHands = true;
 
-        this.tag = "Player";
         immuneTime *= 2 - PrefManager.GetDifficulty();
         currentEnergy = maxEnergy;
 

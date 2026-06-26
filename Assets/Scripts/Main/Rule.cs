@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MyBox;
 
-public class Rule : StoreBullets
+public class Rule : MonoBehaviour
 {
     [Foldout("Rules info", true)]
     float timer = 0f;
@@ -11,9 +11,8 @@ public class Rule : StoreBullets
     [SerializeField] bool beOnPlayer;
     protected HashSet<Entity> entitiesInRange = new();
     Slider slider;
-    protected override void Awake()
+    protected virtual void Awake()
     {
-        base.Awake();
         this.name = this.name.Replace("(Clone)", "");
     }
     public void AssignSlider(RulesSlider rulesslider)
@@ -50,12 +49,12 @@ public class Rule : StoreBullets
     protected virtual void ActivateRule()
     {
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity entity))
             entitiesInRange.Add(entity);
     }
-    void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Entity entity))
             entitiesInRange.Remove(entity);        

@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         if (this.transform.position.x < WaveManager.minX || this.transform.position.x > WaveManager.maxX ||
             this.transform.position.y < WaveManager.minY || this.transform.position.y > WaveManager.maxY)
         {
-            ForceReturn();
+            ForceReturn(false);
         }
     }
     protected virtual void Movement()
@@ -38,15 +38,16 @@ public class Bullet : MonoBehaviour
         if (collision.TryGetComponent(out Entity target) && info.canHit(target, this))
         {
             info.hitTarget(target);
-            info.returnBullet(this, true);
+            ForceReturn(true);
         }
         else if (collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
-            if (this.CompareTag("Player")) AudioManager.instance.Miss(0.1f);
-            ForceReturn();
+            Debug.Log($"hit wall: {this.tag}, {collision.transform.parent.tag}");
+            if (this.CompareTag("Player")) AudioManager.instance.Miss(0.2f);
+            ForceReturn(false);
         }
     }
-    public void ForceReturn()
+    public void ForceReturn(bool landed)
     {
         info.returnBullet(this, false);        
     }

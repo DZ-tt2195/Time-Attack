@@ -43,7 +43,9 @@ Freeze_Text	[$Num$] All enemies around you can't move or attack for a few second
 Warp	Warp
 Warp_Text	[$Num$] All enemies randomly warp to the edge of the screen.
 Walls	Walls
-Walls_Text	[$Num$] Walls either appear or disappear. / Walls block your bullets and hurt you if you touch them.
+Walls_Text	[$Num$] Walls either appear or disappear. / Walls block enemy bullets, but hurt you if you touch them.
+Bomb	Bomb
+Bomb_Text	[$Num$] Bomb moves back to the top. / Bomb damages you when it touches the bottom; slow it down with bullets.
 Burn	Burn
 Burn_Text	[$Num$] Damage all enemies around you; if there are no enemies to hit, you take damage instead.
 Deplete	Deplete

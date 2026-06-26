@@ -7,7 +7,7 @@ public class Resupply : Bullet
         if (collision.TryGetComponent(out Entity target) && info.canHit(target, this))
         {
             info.hitTarget(target);
-            info.returnBullet(this, true);
+            ForceReturn(true);
         }
     }
     protected override void Movement()

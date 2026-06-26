@@ -24,6 +24,6 @@ public class ExpandRay : Bullet
         myTimer += Time.deltaTime;
         this.transform.localScale = Vector2.Lerp(Vector3.zero, new(targetXpand, targetXpand), myTimer / travelTime);
         if (myTimer >= travelTime)
-            ForceReturn();
+            ForceReturn(false);
     }
 }

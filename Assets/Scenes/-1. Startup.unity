@@ -296,6 +296,7 @@ MonoBehaviour:
   - {fileID: 7519828667132375851, guid: 7fa0ddbd3ba9546b29ada3d8d9d20dd3, type: 3}
   - {fileID: 1625374447210381901, guid: 1c59398b3b3ba4183a8f3a79ed1349b9, type: 3}
   listOfRules:
+  - {fileID: 6602863716648774172, guid: cca9272662d8c49c9b23d9c975c2fdc6, type: 3}
   - {fileID: 2801925203433493126, guid: 2a4da36df37b34c4f8919c1c7402e474, type: 3}
   - {fileID: 1811585783994214042, guid: 1082f0fa8498e44ec93d350e1013e66a, type: 3}
   - {fileID: 2632338062982930639, guid: 7525018e452ad45859ac4bb662893bcb, type: 3}
