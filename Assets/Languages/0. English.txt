@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: June 25, 2026
+Last_Update	Last Updated: June 26, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -39,23 +39,23 @@ Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its s
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
 Sound_Credits	Sound Credits
 Freeze	Freeze
-Freeze_Text	[$Num$] All enemies around you can't move or attack temporarily.
+Freeze_Text	[$Num$] All enemies around you can't move or attack for a few seconds.
 Warp	Warp
 Warp_Text	[$Num$] All enemies randomly warp to the edge of the screen.
 Walls	Walls
-Walls_Text	[$Num$] Walls that block your bullets will pop up and disappear.
+Walls_Text	[$Num$] Walls either appear or disappear. / Walls block your bullets and hurt you if you touch them.
 Burn	Burn
 Burn_Text	[$Num$] Damage all enemies around you; if there are no enemies to hit, you take damage instead.
 Deplete	Deplete
 Deplete_Text	[$Num$] Lose all energy.
 Jammed	Jammed
-Jammed_Text	[$Num$] Your clock hands stop spinning, and then continue.
+Jammed_Text	[$Num$] Your clock hands either stop or resume spinning around.
 Necromancy	Necromancy
 Necromancy_Text	[$Num$] All dead enemies come back with 2 health.
+Flag	Flag
+Flag_Text	[$Num$] Touch the flag to spend 5 energy and gain 2 health.
 Home	Home
-Home_Text	[$Num$] You teleport to where the home is, and it moves somewhere else.
-Checkpoint	Checkpoint
-Checkpoint_Text	[$Num$] Touch the flag to spend 5 energy and gain 2 health.
+Home_Text	[$Num$] Home moves somewhere else. / Whenever you gain energy, you warp to where the home is.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -70,5 +70,5 @@ Update_5	Jan 05, 2026
 Update_5_Text	Nerfed Endless level \nMoved some waves in Enemy Rush
 Update_6	May 07, 2026
 Update_6_Text	Energy and Health are the same thing \nYou start with more Health, but shooting makes you lose 1 health \nWaves in Enemy Rush are now shuffled \nYou can see each enemy's health, and attack slightly less often \nChanged some sprites and added sounds
-Update_7	June 23, 2026
-Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly move towards you, like how Planet does \nRedesigned some enemies, and they all have less health \nSeperated health and energy again; you start with more health and never get more \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added \nChanged game name from Relentless Waves to Time Attack
+Update_7	June 26, 2026
+Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly move towards you, like how Planet does \nRedesigned and rebalanced many enemies and levels \nSeperated health and energy again; you start with a lot more health \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added \nChanged game name from Relentless Waves to Time Attack

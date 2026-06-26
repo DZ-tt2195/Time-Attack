@@ -136,7 +136,7 @@ public class Player : Entity
     }
     public void ChangeEnergy(int amount)
     {
-        this.currentEnergy = Mathf.Min(this.currentEnergy + amount, maxEnergy);
+        this.currentEnergy = Mathf.Clamp(this.currentEnergy + amount, 0, maxEnergy);
         if (amount > 0)
             AudioManager.instance.Heal(0.3f);
     }

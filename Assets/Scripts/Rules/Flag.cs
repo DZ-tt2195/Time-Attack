@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using MyBox;
 
-public class Checkpoint : Rule
+public class Flag : Rule
 {
-    [SerializeField] SpriteRenderer checkpoint;
+    [SerializeField] SpriteRenderer flagSprite;
     [SerializeField] int energyCost;
     [SerializeField] int healthGain;
     protected override void Awake()
@@ -16,9 +16,9 @@ public class Checkpoint : Rule
     {
         if (base.CanUse())
         {
-            if (checkpoint.color.a < 1f)
+            if (flagSprite.color.a < 1f)
             {
-                MyExtensions.SetAlpha(checkpoint, 1);
+                MyExtensions.SetAlpha(flagSprite, 1);
                 AudioManager.instance.Menu();
             }
             return entitiesInRange.Contains(Player.instance) && Player.instance.EnergyInfo().currentEnergy >= energyCost;
@@ -36,7 +36,7 @@ public class Checkpoint : Rule
     }
     void MoveFlag()
     {
-        checkpoint.transform.position = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));
-        MyExtensions.SetAlpha(checkpoint, 0.5f);
+        flagSprite.transform.position = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));
+        MyExtensions.SetAlpha(flagSprite, 0.5f);
     }
 }

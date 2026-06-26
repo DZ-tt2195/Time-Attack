@@ -26,17 +26,21 @@ public class Rule : StoreBullets
     {
         if (WaveManager.state == GameState.Playing)
         {
+            EveryFrame();
             timer = Mathf.Min(timer+Time.deltaTime, maxTimer);
             if (CanUse())
             {
                 timer = 0f;
                 ActivateRule();
             }
-            if (beOnPlayer)
-            {
-                this.transform.position = Player.instance.transform.position;
-            }
             this.slider.value = timer/maxTimer;
+        }
+    }
+    protected virtual void EveryFrame()
+    {
+        if (beOnPlayer)
+        {
+            this.transform.position = Player.instance.transform.position;
         }
     }
     protected virtual bool CanUse()

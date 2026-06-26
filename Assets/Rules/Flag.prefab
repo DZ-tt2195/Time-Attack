@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2632338062982930639}
   - component: {fileID: 3718866474798517408}
   m_Layer: 0
-  m_Name: Checkpoint
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   bulletSpeed: 0
   maxTimer: 20
   beOnPlayer: 0
-  checkpoint: {fileID: 6583563448463812777}
+  flagSprite: {fileID: 6583563448463812777}
   energyCost: 5
   healthGain: 2
 --- !u!61 &3718866474798517408
