@@ -1698,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1565796930458190120, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_fontSize
-      value: 87.1
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2019480742131669729, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_IsActive
@@ -1940,14 +1940,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1448484872}
+  - {fileID: 1118295515}
   - {fileID: 200080892}
   - {fileID: 651330697}
   - {fileID: 1307565741}
   - {fileID: 739478176}
   - {fileID: 1226735361}
   - {fileID: 40648950}
-  - {fileID: 1448484872}
-  - {fileID: 1118295515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3589,8 +3589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 220}
-  m_SizeDelta: {x: 2000, y: 600}
+  m_AnchoredPosition: {x: 0, y: 275}
+  m_SizeDelta: {x: 2000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987706539
 MonoBehaviour:
@@ -3639,12 +3639,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
+  m_fontSize: 200
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 150
+  m_fontSizeMax: 200
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4914,7 +4914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1565796930458190120, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_fontSize
-      value: 87.1
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2019480742131669729, guid: 73057f503a0634be9aaf897be08ffe98, type: 3}
       propertyPath: m_IsActive

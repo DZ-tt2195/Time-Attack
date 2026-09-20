@@ -88,6 +88,7 @@ public class TitleScreen : MonoBehaviour
         {
             AudioManager.instance.Menu();
             PrefManager.SetCurrentLevel(n);
+            PlayerPrefs.Save();
             Level newLevel = listOfLevels[n];
 
             if (PrefManager.GetScore(newLevel.levelName.ToString()) > 0)

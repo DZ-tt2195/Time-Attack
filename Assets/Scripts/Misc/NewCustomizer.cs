@@ -41,7 +41,6 @@ public class NewCustomizer : MonoBehaviour
             nextDisplay.AssignRule(allRules[i]);
             int number = i;
 
-            nextDisplay.toggle.onValueChanged.AddListener(ShapeToggle);
             if (AlreadySaved(number))
             {
                 nextDisplay.toggle.isOn = true;
@@ -51,6 +50,7 @@ public class NewCustomizer : MonoBehaviour
             {
                 nextDisplay.toggle.isOn = false;
             }
+            nextDisplay.toggle.onValueChanged.AddListener(ShapeToggle);
 
             void ShapeToggle(bool enabled)
             {

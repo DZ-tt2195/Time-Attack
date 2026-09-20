@@ -123,6 +123,7 @@ public class WaveManager : MonoBehaviour
         energySlider.gameObject.SetActive(true);
 
         difficultySlider.gameObject.SetActive(false);
+        PlayerPrefs.Save();
 
         state = GameState.Playing;
         EnergyManager.inst.BeginGame();
