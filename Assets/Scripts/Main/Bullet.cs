@@ -5,7 +5,6 @@ public class Bullet : MonoBehaviour
     protected BulletInfo info;
     public StoreBullets owner { get; private set; }
     public SpriteRenderer spriteRenderer { get; private set; }
-
     protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -42,7 +41,6 @@ public class Bullet : MonoBehaviour
         }
         else if (collision.CompareTag("Wall") && !collision.transform.parent.CompareTag(this.tag))
         {
-            Debug.Log($"hit wall: {this.tag}, {collision.transform.parent.tag}");
             if (this.CompareTag("Player")) AudioManager.instance.Miss(0.2f);
             ForceReturn(false);
         }

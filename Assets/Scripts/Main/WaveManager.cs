@@ -129,6 +129,18 @@ public class WaveManager : MonoBehaviour
         EnergyManager.inst.BeginGame();
         gameTimer.Start();
         NewWave();
+
+        EventManager.inst.Subscribe<EventDeath>(death => UpdateEnemySlider());
+        EventManager.inst.Subscribe<EventHeal>(heal => UpdateEnemySlider());
+        EventManager.inst.Subscribe<EventEnergy>(energy => UpdateEnergySlider());
+
+        UpdateEnergySlider();
+        void UpdateEnergySlider()
+        {
+            (int energy, int maxEnergy) playerStats = Player.instance.EnergyInfo();
+            energySlider.value = playerStats.energy / (float)playerStats.maxEnergy;
+            energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());    
+        }
     }
 
 #endregion
@@ -157,6 +169,7 @@ public class WaveManager : MonoBehaviour
                 waveCounter.text = AutoTranslate.Wave((currentWave+1).ToString(), "\u221E");
                 tutorialText.text = "";
             }
+            UpdateEnemySlider();
         }
         else
         {
@@ -195,6 +208,31 @@ public class WaveManager : MonoBehaviour
 
         if (state != GameState.Playing) return;
 
+        timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}  | {AutoTranslate.FPS(GetFPS())}";
+
+        string GetFPS()
+        {
+            framearray[lastframe] = Time.deltaTime;
+            lastframe++;
+            if (lastframe == 60)
+            {
+                lastframe = 0;
+                float total = 0;
+                for (int i = 0; i < framearray.Length; i++)
+                    total += framearray[i];
+                lastupdate = (int)(framearray.Length / total);
+                return lastupdate.ToString();
+            }
+            return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
+        }
+        
+        blackOutTime = Mathf.Max(0f, blackOutTime - Time.deltaTime);
+        blackOutObject.SetActive(blackOutTime > 0f);
+        blackOutObject.transform.SetAsLastSibling();
+        blackOutObject.transform.position = Player.instance.transform.position;
+    }
+    void UpdateEnemySlider()
+    {
         allEnemies.RemoveAll(enemy => enemy == null);
         int currentEnemies = 0;
         if (allEnemies.Count > 0)
@@ -215,13 +253,7 @@ public class WaveManager : MonoBehaviour
                 currentWave++;
                 NewWave();
             }
-        }
-
-        UpdateTexts();
-        blackOutTime = Mathf.Max(0f, blackOutTime - Time.deltaTime);
-        blackOutObject.SetActive(blackOutTime > 0f);
-        blackOutObject.transform.SetAsLastSibling();
-        blackOutObject.transform.position = Player.instance.transform.position;
+        }        
     }
     public void EndGame(string text, int tookDamage, int score)
     {
@@ -229,7 +261,6 @@ public class WaveManager : MonoBehaviour
         {
             state = GameState.Over;
             pauseScreen.SetActive(true);
-            UpdateTexts();
             Time.timeScale = 0f;
 
             endText.text = $"{text}\n\n" + $"{AutoTranslate.Damage_Taken(tookDamage.ToString())}\n";
@@ -246,30 +277,6 @@ public class WaveManager : MonoBehaviour
             if (score > PrefManager.GetScore(currentLevel.levelName.ToString()))
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }
-    }
-    void UpdateTexts()
-    {
-        (int energy, int maxEnergy) playerStats = Player.instance.EnergyInfo();
-        energySlider.value = playerStats.energy / (float)playerStats.maxEnergy;
-        energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());
-        timerText.text = $"{AutoTranslate.Difficulty($"{PrefManager.GetDifficulty()*100:F0}")}\n{MyExtensions.StopwatchTime(gameTimer)}";
-        timerText.text += $" | {AutoTranslate.FPS(GetFPS())}";
-
-        string GetFPS()
-        {
-            framearray[lastframe] = Time.deltaTime;
-            lastframe++;
-            if (lastframe == 60)
-            {
-                lastframe = 0;
-                float total = 0;
-                for (int i = 0; i < framearray.Length; i++)
-                    total += framearray[i];
-                lastupdate = (int)(framearray.Length / total);
-                return lastupdate.ToString();
-            }
-            return (lastupdate > Application.targetFrameRate) ? Application.targetFrameRate.ToString() : lastupdate.ToString();
-        }        
     }
 
 #endregion

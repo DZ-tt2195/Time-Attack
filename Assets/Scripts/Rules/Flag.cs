@@ -12,6 +12,7 @@ public class Flag : Rule
         base.Awake();
         MoveFlag();
     }
+    public override string MyText => AutoTranslate.Flag_Text(GetTime.ToString(), energyCost.ToString(), healthGain.ToString());
     protected override bool CanUse()
     {
         if (base.CanUse())

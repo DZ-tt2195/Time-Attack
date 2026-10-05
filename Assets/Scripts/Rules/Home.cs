@@ -3,18 +3,17 @@ using UnityEngine;
 public class Home : Rule
 {
     [SerializeField] SpriteRenderer homeSprite;
-    int lastEnergy;
     protected override void Awake()
     {
         base.Awake();
         MoveHome();
-    }
-    protected override void EveryFrame()
-    {
-        int newEnergy = Player.instance.EnergyInfo().currentEnergy;
-        if (newEnergy > lastEnergy)
-            Player.instance.transform.position = homeSprite.transform.position;
-        lastEnergy = newEnergy;
+        EventManager.inst.Subscribe<EventEnergy>(energy => ChangedEnergy(energy));
+
+        void ChangedEnergy(EventEnergy info)
+        {
+            if (info.energyChange > 0)
+                Player.instance.transform.position = homeSprite.transform.position;
+        }
     }
     protected override void ActivateRule()
     {

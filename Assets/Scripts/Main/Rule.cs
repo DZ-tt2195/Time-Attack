@@ -15,6 +15,7 @@ public class Rule : MonoBehaviour
     {
         this.name = this.name.Replace("(Clone)", "");
     }
+    public virtual string MyText => Translator.inst.Translate($"{this.name}_Text", new() {("Time", GetTime.ToString())});
     public void AssignSlider(RulesSlider rulesslider)
     {
         this.slider = rulesslider.slider;

@@ -33,6 +33,7 @@ public class Entity : StoreBullets
         {
             AudioManager.instance.Heal(0.3f);
             HealEffect(change); 
+            EventManager.inst.RunTriggers(new EventHeal(this, change));
         }
         else
         {
@@ -40,9 +41,14 @@ public class Entity : StoreBullets
             AudioManager.instance.Damage(this is Player ? 0.5f : 0.3f);
 
             if (currentHealth == 0)
+            {
                 DeathEffect();
+                EventManager.inst.RunTriggers(new EventDeath(this));
+            }
             else
+            {
                 DamageEffect(change);
+            }
         }   
     }
     protected virtual void DeathEffect()
@@ -70,5 +76,25 @@ public class Entity : StoreBullets
     }
     protected virtual void EveryFrame()
     {
+    }
+}
+public class EventDeath : CustomEvent
+{
+    public Entity deadEntity { get; private set; }
+
+    public EventDeath(Entity deadEntity)
+    {
+        this.deadEntity = deadEntity;
+    }
+}
+public class EventHeal : CustomEvent
+{
+    public Entity healedEntity { get; private set; }
+    public int healAmount {get; private set;}
+
+    public EventHeal(Entity healedEntity, int healAmount)
+    {
+        this.healedEntity = healedEntity;
+        this.healAmount = healAmount;
     }
 }

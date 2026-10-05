@@ -2,6 +2,16 @@ using UnityEngine;
 using MyBox;
 using System.Collections;
 using System.Collections.Generic;
+
+public class EventEnergy : CustomEvent
+{
+    public int energyChange { get; private set; }
+
+    public EventEnergy(int energyChange)
+    {
+        this.energyChange = energyChange;
+    }
+}
 public class Player : Entity
 {
 
@@ -66,7 +76,7 @@ public class Player : Entity
         {
             if (currentEnergy >= 1)
             {
-                currentEnergy--;
+                ChangeEnergy(-1);
                 AudioManager.instance.Shoot(0.3f);
                 foreach (Transform nextHand in toSpin)
                     CreateBullet(DefaultAttack(nextHand.position, nextHand.right));  
@@ -138,6 +148,8 @@ public class Player : Entity
         this.currentEnergy = Mathf.Clamp(this.currentEnergy + amount, 0, maxEnergy);
         if (amount > 0)
             AudioManager.instance.Heal(0.3f);
+        if (amount != 0)
+            EventManager.inst.RunTriggers(new EventEnergy(amount));
     }
     public int DamageTaken() => tookDamage;
     public (int currentEnergy, int maxEnergy) EnergyInfo()
