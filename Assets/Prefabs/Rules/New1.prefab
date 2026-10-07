@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017283306566516466}
-  - component: {fileID: 3103506096971162904}
+  - component: {fileID: 1153385649767464212}
   m_Layer: 0
-  m_Name: Warp
+  m_Name: New1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3103506096971162904
+--- !u!114 &1153385649767464212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2425884712083460858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c4cba17171de4d63be2a9716e7bf5e8, type: 3}
+  m_Script: {fileID: 11500000, guid: dbde177b5eb4840b0973ffaa33d6b793, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Warp
-  maxTimer: 10
+  m_EditorClassIdentifier: Assembly-CSharp::New1
+  maxTimer: 20
   beOnPlayer: 0
-  stunTime: 0.5
-  warp: {fileID: 8300000, guid: 185e903953e4b418e81cdb675ffcf4a7, type: 3}
+  health: 2

@@ -7,7 +7,7 @@ public class Home : Rule
     {
         base.Awake();
         MoveHome();
-        EventManager.inst.Subscribe<EventEnergy>(energy => ChangedEnergy(energy));
+        EventManager.inst.Subscribe<EventEnergy>(ChangedEnergy);
 
         void ChangedEnergy(EventEnergy info)
         {

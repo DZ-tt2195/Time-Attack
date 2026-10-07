@@ -60,9 +60,11 @@ Necromancy_Text	[$Time$] All dead enemies come back with $Num$ health.
 Flag	Flag
 Flag_Text	[$Time$] Touch the flag to spend $Energy$ energy and gain $Health$ health.
 Home	Home
-Home_Text	[$Time$] Home moves somewhere else. / Whenever you gain energy, you warp to where the home is.
+Home_Text	[$Time$] Home moves somewhere else. / Whenever you gain Energy, you warp to the Home.
 New1	New1
 New1_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ health, otherwise lose $Health$ health.
+New2	New2
+New2_Text	[$Time$] All enemy bullets are shot either faster or slower.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025

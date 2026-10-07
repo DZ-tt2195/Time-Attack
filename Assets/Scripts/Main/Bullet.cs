@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 public class Bullet : MonoBehaviour
 {
     protected BulletInfo info;
@@ -14,7 +15,11 @@ public class Bullet : MonoBehaviour
         this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
         this.owner = owner;
+
         this.info = info;
+        List<float> speedModifiers = EventManager.inst.GetModifiers<ChangeBulletSpeed, float>(new ChangeBulletSpeed(owner, info.bulletSpeed));
+        this.info.bulletSpeed += MyExtensions.SumOfArray(speedModifiers.ToArray());
+
         Movement();
         this.gameObject.SetActive(true);
     }

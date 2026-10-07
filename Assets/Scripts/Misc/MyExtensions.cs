@@ -64,4 +64,11 @@ public static class MyExtensions
             total += array[i];
         return total;
     }
+    public static float SumOfArray(float[] array)
+    {
+        float total = 0f;
+        for (int i = 0; i<array.Length; i++)
+            total += array[i];
+        return total;
+    }
 }

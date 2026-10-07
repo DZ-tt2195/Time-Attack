@@ -66,12 +66,12 @@ public class StoreBullets : MonoBehaviour
 }
 public class BulletInfo
 {
-    public Vector2 spawnPosition{get; private set;}
-    public float bulletSpeed{get; private set;}
-    public Vector2 direction{get; private set;}
+    public Vector2 spawnPosition;
+    public float bulletSpeed;
+    public Vector2 direction;
     public Func<Entity, Bullet, bool> canHit;
-    public Action<Entity> hitTarget {get; private set;}
-    public Action<Bullet, bool> returnBullet {get; private set;}
+    public Action<Entity> hitTarget;
+    public Action<Bullet, bool> returnBullet;
 
     public BulletInfo(Vector2 spawnposition, float bulletSpeed, Vector2 direction, Func<Entity, Bullet, bool> canHit, Action<Entity> hitTarget, Action<Bullet, bool> returnBullet)
     {
@@ -81,5 +81,16 @@ public class BulletInfo
         this.canHit = canHit;
         this.hitTarget = hitTarget;
         this.returnBullet = returnBullet;
+    }
+}
+public class ChangeBulletSpeed : CustomEvent<float>
+{
+    public StoreBullets entity {get; private set;}
+    public float currentSpeed {get; private set;}
+
+    public ChangeBulletSpeed(StoreBullets entity, float currentSpeed)
+    {
+        this.entity = entity;
+        this.currentSpeed = currentSpeed;
     }
 }
