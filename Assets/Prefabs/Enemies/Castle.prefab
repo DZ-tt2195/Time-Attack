@@ -1125,8 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crane
   bulletSpeed: 3
   spriteRenderer: {fileID: 2212896351684885597}
-  maxHealth: 3
-  protectionSources: 
+  startingHealth: 3
   healthText: {fileID: 3946208523625539186}
   lookAtPlayer: 1
   moveSpeed: 1

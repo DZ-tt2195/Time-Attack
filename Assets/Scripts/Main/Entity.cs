@@ -7,9 +7,9 @@ public enum Protection {Barrier, Immunity, Dead}
 public class Entity : StoreBullets
 {
     [Foldout("Entity info", true)]
-    public SpriteRenderer spriteRenderer;
     protected int currentHealth {get; private set;}
-    [SerializeField] protected int maxHealth;
+    [SerializeField] SpriteRenderer spriteRenderer; public SpriteRenderer GetSpriteRenderer => spriteRenderer;
+    [SerializeField] protected int startingHealth;
     protected List<Protection> protectionSources = new();
     protected int tookDamage;
     [SerializeField] protected TMP_Text healthText;
@@ -19,8 +19,8 @@ public class Entity : StoreBullets
     {
         base.Awake();
         stunTime = 0f;
-        currentHealth = maxHealth;
-        healthText.text = maxHealth.ToString();
+        currentHealth = startingHealth;
+        healthText.text = startingHealth.ToString();
     }
     public bool CanTakeDamage() => protectionSources.Count == 0;
     public void ChangeHealth(int change)

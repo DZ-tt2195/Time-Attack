@@ -21,7 +21,7 @@ public class Phoenix : BaseEnemy
             currentTimer -= Time.deltaTime;
             textBox.text = $"{currentTimer:F1}";
             if (currentTimer < 0f)
-                ChangeHealth(maxHealth);
+                ChangeHealth(startingHealth);
         }
         else
         {

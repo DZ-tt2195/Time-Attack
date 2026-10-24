@@ -6778,7 +6778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   bulletSpeed: 10
   spriteRenderer: {fileID: 6438494536739822877}
-  maxHealth: 15
+  startingHealth: 15
   healthText: {fileID: 5992719068442753987}
   immuneTime: 2
   maxEnergy: 10

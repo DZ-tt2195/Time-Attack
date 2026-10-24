@@ -116,7 +116,7 @@ public class Player : Entity
             if (animation)
             {
                 flicker = !flicker;
-                MyExtensions.SetAlpha(this.spriteRenderer, flicker ? (elapsedTime / immuneTime) : 1f);
+                MyExtensions.SetAlpha(this.GetSpriteRenderer, flicker ? (elapsedTime / immuneTime) : 1f);
                 Vector3 target = Vector3.Lerp(darkness, gray, elapsedTime / immuneTime);
                 WaveManager.instance.mainCamera.backgroundColor = new(target.x, target.y, target.z);
             }
@@ -124,13 +124,13 @@ public class Player : Entity
         }
 
         WaveManager.instance.mainCamera.backgroundColor = new(gray.x, gray.y, gray.z);
-        MyExtensions.SetAlpha(this.spriteRenderer, 1);
+        MyExtensions.SetAlpha(this.GetSpriteRenderer, 1);
         protectionSources.Remove(Protection.Immunity);
     }
     protected override void DeathEffect()
     {
         base.DeathEffect();
-        MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
+        MyExtensions.SetAlpha(this.GetSpriteRenderer, 0.5f);
 
         Level currentLevel = GameFiles.inst.CurrentLevel();
         if (currentLevel.levelType == LevelType.Endless)

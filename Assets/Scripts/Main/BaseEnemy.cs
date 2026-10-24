@@ -60,7 +60,7 @@ public class BaseEnemy : Entity
         if (lookAtPlayer)
         {
             Vector2 aimDirection = AimAtPlayer();
-            spriteRenderer.transform.localEulerAngles = new(0, 0, Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg + 90);
+            GetSpriteRenderer.transform.localEulerAngles = new(0, 0, Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg + 90);
         }        
         transform.position = Vector3.MoveTowards(this.transform.position, aimPosition, moveSpeed*Time.deltaTime);  
         if (Vector3.Distance(transform.position, aimPosition) < 0.01f)
@@ -74,13 +74,13 @@ public class BaseEnemy : Entity
     {
         base.DeathEffect();
         crossedOut.SetActive(true);
-        MyExtensions.SetAlpha(this.spriteRenderer, 0.5f);
+        MyExtensions.SetAlpha(this.GetSpriteRenderer, 0.5f);
     }
     protected override void HealEffect(int amount)
     {
         base.HealEffect(amount);
         crossedOut.SetActive(false);
-        MyExtensions.SetAlpha(this.spriteRenderer, 1f);
+        MyExtensions.SetAlpha(this.GetSpriteRenderer, 1f);
     }
     public override void OnDestroy()
     {

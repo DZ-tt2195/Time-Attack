@@ -4,6 +4,7 @@ public class Freeze : Rule
 {
     [SerializeField] float stunTime;
     [SerializeField] AudioClip freezeSound;
+    public override string MyText => AutoTranslate.Freeze_Text(GetTime.ToString(), stunTime.ToString());
     protected override void ActivateRule()
     {
         AudioManager.instance.PlaySound(freezeSound, 0.3f);

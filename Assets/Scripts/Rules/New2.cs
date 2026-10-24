@@ -3,6 +3,8 @@ using UnityEngine;
 public class New2 : Rule
 {
     bool faster;
+    [SerializeField] float percent;
+    public override string MyText => AutoTranslate.New2_Text(GetTime.ToString(), (percent*100).ToString());
     protected override void Awake()
     {
         base.Awake();
@@ -13,9 +15,13 @@ public class New2 : Rule
             if (info.entity is BaseEnemy)
             {
                 if (faster)
-                    return info.currentSpeed;
+                {
+                    return info.currentSpeed*percent;
+                }
                 else
-                    return -0.5f*info.currentSpeed;
+                {
+                    return info.currentSpeed*-percent;
+                }
             }
             else
             {

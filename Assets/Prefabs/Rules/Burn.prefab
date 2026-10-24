@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cca32497bb04dd6b64b3acae491e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Burn
-  bulletSpeed: 0
   maxTimer: 15
   beOnPlayer: 1
   burn: {fileID: 8300000, guid: 235378c50fa4d457680e2597afed480a, type: 3}
+  damage: 1
 --- !u!212 &6626662838147560955
 SpriteRenderer:
   serializedVersion: 2

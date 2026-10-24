@@ -799,8 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Planet
   bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
-  maxHealth: 3
-  protectionSources: 
+  startingHealth: 3
   healthText: {fileID: 5011160519040992263}
   lookAtPlayer: 0
   moveSpeed: 1.5

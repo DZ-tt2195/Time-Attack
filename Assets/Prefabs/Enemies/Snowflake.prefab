@@ -418,8 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordsMan
   bulletSpeed: 3
   spriteRenderer: {fileID: 2212896351684885597}
-  maxHealth: 2
-  protectionSources: 
+  startingHealth: 2
   healthText: {fileID: 4389480831791137980}
   lookAtPlayer: 1
   moveSpeed: 1

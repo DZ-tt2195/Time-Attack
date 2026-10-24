@@ -507,8 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Waller
   bulletSpeed: 1.75
   spriteRenderer: {fileID: 2212896351684885597}
-  maxHealth: 3
-  protectionSources: 
+  startingHealth: 3
   healthText: {fileID: 5579430089183112168}
   lookAtPlayer: 0
   moveSpeed: 1

@@ -686,8 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 2
   spriteRenderer: {fileID: 2212896351684885597}
-  maxHealth: 3
-  protectionSources: 
+  startingHealth: 3
   healthText: {fileID: 8777176986021941860}
   lookAtPlayer: 1
   moveSpeed: 1

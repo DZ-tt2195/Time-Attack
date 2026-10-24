@@ -3,6 +3,8 @@ using UnityEngine;
 public class Burn : Rule
 {
     [SerializeField] AudioClip burn;
+    [SerializeField] int damage;
+    public override string MyText => AutoTranslate.Burn_Text(GetTime.ToString(), damage.ToString());
     protected override void ActivateRule()
     {
         AudioManager.instance.PlaySound(burn, 0.5f);
@@ -15,10 +17,10 @@ public class Burn : Rule
             if (entity.CanTakeDamage())
             {
                 hitEnemy = true;
-                entity.ChangeHealth(-1);
+                entity.ChangeHealth(-damage);
             }
         }
         if (!hitEnemy)
-            Player.instance.ChangeHealth(-1);
+            Player.instance.ChangeHealth(-damage);
     }
 }

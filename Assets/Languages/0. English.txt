@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: Aug 17, 2026
+Last_Update	Last Updated: NEXT DATE
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -42,7 +42,7 @@ Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its s
 Fourth_Tutorial	The Phoenix can revive itself. You'll have to defeat all other enemies first to clear the wave.
 Sound_Credits	Sound Credits
 Freeze	Freeze
-Freeze_Text	[$Time$] All enemies around you can't move or attack for a few seconds.
+Freeze_Text	[$Time$] All enemies around you can't move or attack for $Num$ seconds.
 Warp	Warp
 Warp_Text	[$Time$] All enemies randomly warp to the edge of the screen.
 Walls	Walls
@@ -50,21 +50,21 @@ Walls_Text	[$Time$] Walls either appear or disappear. / Walls block enemy bullet
 Bomb	Bomb
 Bomb_Text	[$Time$] Bomb moves back to the top. / Bomb damages you when it touches the bottom; slow it down with bullets.
 Burn	Burn
-Burn_Text	[$Time$] Damage all enemies around you; if there are no enemies to hit, you take damage instead.
+Burn_Text	[$Time$] Deal $Num$ damage to all enemies around you; if there are no enemies, you take $Num$ damage instead.
 Deplete	Deplete
 Deplete_Text	[$Time$] Lose all energy.
 Jammed	Jammed
 Jammed_Text	[$Time$] Your clock hands either stop or resume spinning around.
 Necromancy	Necromancy
-Necromancy_Text	[$Time$] All dead enemies come back with $Num$ health.
+Necromancy_Text	[$Time$] All dead enemies come back with $Num$ Health.
 Flag	Flag
-Flag_Text	[$Time$] Touch the flag to spend $Energy$ energy and gain $Health$ health.
+Flag_Text	[$Time$] Touch the Flag to spend $Energy$ Energy and gain $Health$ Health.
 Home	Home
 Home_Text	[$Time$] Home moves somewhere else. / Whenever you gain Energy, you warp to the Home.
 New1	New1
-New1_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ health, otherwise lose $Health$ health.
+New1_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ Health, otherwise lose $Health$ Health.
 New2	New2
-New2_Text	[$Time$] All enemy bullets are shot either faster or slower.
+New2_Text	[$Time$] All enemy bullets are shot either $Num$% faster or slower.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -83,3 +83,5 @@ Update_7	June 26, 2026
 Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly move towards you, like how Planet does \nRedesigned and rebalanced many enemies and levels \nSeperated health and energy again; you start with a lot more health \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added \nChanged game name from Relentless Waves to Time Attack
 Update_8	Aug 17, 2026
 Update_8_Text	Hidden optional stuff on the title screen behind the extras button \nYou customize rules on title screen instead \nThe game will remember which rules you chose
+Update_9	NEXT DATE
+Update_9_Text	Added 10 more Rules

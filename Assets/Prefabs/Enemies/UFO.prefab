@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00819f607a5474a6285237da47972ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearOnWall: 1
   targetXpand: 13
   travelTime: 4
 --- !u!212 &7307465337714780801
@@ -679,13 +678,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemy
   bulletSpeed: 0
   spriteRenderer: {fileID: 2212896351684885597}
-  damage: 1
-  maxHealth: 2
-  protectionSources: 
+  startingHealth: 2
   healthText: {fileID: 6700733968041703811}
   lookAtPlayer: 0
   moveSpeed: 1.25
   attackRate: 3
+  myBehavior: 0
 --- !u!61 &7595905048437823666
 BoxCollider2D:
   m_ObjectHideFlags: 0

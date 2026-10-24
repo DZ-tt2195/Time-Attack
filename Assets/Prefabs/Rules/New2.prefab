@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::New2
   maxTimer: 10
   beOnPlayer: 0
+  percent: 0.4
