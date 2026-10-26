@@ -2,7 +2,13 @@ using UnityEngine;
 using MyBox;
 using System.Collections;
 using System.Collections.Generic;
-
+using System;
+[Serializable]
+public class ClockHands
+{
+    public Transform toSpin;
+    [ReadOnly] public float spinSpeed;
+}
 public class EventEnergy : CustomEvent
 {
     public int energyChange { get; private set; }
@@ -14,37 +20,38 @@ public class EventEnergy : CustomEvent
 }
 public class Player : Entity
 {
-
 #region Setup
-
     public static Player instance;
     [Foldout("Player info", true)]
     [SerializeField] float immuneTime;
     int currentEnergy;
     [SerializeField] int maxEnergy;
-    [SerializeField] List<Transform> toSpin = new();
-    [SerializeField] float spinSpeed;
-    [ReadOnly] public bool spinHands;
+    public List<ClockHands> clockHands = new();
     [SerializeField] float moveSpeed;
+    [SerializeField] float defaultSpin; public float SpinSpeed => defaultSpin;
 
     protected override void Awake()
     {
         base.Awake();
         instance = this;
-        spinHands = true;
 
         immuneTime *= 2 - PrefManager.GetDifficulty();
         currentEnergy = maxEnergy;
 
-        float randomAngle1 = Random.Range(0f, 360f);
-        toSpin[0].eulerAngles = new(0, 0, randomAngle1);
+        float randomAngle1 = UnityEngine.Random.Range(0f, 360f);
+        clockHands[0].toSpin.eulerAngles = new(0, 0, UnityEngine.Random.Range(0f, 360f));
+        clockHands[0].spinSpeed = defaultSpin;
 
-        float randomAngle2 = randomAngle1 + Random.Range(60f, 300f);
-        toSpin[1].eulerAngles = new(0, 0, randomAngle2);
+        clockHands[1].spinSpeed = defaultSpin;
+        RandomizeHandTwo();
     }
-
+    public void RandomizeHandTwo()
+    {
+        float randomAngle1 = clockHands[0].toSpin.eulerAngles.z;        
+        float randomAngle2 = randomAngle1 + UnityEngine.Random.Range(60f, 300f);
+        clockHands[1].toSpin.eulerAngles = new(0, 0, randomAngle2);
+    }
     #endregion
-
 #region Gameplay
     protected override void EveryFrame()
     {
@@ -67,19 +74,17 @@ public class Player : Entity
         pos.y = Mathf.Clamp(pos.y, WaveManager.minY, WaveManager.maxY);
         transform.position = pos;
 
-        if (spinHands)
-        {
-            foreach (Transform next in toSpin)
-                next.Rotate(0, 0, spinSpeed * Time.deltaTime); 
-        }
+        foreach (ClockHands next in clockHands)
+            next.toSpin.Rotate(0, 0, next.spinSpeed * Time.deltaTime);
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (currentEnergy >= 1)
             {
                 ChangeEnergy(-1);
                 AudioManager.instance.Shoot(0.3f);
-                foreach (Transform nextHand in toSpin)
-                    CreateBullet(DefaultAttack(nextHand.position, nextHand.right));  
+                foreach (ClockHands next in clockHands)
+                    CreateBullet(DefaultAttack(next.toSpin.position, next.toSpin.right));  
             }
             else
             {
@@ -157,5 +162,4 @@ public class Player : Entity
         return (this.currentEnergy, this.maxEnergy);
     }
     #endregion
-
 }

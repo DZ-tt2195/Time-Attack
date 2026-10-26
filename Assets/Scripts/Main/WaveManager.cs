@@ -15,7 +15,6 @@ public class RulesSlider
 public class WaveManager : MonoBehaviour
 {
 #region Setup
-
     public static WaveManager instance;
     [Foldout("Gameplay", true)]
     public static GameState state = GameState.Setup;
@@ -146,7 +145,6 @@ public class WaveManager : MonoBehaviour
 #endregion
 
 #region Gameplay
-
     void NewWave()
     {
         StartCoroutine(Player.instance.Immunity(false));
@@ -155,7 +153,8 @@ public class WaveManager : MonoBehaviour
         if (currentWave < waveList.Count() || currentLevel.levelType == LevelType.Endless)
         {
             foreach (Collection collection in waveList[Mathf.Min(waveList.Count-1, currentWave)].enemies)
-                CreateEnemy(collection.position, collection.toCreate);
+                CreateEnemy(collection.position, collection.toCreate, false);
+            UpdateEnemySlider();
 
             waveSlider.value = (currentWave + 1) / (float)waveList.Count;
 
@@ -169,7 +168,6 @@ public class WaveManager : MonoBehaviour
                 waveCounter.text = AutoTranslate.Wave((currentWave+1).ToString(), "\u221E");
                 tutorialText.text = "";
             }
-            UpdateEnemySlider();
         }
         else
         {
@@ -178,12 +176,13 @@ public class WaveManager : MonoBehaviour
             EndGame(AutoTranslate.Victory(), damageTaken, score);
         }
     }
-    void CreateEnemy(Vector2 start, BaseEnemy prefab)
+    public void CreateEnemy(Vector2 start, BaseEnemy prefab, bool update = true)
     {
         BaseEnemy enemy = Instantiate(prefab != null ? prefab : GameFiles.inst.RandomEnemy());
-        enemy.EnemySetup();
-        enemy.transform.position = start;
+        enemy.EnemySetup(start);
         allEnemies.Add(enemy);
+        if (update)
+            UpdateEnemySlider();
     }
     private void Update()
     {

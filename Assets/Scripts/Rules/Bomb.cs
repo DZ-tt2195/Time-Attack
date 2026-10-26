@@ -8,6 +8,7 @@ public class Bomb : Rule
     [SerializeField] float stunTime;
     [SerializeField] float moveSpeed;
     [SerializeField] AudioClip boom;
+    public override string MyText => AutoTranslate.Bomb_Text(GetTime.ToString(), damage.ToString());
     protected override void Awake()
     {
         base.Awake();

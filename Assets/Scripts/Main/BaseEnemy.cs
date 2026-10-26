@@ -12,9 +12,10 @@ public class BaseEnemy : Entity
     [SerializeField] AimBehavior myBehavior;
     Vector2 aimPosition;
     Transform tracker;
-    public void EnemySetup()
+    public void EnemySetup(Vector2 start)
     {
         this.tag = "Enemy";
+        this.transform.position = start;
         crossedOut = transform.Find("X").gameObject;
         crossedOut.SetActive(false);
         healthText.text = currentHealth.ToString();

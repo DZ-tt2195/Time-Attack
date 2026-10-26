@@ -48,11 +48,11 @@ Warp_Text	[$Time$] All enemies randomly warp to the edge of the screen.
 Walls	Walls
 Walls_Text	[$Time$] Walls either appear or disappear. / Walls block enemy bullets, but hurt you if you touch them.
 Bomb	Bomb
-Bomb_Text	[$Time$] Bomb moves back to the top. / Bomb damages you when it touches the bottom; slow it down with bullets.
+Bomb_Text	[$Time$] Bomb moves back to the top. / Bomb deals $Num$ damage to you when it touches the bottom; slow it down with bullets.
 Burn	Burn
 Burn_Text	[$Time$] Deal $Num$ damage to all enemies around you; if there are no enemies, you take $Num$ damage instead.
 Deplete	Deplete
-Deplete_Text	[$Time$] Lose all energy.
+Deplete_Text	[$Time$] Lose all Energy.
 Jammed	Jammed
 Jammed_Text	[$Time$] Your clock hands either stop or resume spinning around.
 Necromancy	Necromancy
@@ -65,6 +65,10 @@ New1	New1
 New1_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ Health, otherwise lose $Health$ Health.
 New2	New2
 New2_Text	[$Time$] All enemy bullets are shot either $Num$% faster or slower.
+New3	New3
+New3_Text	[$Time$] Kill an enemy, then create a copy of it.
+New4	New4
+New4_Text	[$Time$] Your clock hands either point in the same direction, or separate.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -84,4 +88,4 @@ Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly mo
 Update_8	Aug 17, 2026
 Update_8_Text	Hidden optional stuff on the title screen behind the extras button \nYou customize rules on title screen instead \nThe game will remember which rules you chose
 Update_9	NEXT DATE
-Update_9_Text	Added 10 more Rules
+Update_9_Text	Added 5 more Rules \nTweaked some existing Rules
