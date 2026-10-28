@@ -2,24 +2,24 @@ using UnityEngine;
 using System.Collections.Generic;
 using MyBox;
 
-public class Flag : Rule
+public class Heart : Rule
 {
-    [SerializeField] SpriteRenderer flagSprite;
+    [SerializeField] SpriteRenderer heartSprite;
     [SerializeField] int energyCost;
     [SerializeField] int healthGain;
     protected override void Awake()
     {
         base.Awake();
-        MoveFlag();
+        MoveHeart();
     }
-    public override string MyText => AutoTranslate.Flag_Text(GetTime.ToString(), energyCost.ToString(), healthGain.ToString());
+    public override string MyText => AutoTranslate.Heart_Text(GetTime.ToString(), energyCost.ToString(), healthGain.ToString());
     protected override bool CanUse()
     {
         if (base.CanUse())
         {
-            if (flagSprite.color.a < 1f)
+            if (heartSprite.color.a < 1f)
             {
-                MyExtensions.SetAlpha(flagSprite, 1);
+                MyExtensions.SetAlpha(heartSprite, 1);
                 AudioManager.instance.Menu();
             }
             return entitiesInRange.Contains(Player.instance) && Player.instance.EnergyInfo().currentEnergy >= energyCost;
@@ -33,11 +33,11 @@ public class Flag : Rule
     {
         Player.instance.ChangeEnergy(-energyCost);
         Player.instance.ChangeHealth(healthGain);
-        MoveFlag();
+        MoveHeart();
     }
-    void MoveFlag()
+    void MoveHeart()
     {
-        flagSprite.transform.position = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));
-        MyExtensions.SetAlpha(flagSprite, 0.5f);
+        heartSprite.transform.position = new Vector2(WaveManager.RandomX(1f), WaveManager.RandomY(1f));
+        MyExtensions.SetAlpha(heartSprite, 0.5f);
     }
 }

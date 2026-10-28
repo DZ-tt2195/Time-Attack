@@ -68,35 +68,3 @@ public abstract class CustomEvent
 public abstract class CustomEvent<TResult> : CustomEvent
 {
 }
-/*
-public class EventDeath : CustomEvent
-{
-    public GameObject deadObject { get; private set; }
-
-    public EventDeath(GameObject gone)
-    {
-        deadObject = gone;
-    }
-}
-Subscribe<EventDeath>(death =>
-{
-    Debug.Log(death.deadObject.name);
-});
-RunTriggers(new EventDeath(this.gameObject));
-
-        EventManager.inst.Subscribe<QuickTest, int>(Trying);
-
-        int Trying(QuickTest test)
-        {
-            return 0;
-        }
-public class QuickTest : CustomEvent<int>
-{
-    public int testInt {get; private set;}
-
-    public QuickTest(int test)
-    {
-        this.testInt = test;
-    }
-}
-*/

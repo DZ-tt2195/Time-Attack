@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class New1 : Rule
+public class Bloodlust : Rule
 {
     bool killed;
     [SerializeField] int health;
@@ -15,7 +15,7 @@ public class New1 : Rule
                 killed = true;
         }
     }
-    public override string MyText => AutoTranslate.New1_Text(GetTime.ToString(), health.ToString());
+    public override string MyText => AutoTranslate.Bloodlust_Text(GetTime.ToString(), health.ToString());
     protected override void ActivateRule()
     {
         if (killed)

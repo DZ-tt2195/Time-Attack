@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5017283306566516466}
   - component: {fileID: 1153385649767464212}
   m_Layer: 0
-  m_Name: New1
+  m_Name: Bloodlust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

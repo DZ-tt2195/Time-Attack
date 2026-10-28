@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class New4 : Rule
+public class Aimed : Rule
 {
     [SerializeField] AudioClip jammed;
-    bool jam = false;
+    bool aimed = false;
     protected override void ActivateRule()
     {
         AudioManager.instance.PlaySound(jammed);
-        jam = !jam;
+        aimed = !aimed;
 
-        if (jam)
+        if (aimed)
         {
             Player.instance.clockHands[1].toSpin.localEulerAngles = Player.instance.clockHands[0].toSpin.localEulerAngles;
         }

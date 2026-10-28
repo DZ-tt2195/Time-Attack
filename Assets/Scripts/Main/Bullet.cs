@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     }
     public virtual void AssignInfo(BulletInfo info, StoreBullets owner)
     {
+        this.name = $"{owner.name} Bullet";
         this.transform.position = info.spawnPosition;
         this.tag = owner.tag;
         this.owner = owner;

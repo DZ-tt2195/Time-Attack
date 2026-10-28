@@ -73,6 +73,9 @@ public class WaveManager : MonoBehaviour
         minY = mainCamera.transform.position.y - cameraHeight / 2f;
         maxY = 4f;
 
+        UnityEngine.Debug.Log($"X: {minX} <-> {maxX}");
+        UnityEngine.Debug.Log($"Y: {minY} <-> {maxY}");
+
         restartButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Restart();
         quitButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Quit();
         playButton.transform.GetComponentInChildren<TMP_Text>().text = AutoTranslate.Play();
@@ -141,9 +144,7 @@ public class WaveManager : MonoBehaviour
             energyCounter.text = AutoTranslate.Energy(playerStats.energy.ToString(), playerStats.maxEnergy.ToString());    
         }
     }
-
 #endregion
-
 #region Gameplay
     void NewWave()
     {
@@ -178,7 +179,7 @@ public class WaveManager : MonoBehaviour
     }
     public void CreateEnemy(Vector2 start, BaseEnemy prefab, bool update = true)
     {
-        BaseEnemy enemy = Instantiate(prefab != null ? prefab : GameFiles.inst.RandomEnemy());
+        BaseEnemy enemy = Instantiate(prefab != null ? GameFiles.inst.GetEnemy(prefab.name) : GameFiles.inst.RandomEnemy());
         enemy.EnemySetup(start);
         allEnemies.Add(enemy);
         if (update)
@@ -277,14 +278,10 @@ public class WaveManager : MonoBehaviour
                 PrefManager.SetScore(currentLevel.levelName.ToString(), score);
         }
     }
-
 #endregion
-
 #region Helpers
     public List<BaseEnemy> GetEnemies() => allEnemies;
     public static float RandomX(float offset) => Random.Range(minX + offset, maxX - offset);
     public static float RandomY(float offset) => Random.Range(minY + offset, maxY - offset);
-
 #endregion
-
 }

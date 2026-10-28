@@ -36,6 +36,7 @@ Endless	Endless
 Open_Customizer	Open Customizer
 Choose_Rule	Choose up to $Num$ rules
 Confirm	Confirm
+Clear_All	Clear All
 First_Tutorial	WASD/Arrows to move. Left click to shoot at enemies. Pick up more energy to shoot if necessary.
 Second_Tutorial	Enemies will continue to shoot at you even when defeated. Defeat all enemies to clear the wave.
 Third_Tutorial	Catch the stars to deal damage to the Staff, and to disable its shield.
@@ -57,18 +58,20 @@ Jammed	Jammed
 Jammed_Text	[$Time$] Your clock hands either stop or resume spinning around.
 Necromancy	Necromancy
 Necromancy_Text	[$Time$] All dead enemies come back with $Num$ Health.
-Flag	Flag
-Flag_Text	[$Time$] Touch the Flag to spend $Energy$ Energy and gain $Health$ Health.
+Heart	Heart
+Heart_Text	[$Time$] Touch the Heart to spend $Energy$ Energy and gain $Health$ Health.
 Home	Home
 Home_Text	[$Time$] Home moves somewhere else. / Whenever you gain Energy, you warp to the Home.
-New1	New1
-New1_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ Health, otherwise lose $Health$ Health.
-New2	New2
-New2_Text	[$Time$] All enemy bullets are shot either $Num$% faster or slower.
-New3	New3
-New3_Text	[$Time$] Kill an enemy, then create a copy of it.
-New4	New4
-New4_Text	[$Time$] Your clock hands either point in the same direction, or separate.
+Bloodlust	Bloodlust
+Bloodlust_Text	[$Time$] If you killed an enemy in the last $Time$ seconds, gain $Health$ Health, otherwise lose $Health$ Health.
+Fluctuate	Fluctuate
+Fluctuate_Text	[$Time$] All enemy bullets are shot either $Num$% faster or slower.
+Duplicate	Duplicate
+Duplicate_Text	[$Time$] Kill an enemy, then create a copy of it.
+Aimed	Aimed
+Aimed_Text	[$Time$] Your clock hands either point in the same direction, or separate.
+Flags	Flags
+Flags_Text	[$Time$] Touch all $Num$ Flags in time to gain $Energy$ Energy.
 Update_0	Dec 15, 2025
 Update_0_Text	Fixed Endless level\nNerfed Snowflake\nPlayer is briefly immune to damage when a new wave spawns\nNerfed juggle challenge (only 1 ball to juggle)\nReordered some waves in Enemy Rush
 Update_1	Dec 17, 2025
@@ -88,4 +91,4 @@ Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly mo
 Update_8	Aug 17, 2026
 Update_8_Text	Hidden optional stuff on the title screen behind the extras button \nYou customize rules on title screen instead \nThe game will remember which rules you chose
 Update_9	NEXT DATE
-Update_9_Text	Added 5 more Rules \nTweaked some existing Rules
+Update_9_Text	Added 5 more Rules \nTweaked some existing Rules \nYou can clear all selected rules in the customizer

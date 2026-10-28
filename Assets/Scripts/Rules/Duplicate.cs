@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class New3 : Rule
+public class Duplicate : Rule
 {
     protected override void ActivateRule()
     {

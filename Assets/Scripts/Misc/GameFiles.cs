@@ -6,16 +6,17 @@ public class GameFiles : MonoBehaviour
     [SerializeField] List<Level> listOfLevels;
     [SerializeField] List<BaseEnemy> enemiesToSpawn;
     [SerializeField] List<Rule> listOfRules;
+    Dictionary<string, BaseEnemy> enemyDictionary = new Dictionary<string, BaseEnemy>();
     public static GameFiles inst;
 
     void Awake()
     {
         inst = this;
+        foreach (BaseEnemy enemy in enemiesToSpawn)
+            enemyDictionary.Add(enemy.name, enemy);
     }
-    public BaseEnemy RandomEnemy()
-    {
-        return enemiesToSpawn[Random.Range(0, enemiesToSpawn.Count)];
-    }
+    public BaseEnemy RandomEnemy() => enemiesToSpawn[Random.Range(0, enemiesToSpawn.Count)];
+    public BaseEnemy GetEnemy(string enemy) => enemyDictionary[enemy];
     public List<Level> AllLevels() => listOfLevels;
     public Level CurrentLevel()
     {

@@ -8,8 +8,8 @@ TagManager:
   - Enemy
   - Wall
   - Resupply
-  - HealthPack
   - HurtPlayer
+  - PlayerTrigger
   layers:
   - Default
   - TransparentFX

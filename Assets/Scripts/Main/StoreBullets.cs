@@ -15,6 +15,7 @@ public class StoreBullets : MonoBehaviour
     
     protected virtual void Awake()
     {
+        this.name = this.name.Replace("(Clone)", "");
         try
         {
             bulletPrefab = this.transform.Find("Bullet").GetComponent<Bullet>();

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017283306566516466}
-  - component: {fileID: 6572243633533129033}
+  - component: {fileID: 4178986461297974607}
   m_Layer: 0
-  m_Name: New3
+  m_Name: Aimed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6572243633533129033
+--- !u!114 &4178986461297974607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,8 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2425884712083460858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883b7de28ed31430c8602753b00fc868, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a89f01c4212c40769f6ede2af602649, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::New3
-  maxTimer: 20
+  m_EditorClassIdentifier: Assembly-CSharp::New4
+  maxTimer: 5
   beOnPlayer: 0
+  jammed: {fileID: 8300000, guid: dd213b0bce7ae4e72a9700ae87b922af, type: 3}

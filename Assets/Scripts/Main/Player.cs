@@ -18,6 +18,15 @@ public class EventEnergy : CustomEvent
         this.energyChange = energyChange;
     }
 }
+public class PlayerTouch : CustomEvent
+{
+    public GameObject obj;
+
+    public PlayerTouch(GameObject obj)
+    {
+        this.obj = obj;
+    }
+}
 public class Player : Entity
 {
 #region Setup
@@ -98,7 +107,9 @@ public class Player : Entity
             this.ChangeHealth(-1);
         else if (collision.CompareTag("Wall") || collision.CompareTag("HurtPlayer"))
             this.ChangeHealth(-1);
-    }
+        else if (collision.CompareTag("PlayerTrigger"))
+            EventManager.inst.RunTriggers(new PlayerTouch(collision.gameObject));
+   }
     protected override void DamageEffect(int amount)
     {
         base.DamageEffect(amount);

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class New2 : Rule
+public class Fluctuate : Rule
 {
     bool faster;
     [SerializeField] float percent;
-    public override string MyText => AutoTranslate.New2_Text(GetTime.ToString(), (percent*100).ToString());
+    public override string MyText => AutoTranslate.Fluctuate_Text(GetTime.ToString(), (percent*100).ToString());
     protected override void Awake()
     {
         base.Awake();

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017283306566516466}
-  - component: {fileID: 2537262816587367777}
+  - component: {fileID: 6572243633533129033}
   m_Layer: 0
-  m_Name: New2
+  m_Name: Duplicate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2537262816587367777
+--- !u!114 &6572243633533129033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2425884712083460858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a673deef6a44c2382628feeb81f726, type: 3}
+  m_Script: {fileID: 11500000, guid: 883b7de28ed31430c8602753b00fc868, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::New2
-  maxTimer: 10
+  m_EditorClassIdentifier: Assembly-CSharp::New3
+  maxTimer: 20
   beOnPlayer: 0
-  percent: 0.4
