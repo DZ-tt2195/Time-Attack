@@ -1,6 +1,6 @@
 Description	Bullet hell game where enemies keep shooting until you finish the entire wave.
 Designer	by Thomas Tang (DZ)
-Last_Update	Last Updated: NEXT DATE
+Last_Update	Last Updated: Oct 29, 2026
 Update_History	Update History
 Upload_Translation	Upload Translation
 Download_English	Download English
@@ -90,5 +90,5 @@ Update_7	June 26, 2026
 Update_7_Text	Player now controlled with WASD/Arrows \nAll enemies now slowly move towards you, like how Planet does \nRedesigned and rebalanced many enemies and levels \nSeperated health and energy again; you start with a lot more health \nPlayer is now a clock, and its rotating clock hands are where it shoots \nThere are 2 Rules per game that trigger at different intervals \nMore sound effects added \nChanged game name from Relentless Waves to Time Attack
 Update_8	Aug 17, 2026
 Update_8_Text	Hidden optional stuff on the title screen behind the extras button \nYou customize rules on title screen instead \nThe game will remember which rules you chose
-Update_9	NEXT DATE
+Update_9	Oct 29, 2026
 Update_9_Text	Added 5 more Rules \nTweaked some existing Rules \nYou can clear all selected rules in the customizer

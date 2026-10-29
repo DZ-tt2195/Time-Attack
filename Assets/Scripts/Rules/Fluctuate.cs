@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Fluctuate : Rule
 {
+    [SerializeField] AudioClip fasterSound;
+    [SerializeField] AudioClip slowerSound;
     bool faster;
     [SerializeField] float percent;
     public override string MyText => AutoTranslate.Fluctuate_Text(GetTime.ToString(), (percent*100).ToString());
@@ -32,5 +34,9 @@ public class Fluctuate : Rule
     protected override void ActivateRule()
     {
         faster = !faster;
+        if (faster)
+            AudioManager.instance.PlaySound(fasterSound);
+        else
+            AudioManager.instance.PlaySound(slowerSound);
     }
 }

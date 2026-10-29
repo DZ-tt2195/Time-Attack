@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::New2
   maxTimer: 10
   beOnPlayer: 0
+  fasterSound: {fileID: 8300000, guid: 3ad5016e9ad4d4f8b9aad495cadc3195, type: 3}
+  slowerSound: {fileID: 8300000, guid: 5c7a774a307a44f94a6c63af808ada94, type: 3}
   percent: 0.4

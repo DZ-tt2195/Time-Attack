@@ -37,11 +37,12 @@ public class Flags : Rule
     }
     protected override void ActivateRule()
     {
+        AudioManager.instance.Menu();
         currentFlags = randomStarts.Count;
         for (int i = 0; i<randomStarts.Count; i++)
         {
             allFlags[i].transform.position = new Vector2(randomStarts[i], WaveManager.RandomY(1f));
-            allFlags[i].gameObject.SetActive(true);
+            allFlags[i].SetActive(true);
         }
     }
 }
